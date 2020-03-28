@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Class: FuzzyValue | Class: FuzzyValue</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">Class: FuzzyValue</a></h1>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="FuzzyLogic.html">FuzzyLogic</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyLogic_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyLogic.html#IF">IF</a></li><li><a href="FuzzyLogic.html#newSet">newSet</a></li><li><a href="FuzzyLogic.html#newValue">newValue</a></li><li><a href="FuzzyLogic.html#newVeracity">newVeracity</a></li><li><a href="FuzzyLogic.html#THEN">THEN</a></li></ul></div></li><li><a href="FuzzySet.html">FuzzySet</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzySet_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzySet.html#contains">contains</a></li><li><a href="FuzzySet.html#crispify">crispify</a></li><li><a href="FuzzySet.html#getValues">getValues</a></li><li><a href="FuzzySet.html#quantify">quantify</a></li><li><a href="FuzzySet.html#toString">toString</a></li></ul></div></li><li><a href="FuzzyValue.html">FuzzyValue</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyValue_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyValue.html#crispify">crispify</a></li><li><a href="FuzzyValue.html#defuzzify">defuzzify</a></li><li><a href="FuzzyValue.html#IS">IS</a></li><li><a href="FuzzyValue.html#IS_NOT">IS_NOT</a></li><li><a href="FuzzyValue.html#quantify">quantify</a></li><li><a href="FuzzyValue.html#SET">SET</a></li><li><a href="FuzzyValue.html#toFloat">toFloat</a></li><li><a href="FuzzyValue.html#toNumber">toNumber</a></li><li><a href="FuzzyValue.html#toString">toString</a></li></ul></div></li><li><a href="FuzzyVeracity.html">FuzzyVeracity</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyVeracity_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyVeracity.html#AND">AND</a></li><li><a href="FuzzyVeracity.html#DIFFERENT">DIFFERENT</a></li><li><a href="FuzzyVeracity.html#DOES_NOT_HAVE">DOES_NOT_HAVE</a></li><li><a href="FuzzyVeracity.html#DOES_NOT_IMPLY">DOES_NOT_IMPLY</a></li><li><a href="FuzzyVeracity.html#EQUALS">EQUALS</a></li><li><a href="FuzzyVeracity.html#HAS">HAS</a></li><li><a href="FuzzyVeracity.html#IMPLIES">IMPLIES</a></li><li><a href="FuzzyVeracity.html#IS">IS</a></li><li><a href="FuzzyVeracity.html#IS_NOT">IS_NOT</a></li><li><a href="FuzzyVeracity.html#NAND">NAND</a></li><li><a href="FuzzyVeracity.html#NEGATE">NEGATE</a></li><li><a href="FuzzyVeracity.html#NONE">NONE</a></li><li><a href="FuzzyVeracity.html#NOR">NOR</a></li><li><a href="FuzzyVeracity.html#NOT_BOTH">NOT_BOTH</a></li><li><a href="FuzzyVeracity.html#NXR">NXR</a></li><li><a href="FuzzyVeracity.html#OR">OR</a></li><li><a href="FuzzyVeracity.html#WEIGHTED">WEIGHTED</a></li><li><a href="FuzzyVeracity.html#WITH">WITH</a></li><li><a href="FuzzyVeracity.html#WITHOUT">WITHOUT</a></li><li><a href="FuzzyVeracity.html#XOR">XOR</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Namespaces</h3><ul><li><a href="FuzzyCrispAlgorithm.html">FuzzyCrispAlgorithm</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyCrispAlgorithm_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyCrispAlgorithm.html#.CENTROID">CENTROID</a></li><li><a href="FuzzyCrispAlgorithm.html#.CENTROID_HIGHER">CENTROID_HIGHER</a></li><li><a href="FuzzyCrispAlgorithm.html#.CENTROID_LOWER">CENTROID_LOWER</a></li><li><a href="FuzzyCrispAlgorithm.html#.MEAN">MEAN</a></li><li><a href="FuzzyCrispAlgorithm.html#.MEAN_HIGHER">MEAN_HIGHER</a></li><li><a href="FuzzyCrispAlgorithm.html#.MEAN_LOWER">MEAN_LOWER</a></li><li><a href="FuzzyCrispAlgorithm.html#.RANDOM">RANDOM</a></li><li><a href="FuzzyCrispAlgorithm.html#.RANDOM_CENTROID">RANDOM_CENTROID</a></li><li><a href="FuzzyCrispAlgorithm.html#.RANDOM_TRUE">RANDOM_TRUE</a></li></ul></div></li><li><a href="FuzzyLogicAlgorithm.html">FuzzyLogicAlgorithm</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyLogicAlgorithm_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyLogicAlgorithm.html#.HYPERBOLIC">HYPERBOLIC</a></li><li><a href="FuzzyLogicAlgorithm.html#.LINEAR">LINEAR</a></li></ul></div></li><li><a href="FuzzyQuantifier.html">FuzzyQuantifier</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyQuantifier_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyQuantifier.html#.DOUBLE_MINUS">DOUBLE_MINUS</a></li><li><a href="FuzzyQuantifier.html#.DOUBLE_PLUS">DOUBLE_PLUS</a></li><li><a href="FuzzyQuantifier.html#.MINUS">MINUS</a></li><li><a href="FuzzyQuantifier.html#.PLUS">PLUS</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyQuantifier.html#.AVERAGE">AVERAGE</a></li><li><a href="FuzzyQuantifier.html#.IS">IS</a></li><li><a href="FuzzyQuantifier.html#.IS_NOT">IS_NOT</a></li><li><a href="FuzzyQuantifier.html#.LESS">LESS</a></li><li><a href="FuzzyQuantifier.html#.MORE">MORE</a></li></ul></div></li><li><a href="FuzzyShape.html">FuzzyShape</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyShape_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyShape.html#.BELL">BELL</a></li><li><a href="FuzzyShape.html#.CONSTANT">CONSTANT</a></li><li><a href="FuzzyShape.html#.GAUSSIAN">GAUSSIAN</a></li><li><a href="FuzzyShape.html#.LINEAR">LINEAR</a></li><li><a href="FuzzyShape.html#.SIGMOID">SIGMOID</a></li><li><a href="FuzzyShape.html#.SMOOTH">SMOOTH</a></li><li><a href="FuzzyShape.html#.SQUARE">SQUARE</a></li></ul></div></li><li><a href="FzMath.html">FzMath</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FzMath_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FzMath.html#.gaussian">gaussian</a></li><li><a href="FzMath.html#.inverseGaussian">inverseGaussian</a></li><li><a href="FzMath.html#.inverseLogistic">inverseLogistic</a></li><li><a href="FzMath.html#.logistic">logistic</a></li><li><a href="FzMath.html#.mean">mean</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>FuzzyValue<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">FuzzyValue is a value to be used with Fuzzy Logic. It's inclusion in a set can be tested with <code>FuzzyValue.IS</code> or <code>FuzzyValue.IS_NOT</code>,<br />
+Use <code>FuzzyValue.SET</code> or <code>FuzzyLogic.THEN</code> to change this value using a <a href="FuzzySet.html"><code>FuzzySet</code></a></div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dt>
+    
+        <h4 class="name" id="FuzzyValue">
+            
+                new <span class="type-signature"></span>FuzzyValue<span class="signature">()</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line412">line 412</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Do not use the constructor of this class, use <code>FuzzyLogic.newSet</code> to create a new set.<br >
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>unit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The unit to display when returning this value as a string.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reportEnabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Enables or disable report generation when crispifying. Disabled by default to improve performance.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>report</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Array.&lt;string>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The report (explanation) of the latest crispification <code>FuzzyValue.crispify</code>.<br />
+It is an Array containing Arrays of strings. Each sub-array is the report of one rule, which you can print with <code>.join(newLine)</code> for example.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var logic = new FuzzyLogic();
+var comfortable = logic.newSet("Warm", 17, 20);
+var temperature = logic.newValue( 18 );
+// Test if this temperature is comfortable
+logic.IF(
+   temperature.IS_NOT(comfortable);
+)
+// Set it very comfortable
+logic.THEN ( temperature.SET(comfortable, "Very"); )</code></pre>
+
+    
+
+</dd>
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+                
+
+<dt>
+    
+        <h4 class="name" id="crispify">
+            
+                <span class="type-signature"></span>crispify<span class="signature">(clearSets<span class="signature-attributes">opt</span>, algorithm<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Number}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line489">line 489</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Computes a crisp value depending on the inclusions which have been set before using <code>FuzzyValue.SET</code>.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>clearSets</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">When crispifying, the sets added with <code>FuzzyValue.SET</code> are cleared, this means changes made before the call to crispify() will be lost in subsequent calls. Set this parameter to false to keep these previous changes.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>algorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyCrispAlgorithm.html">FuzzyCrispAlgorithm</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Change the algorithm to use for crispification.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">Number</span>
+
+
+
+
+
+- The crisp (i.e. standard) value.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="defuzzify">
+            
+                <span class="type-signature"></span>defuzzify<span class="signature">()</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line587">line 587</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        This is an alias for <code>FuzzyValue.prototype.crispify</code>;
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="IS">
+            
+                <span class="type-signature"></span>IS<span class="signature">(set, quantifier)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line433">line 433</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Tests the inclusion of the value in the set
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>set</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzySet.html">FuzzySet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The set which may include the value.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>quantifier</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyQuantifier.html">FuzzyQuantifier</a></span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A quantifier.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+- The veracity of the inclusion of the value in the set.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="IS_NOT">
+            
+                <span class="type-signature"></span>IS_NOT<span class="signature">(set, quantifier)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line445">line 445</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Tests the exclusion of the value in the set
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>set</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzySet.html">FuzzySet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The set which may (not) include the value.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>quantifier</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyQuantifier.html">FuzzyQuantifier</a></span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A quantifier.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+- The veracity of the exclusion of the value in the set.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="quantify">
+            
+                <span class="type-signature"></span>quantify<span class="signature">(set)</span><span class="type-signature"> &rarr; {<a href="FuzzyQuantifier.html">FuzzyQuantifier</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line594">line 594</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns the closest quantifier for this value in this set
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>set</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzySet.html">FuzzySet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The set</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyQuantifier.html">FuzzyQuantifier</a></span>
+
+
+
+
+
+- The quantifier
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="SET">
+            
+                <span class="type-signature"></span>SET<span class="signature">(set, quantifier<span class="signature-attributes">opt</span>, v<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line457">line 457</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Changes the value according to a new veracity.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>set</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzySet.html">FuzzySet</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The set.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>quantifier</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">FuzzyModifier</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    FuzzyModifier.NONE
+                
+                </td>
+            
+
+            <td class="description last">The quantifier</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>v</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The veracity.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="toFloat">
+            
+                <span class="type-signature"></span>toFloat<span class="signature">()</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line582">line 582</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        This is an alias for <code>FuzzyValue.prototype.crispify</code>;
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="toNumber">
+            
+                <span class="type-signature"></span>toNumber<span class="signature">()</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line577">line 577</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        This is an alias for <code>FuzzyValue.prototype.crispify</code>;
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="toString">
+            
+                <span class="type-signature"></span>toString<span class="signature">(crispAlgorithm<span class="signature-attributes">opt</span>, set<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line605">line 605</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns a string representation of the value with its unit (if any)
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>crispAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyCrispAlgorithm.html">FuzzyCrispAlgorithm</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The algorithm to use for crispification before returning the string. Uses the algorithm set when creating the <a href="FuzzyLogic.html"><code>FuzzyLogic</code></a> instance by default.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>set</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzySet.html">FuzzySet</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A set to quantify the value</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">string</span>
+
+
+
+
+
+- The description of the value
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">NHN Entertainment. Frontend Development Lab</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = 'FuzzyValue_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

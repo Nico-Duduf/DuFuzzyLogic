@@ -1,0 +1,3411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Class: FuzzyVeracity | Class: FuzzyVeracity</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">Class: FuzzyVeracity</a></h1>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="FuzzyLogic.html">FuzzyLogic</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyLogic_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyLogic.html#IF">IF</a></li><li><a href="FuzzyLogic.html#newSet">newSet</a></li><li><a href="FuzzyLogic.html#newValue">newValue</a></li><li><a href="FuzzyLogic.html#newVeracity">newVeracity</a></li><li><a href="FuzzyLogic.html#THEN">THEN</a></li></ul></div></li><li><a href="FuzzySet.html">FuzzySet</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzySet_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzySet.html#contains">contains</a></li><li><a href="FuzzySet.html#crispify">crispify</a></li><li><a href="FuzzySet.html#getValues">getValues</a></li><li><a href="FuzzySet.html#quantify">quantify</a></li><li><a href="FuzzySet.html#toString">toString</a></li></ul></div></li><li><a href="FuzzyValue.html">FuzzyValue</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyValue_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyValue.html#crispify">crispify</a></li><li><a href="FuzzyValue.html#defuzzify">defuzzify</a></li><li><a href="FuzzyValue.html#IS">IS</a></li><li><a href="FuzzyValue.html#IS_NOT">IS_NOT</a></li><li><a href="FuzzyValue.html#quantify">quantify</a></li><li><a href="FuzzyValue.html#SET">SET</a></li><li><a href="FuzzyValue.html#toFloat">toFloat</a></li><li><a href="FuzzyValue.html#toNumber">toNumber</a></li><li><a href="FuzzyValue.html#toString">toString</a></li></ul></div></li><li><a href="FuzzyVeracity.html">FuzzyVeracity</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyVeracity_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyVeracity.html#AND">AND</a></li><li><a href="FuzzyVeracity.html#DIFFERENT">DIFFERENT</a></li><li><a href="FuzzyVeracity.html#DOES_NOT_HAVE">DOES_NOT_HAVE</a></li><li><a href="FuzzyVeracity.html#DOES_NOT_IMPLY">DOES_NOT_IMPLY</a></li><li><a href="FuzzyVeracity.html#EQUALS">EQUALS</a></li><li><a href="FuzzyVeracity.html#HAS">HAS</a></li><li><a href="FuzzyVeracity.html#IMPLIES">IMPLIES</a></li><li><a href="FuzzyVeracity.html#IS">IS</a></li><li><a href="FuzzyVeracity.html#IS_NOT">IS_NOT</a></li><li><a href="FuzzyVeracity.html#NAND">NAND</a></li><li><a href="FuzzyVeracity.html#NEGATE">NEGATE</a></li><li><a href="FuzzyVeracity.html#NONE">NONE</a></li><li><a href="FuzzyVeracity.html#NOR">NOR</a></li><li><a href="FuzzyVeracity.html#NOT_BOTH">NOT_BOTH</a></li><li><a href="FuzzyVeracity.html#NXR">NXR</a></li><li><a href="FuzzyVeracity.html#OR">OR</a></li><li><a href="FuzzyVeracity.html#WEIGHTED">WEIGHTED</a></li><li><a href="FuzzyVeracity.html#WITH">WITH</a></li><li><a href="FuzzyVeracity.html#WITHOUT">WITHOUT</a></li><li><a href="FuzzyVeracity.html#XOR">XOR</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Namespaces</h3><ul><li><a href="FuzzyCrispAlgorithm.html">FuzzyCrispAlgorithm</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyCrispAlgorithm_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyCrispAlgorithm.html#.CENTROID">CENTROID</a></li><li><a href="FuzzyCrispAlgorithm.html#.CENTROID_HIGHER">CENTROID_HIGHER</a></li><li><a href="FuzzyCrispAlgorithm.html#.CENTROID_LOWER">CENTROID_LOWER</a></li><li><a href="FuzzyCrispAlgorithm.html#.MEAN">MEAN</a></li><li><a href="FuzzyCrispAlgorithm.html#.MEAN_HIGHER">MEAN_HIGHER</a></li><li><a href="FuzzyCrispAlgorithm.html#.MEAN_LOWER">MEAN_LOWER</a></li><li><a href="FuzzyCrispAlgorithm.html#.RANDOM">RANDOM</a></li><li><a href="FuzzyCrispAlgorithm.html#.RANDOM_CENTROID">RANDOM_CENTROID</a></li><li><a href="FuzzyCrispAlgorithm.html#.RANDOM_TRUE">RANDOM_TRUE</a></li></ul></div></li><li><a href="FuzzyLogicAlgorithm.html">FuzzyLogicAlgorithm</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyLogicAlgorithm_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyLogicAlgorithm.html#.HYPERBOLIC">HYPERBOLIC</a></li><li><a href="FuzzyLogicAlgorithm.html#.LINEAR">LINEAR</a></li></ul></div></li><li><a href="FuzzyQuantifier.html">FuzzyQuantifier</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyQuantifier_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyQuantifier.html#.DOUBLE_MINUS">DOUBLE_MINUS</a></li><li><a href="FuzzyQuantifier.html#.DOUBLE_PLUS">DOUBLE_PLUS</a></li><li><a href="FuzzyQuantifier.html#.MINUS">MINUS</a></li><li><a href="FuzzyQuantifier.html#.PLUS">PLUS</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="FuzzyQuantifier.html#.AVERAGE">AVERAGE</a></li><li><a href="FuzzyQuantifier.html#.IS">IS</a></li><li><a href="FuzzyQuantifier.html#.IS_NOT">IS_NOT</a></li><li><a href="FuzzyQuantifier.html#.LESS">LESS</a></li><li><a href="FuzzyQuantifier.html#.MORE">MORE</a></li></ul></div></li><li><a href="FuzzyShape.html">FuzzyShape</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FuzzyShape_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="FuzzyShape.html#.BELL">BELL</a></li><li><a href="FuzzyShape.html#.CONSTANT">CONSTANT</a></li><li><a href="FuzzyShape.html#.GAUSSIAN">GAUSSIAN</a></li><li><a href="FuzzyShape.html#.LINEAR">LINEAR</a></li><li><a href="FuzzyShape.html#.SIGMOID">SIGMOID</a></li><li><a href="FuzzyShape.html#.SMOOTH">SMOOTH</a></li><li><a href="FuzzyShape.html#.SQUARE">SQUARE</a></li></ul></div></li><li><a href="FzMath.html">FzMath</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="FzMath_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="FzMath.html#.gaussian">gaussian</a></li><li><a href="FzMath.html#.inverseGaussian">inverseGaussian</a></li><li><a href="FzMath.html#.inverseLogistic">inverseLogistic</a></li><li><a href="FzMath.html#.logistic">logistic</a></li><li><a href="FzMath.html#.mean">mean</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>FuzzyVeracity<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">FuzzyVeracity is the fuzzy equivalent of a crisp boolean in boolean logic. It represents the result of logical operations (IS, AND, OR...).<br />
+Its value can vary in the range [0.0, 1.0], 0.0 being the equivalent of "false" and 1.0 of "true".<br />
+You can acces logic operators through instances of this class, which enable fluent syntax for rules (Except IS and IS_NOT which are members of <a href="FuzzyValue.html"><code>FuzzyValue</code></a>).<br />
+Operators are methods in upper case.</div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dt>
+    
+        <h4 class="name" id="FuzzyVeracity">
+            
+                new <span class="type-signature"></span>FuzzyVeracity<span class="signature">()</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line641">line 641</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>veracity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The veracity level in the range [0.0, 1.0]</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var logic = new FuzzyLogic();
+var intense = logic.newSet("Intense", 0, 255);
+// An RGB color to test
+var color = [255,200,10];
+// Separate channels
+var redChannel = logic.newValue( color[0] );
+var greenChannel = logic.newValue( color[1] );
+var blueChannel = logic.newValue( color[2] );
+// isRed will be a FuzzyVeracity, the result of the test.
+// Note that FuzzyValue.IS returns a FuzzyVeracity, on which the methods AND and NOR are called.
+// But this is all internal and you don't really need to know that to use this syntax.
+var isRed = redChannel.IS( intense )
+     .AND(
+        greenChannel.IS( intense ).
+        NOR( blueChannel.IS( intense ))
+     )</code></pre>
+
+    
+
+</dd>
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+                
+
+<dt>
+    
+        <h4 class="name" id="AND">
+            
+                <span class="type-signature"></span>AND<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line663">line 663</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this && other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="DIFFERENT">
+            
+                <span class="type-signature"></span>DIFFERENT<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line723">line 723</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this != other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="DOES_NOT_HAVE">
+            
+                <span class="type-signature"></span>DOES_NOT_HAVE<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line823">line 823</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="DOES_NOT_IMPLY">
+            
+                <span class="type-signature"></span>DOES_NOT_IMPLY<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line796">line 796</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="EQUALS">
+            
+                <span class="type-signature"></span>EQUALS<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line756">line 756</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this == other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="HAS">
+            
+                <span class="type-signature"></span>HAS<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line789">line 789</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="IMPLIES">
+            
+                <span class="type-signature"></span>IMPLIES<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line763">line 763</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="IS">
+            
+                <span class="type-signature"></span>IS<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line748">line 748</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this == other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="IS_NOT">
+            
+                <span class="type-signature"></span>IS_NOT<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line715">line 715</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this != other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="NAND">
+            
+                <span class="type-signature"></span>NAND<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line830">line 830</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>!(this && other)</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="NEGATE">
+            
+                <span class="type-signature"></span>NEGATE<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line653">line 653</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Negates the current veracity. A new veracity is returned, and the current veracity is not changed.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+- The negation of this veracity.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="NONE">
+            
+                <span class="type-signature"></span>NONE<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line873">line 873</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>!(this || other)</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="NOR">
+            
+                <span class="type-signature"></span>NOR<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line855">line 855</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>!(this || other)</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="NOT_BOTH">
+            
+                <span class="type-signature"></span>NOT_BOTH<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line848">line 848</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>!(this && other)</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="NXR">
+            
+                <span class="type-signature"></span>NXR<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line730">line 730</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this == other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="OR">
+            
+                <span class="type-signature"></span>OR<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line680">line 680</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this || other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="WEIGHTED">
+            
+                <span class="type-signature"></span>WEIGHTED<span class="signature">(other, weight)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line882">line 882</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Weights this and other according to a given factor.<br />
+The weight factor is applied to the other operand, and the <code>1 - weight</code> factor is applied to this.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>weight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The weight.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="WITH">
+            
+                <span class="type-signature"></span>WITH<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line781">line 781</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="WITHOUT">
+            
+                <span class="type-signature"></span>WITHOUT<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line815">line 815</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="XOR">
+            
+                <span class="type-signature"></span>XOR<span class="signature">(other)</span><span class="type-signature"> &rarr; {<a href="FuzzyVeracity.html">FuzzyVeracity</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="FuzzyLogic.js.html">FuzzyLogic.js</a></code>,
+                <code><a href="FuzzyLogic.js.html#line697">line 697</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        The equivalent of the boolean operation <code>this != other</code>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other operand.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="FuzzyVeracity.html">FuzzyVeracity</a></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">NHN Entertainment. Frontend Development Lab</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = 'FuzzyVeracity_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>
