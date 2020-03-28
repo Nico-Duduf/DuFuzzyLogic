@@ -23,7 +23,7 @@ For now, this is an implementation of Fuzzy Logic for JavaScript, but I plan to 
 
 ### Introduction
 
-The source is available in [src/js](https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src/JS). Everything is full [documented](https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/docs/js).
+The source is available in [src/js](https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src/JS). Everything is fully [documented](https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/docs/js).
 
 The code is fully compatible with *Adobe ExtendScript* and *Adobe After Effects Expressions*.
 
@@ -47,6 +47,8 @@ var isRed = redChannel.IS( intense )
 ```
 
 In this example, isRed is an instance of `FuzzyVeracity`, `redChannel`, `greenChannel`, `blueChannel` are `FuzzyValues` and intense is a `FuzzySet`
+
+[Read the reference](https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/docs/js) for all the details.
 
 ### Examples
 
