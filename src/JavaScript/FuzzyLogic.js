@@ -118,7 +118,7 @@ FzMath.mean = function( values )
 
 /**
     * Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.<br >
-    * Most of the time you won need to access the properties nor use the methods of this class, but use the methods of {@link FuzzyLogic}, {@link FuzzyValue}, {@link FuzzyVeracity}
+    * Most of the time you won't need to access the properties nor use the methods of this class, but use the methods of {@link FuzzyLogic}, {@link FuzzyValue}, {@link FuzzyVeracity}
     * @class
     * @classdesc A Fuzzy set.
     * @property {string} name The name of this set .
