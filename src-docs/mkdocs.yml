@@ -1,7 +1,7 @@
 site_name: DuFuzzyLogic Documentation
 site_url: http://rainboxlab.org
 repo_url: http://dufuzzylogic-docs.rainboxlab.org
-edit_uri: https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src-docs/
+edit_uri: https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src-docs/docs
 site_description: The DuFuzzyLogic documentation
 site_author: Nicolas Dufresne and contributors
 copyright: 'Copyright © 2020 Nicolas Dufresne'
@@ -43,3 +43,4 @@ nav:
     - Existing Libraries: Libraries.md
     - JavaScript Reference: https://dufuzzylogic-docs.rainboxlab.org/js
     - After Effects Expressions: https://github.com/Rainbox-dev/DuAEF_ExpressionLib
+    
