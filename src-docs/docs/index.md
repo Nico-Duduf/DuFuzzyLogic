@@ -48,6 +48,12 @@ var isRed = redChannel.IS( intense )
 In this example, isRed is an instance of `FuzzyVeracity`;  
 `redChannel`, `greenChannel`, `blueChannel` are `FuzzyValues` and intense is a `FuzzySet`
 
+It is the equivalent of the boolean logi:
+
+```js
+var isRed = redChannel == intense && !( greenChannel == intense || blueChannel == intenst )
+```
+
 > -> [**Read the reference**](https://dufuzzylogic-docs.rainboxlab.org/js) for all the details.
 
 ## After Effects Expressions Implementation
