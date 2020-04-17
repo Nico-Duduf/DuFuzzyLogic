@@ -1,5 +1,7 @@
 # Quantifiers
 
+[TOC]
+
 To improve the precision of the rules, we can use quantifiers, i.e. instead of just checking `IF temperature IS hot` we could check `IF temperature IS *VERY* hot` or `IF temperature IS *SLIGHTLY* hot`.
 
 Quantifiers are mostly used when checking the inclusion of a value in a set (i.e. the veracity of a propostion like "IF anything IS *VERY* something"), but they can also be used for setting a value (e.g. in the statement "THEN SET something *VERY* anything")

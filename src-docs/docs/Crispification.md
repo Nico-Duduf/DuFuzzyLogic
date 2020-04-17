@@ -1,6 +1,6 @@
 # Crispification
 
-![Crispification](https://github.com/Nico-Duduf/DuFuzzyLogic/raw/master/src-docs/images/fuzzy-schemas-crispification.png)
+![Crispification](images/fuzzy-schemas-crispification.png)
 
 When the rules have been applied and have output some *fuzzy* value, the last step is to get back some *crisp* values to use in the system.
 
@@ -8,7 +8,7 @@ Intuitively, one could think that it's just a matter of getting the average of a
 
 But depending on the shape of the sets, there can be several values with the same veracity.
 
-![One set, one veracity, several values](https://github.com/Nico-Duduf/DuFuzzyLogic/raw/master/src-docs/images/fuzzy-schemas-severalValues.png)
+![One set, one veracity, several values](images/fuzzy-schemas-severalValues.png)
 
 In this case, the *centroid* algorithm is the most used, which consists in getting all possible values from the set for the given veracity of each statement, and getting the mean of these values.
 

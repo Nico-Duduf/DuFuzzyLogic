@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Nicolas Dufresne and contributors">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Shapes - DuFuzzyLogic Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="style.css" rel="stylesheet">
+  <link href="video.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Shapes";
+    var mkdocs_page_input_path = "Shapes.md";
+    var mkdocs_page_url = "/Shapes.html";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> DuFuzzyLogic Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Fuzzy Logic</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Home.html">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="Advantages.html">Advantages</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Fuzzification.html">Fuzzification</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="Shapes.html">Shapes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#shapes">Shapes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#common-shapes-and-membership-functions">Common shapes and membership functions</a></li>
+        
+            <li><a class="toctree-l3" href="#combining-shapes">Combining shapes</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Rules</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Rules.html">Logic operators</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="Quantifiers.html">Quantifiers</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Crispification.html">Crispification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples (JavaScript)</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Redness.html">Color Redness</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="AirConditioning.html">HVAC Complex example</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Libraries.html">Existing Libraries</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js">JavaScript Reference</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/Rainbox-dev/DuAEF_ExpressionLib">After Effects Expressions</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">DuFuzzyLogic Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Shapes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src-docs/Shapes.md"> Edit on Dufuzzylogic-Docs</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="shapes">Shapes</h1>
+<div class="toc">
+<ul>
+<li><a href="#shapes">Shapes</a><ul>
+<li><a href="#common-shapes-and-membership-functions">Common shapes and membership functions</a></li>
+<li><a href="#combining-shapes">Combining shapes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Now comes the question of <em>how</em> does the veracity transition to <em>&ldquo;is not in the set&rdquo;</em> (0 or false) to <em>&ldquo;is in the set&rdquo;</em> (1 or true). The most intuitive is that the transition may be linear, i.e. if a set starts at 0 up to 100, the <em>crisp</em> value <code>50</code> has a veracity of <code>0.5</code> and the crisp value <code>25</code>  has a veracity of <code>0.25</code>.</p>
+<p>This set can be represented by a graph where the values are on the horizontal axis and the veracity is on the vertical axis:</p>
+<p><img alt="Linear shape" src="images/fuzzy-schemas-linear.png" /></p>
+<p>Its shape is linear.</p>
+<p>It may be interesting to change the shape of the set, to better reflect what the value represents or what it may be used for.</p>
+<p><img alt="Sigmoid shape" src="images/fuzzy-texture-Sigmoid.png" /></p>
+<p>The shape of the set is given by a membership function. It is a function which takes any given value as variable and which result is the veracity of the inclusion of this value in the set, a.k.a its membership. Membership functions can be any function and generate any kind of shape.</p>
+<h2 id="common-shapes-and-membership-functions">Common shapes and membership functions</h2>
+<p><img alt="Square shape" src="images/fuzzy-texture-Square.png" /><br />
+&ldquo;IF value &gt; limit THEN veracity IS 1 ELSE veracity is 0&rdquo;</p>
+<p><img alt="Linear shape" src="images/fuzzy-schemas-linear.png" /><br />
+A simple linear function</p>
+<p><img alt="Sigmoid shape" src="images/fuzzy-texture-Sigmoid.png" /><br />
+An S-shaped function, which can be the <a href="https://en.wikipedia.org/wiki/Logistic_function"><em>standard logistic function</em></a></p>
+<p><img alt="Gaussian shape" src="images/fuzzy-texture-Bell.png" /><br />
+An bell-shaped function, which is the <a href="https://en.wikipedia.org/wiki/Gaussian_function"><em>gaussian function</em></a></p>
+<p><img alt="Reversed Gaussian shape" src="images/fuzzy-schemas-inverseBell.png" /><br />
+The bell-shaped function may be useful in its reversed form too.</p>
+<p>It is also possible to use a <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve"><em>Bézier curve</em></a> to define a parametric shape, or any other function.</p>
+<p><img alt="Shapes Comparison" src="images/fuzzy-schemas-comparison.png" /></p>
+<p>Note that a given <em>crisp</em> value can be <em>above</em> or <em>below</em> a set. For example, 0⁰C is not in the set &ldquo;comfortable&rdquo;, neither is 50⁰C. In this case, the &ldquo;comfortable&rdquo; set can have a shape with two sides:</p>
+<p><img alt="Warm set" src="images/fuzzy-schemas-warmset.png" /></p>
+<p>It is also possible to have a plateau where all values are equally (and indifferentially) in the set, or true.</p>
+<p><img alt="Warm set with plateau" src="images/fuzzy-schemas-warmSetPlateau.png" /></p>
+<h2 id="combining-shapes">Combining shapes</h2>
+<p>Combining several shapes, it is possible to represent any <em>crisp</em> value from -inifinity to +infinity.</p>
+<p><img alt="Temperature sets" src="images/fuzzy-TemperatureSets-Logic.png" /></p>
+<p>This reasoning is for 1-dimensionnal sets, but we could imagine 2 or 3-D sets, which would be represented by a fuzzy area or a fuzzy volume, allowing to quantify 2-D or 3-D values or vectors.</p>
+<p>And it is also possible to build n-dimension sets to test n-dimension values (e.g. an RGB color with Alpha which is 4D) but the more dimensions, the more complex the functions for defining the shapes are.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Rules.html" class="btn btn-neutral float-right" title="Logic operators">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="Fuzzification.html" class="btn btn-neutral" title="Fuzzification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2020 Nicolas Dufresne</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="Fuzzification.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="Rules.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="video.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>

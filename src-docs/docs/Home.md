@@ -1,27 +1,27 @@
 # Fuzzy Logic
 
 - [Introduction](#introduction-to-fuzzy-logic)
-  - [Advantages](Advantages)
-    - [Principle](Advantages#principle)
-- [Fuzzification](Fuzzification)
-  - [Sets](Fuzzification#sets)
-  - [Operators: IS and IS NOT](Fuzzification#operators-is-and-is-not)
-  - [Shapes](Shapes)
-    - [Common shapes and membership functions](Shapes#common-shapes-and-membership-functions)
-    - [Combining shapes](Shapes#combining-shapes)
-- [Rules and logic operators](Rules)
-  - [Operators Implementation](Rules#implementation)
-  - [Quantifiers](Quantifiers)
-    - [Condition quantifiers](Quantifiers#condition-quantifiers)
-    - [A Game of words](Quantifiers#a-game-of-words)
-    - [Linguistic](Quantifiers#linguistic)
-    - [Newspeak](Quantifiers#newlinguistic---orwellian-newspeak)
-    - [Symbolic](Quantifiers#symbolic)
-- [Crispification](Crispification)
-- [Examples](Examples)
-  - JavaScript: [Color: Redness](Redness)
-  - JavaScript: [Complex example: HVAC](AirConditioning)
-- [Existing Libraries](Libraries)
+  - [Advantages](Advantages.md)
+    - [Principle](Advantages.md#principle)
+- [Fuzzification](Fuzzification.md)
+  - [Sets](Fuzzification.md#sets)
+  - [Operators: IS and IS NOT](Fuzzification.md#operators-is-and-is-not)
+  - [Shapes](Shapes.md)
+    - [Common shapes and membership functions](Shapes.md#common-shapes-and-membership-functions)
+    - [Combining shapes](Shapes.md#combining-shapes)
+- [Rules and logic operators](Rules.md)
+  - [Operators Implementation](Rules.md#implementation)
+  - [Quantifiers](Quantifiers.md)
+    - [Condition quantifiers](Quantifiers.md#condition-quantifiers)
+    - [A Game of words](Quantifiers.md#a-game-of-words)
+    - [Linguistic](Quantifiers.md#linguistic)
+    - [Newspeak](Quantifiers.md#newlinguistic---orwellian-newspeak)
+    - [Symbolic](Quantifiers.md#symbolic)
+- [Crispification](Crispification.md)
+- [Examples](Examples.md)
+  - JavaScript: [Color: Redness](Redness.md)
+  - JavaScript: [Complex example: HVAC](AirConditioning.md)
+- [Existing Libraries](Libraries.md)
 
 ## Introduction to Fuzzy Logic
 
@@ -35,7 +35,7 @@ With boolean logic, the statement `IF the temperature IS hot THEN SET the fan on
 
 With Fuzzy Logic, both the veracity and the result being fuzzy and more nuanced, the same statement will adjust precisely the power of the fan according to the hotness. With a single simple rule like this, it is like a conversion (interpolation) of the temperature value into a power value.
 
-![Logic](https://github.com/Nico-Duduf/DuFuzzyLogic/raw/master/src-docs/images/fuzzy-texture-Logic.png)
+![Logic](images/fuzzy-texture-Logic.png)
 
 But like Boolean logic, Fuzzy Logic becomes very interesting when combining veracity and rules. For example, it becomes easy to code a program with these rules:
 

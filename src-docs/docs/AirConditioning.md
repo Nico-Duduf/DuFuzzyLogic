@@ -1,5 +1,7 @@
 # Air conditioning
 
+[TOC]
+
 This is a comprehensive example meant to show how to use multiple sets and rules to control a (fake) air conditioning system.
 
 Here's how this system is supposed to work, based on measured temperature (in `°C`) and humidity in the air (in `%`).

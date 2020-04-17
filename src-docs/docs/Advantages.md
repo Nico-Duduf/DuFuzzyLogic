@@ -11,7 +11,7 @@ Note that this resilience can be a problem when trying to improve the system, as
 
 ## Principle
 
-![Process](https://github.com/Nico-Duduf/DuFuzzyLogic/raw/master/src-docs/images/fuzzy-texture-Process.png)
+![Process](images/fuzzy-texture-Process.png)
 
 Concretely, there are three important steps to use Fuzzy Logic, from getting some input variables to generating output values.
 
