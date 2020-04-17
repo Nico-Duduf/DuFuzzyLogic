@@ -1,0 +1,45 @@
+site_name: DuFuzzyLogic Documentation
+site_url: http://rainboxlab.org
+repo_url: http://dufuzzylogic-docs.rainboxlab.org
+edit_uri: https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src-docs/
+site_description: The DuFuzzyLogic documentation
+site_author: Nicolas Dufresne and contributors
+copyright: 'Copyright © 2020 Nicolas Dufresne'
+use_directory_urls: false
+theme:
+    name: readthedocs
+    custom_dir: theme/
+markdown_extensions:
+    - smarty
+    - footnotes
+    - tables
+    - admonition
+    - codehilite
+    - fenced_code
+    - toc
+extra_css:
+    - style.css
+    - video.css
+extra_javascript:
+    - video.js
+site_dir: ../docs/
+dev_addr: '127.0.0.1:8001'
+extra:
+    version: 1.0.0
+nav:
+    - Home: index.md
+    - Fuzzy Logic:
+        - Introduction: Home.md
+        - Advantages: Advantages.md
+    - Fuzzification: Fuzzification.md
+    - Shapes: Shapes.md
+    - Rules:
+        - Logic operators: Rules.md
+        - Quantifiers: Quantifiers.md
+    - Crispification: Crispification.md
+    - Examples (JavaScript):
+        - Color Redness: Redness.md
+        - HVAC Complex example: AirConditioning.md
+    - Existing Libraries: Libraries.md
+    - JavaScript Reference: https://dufuzzylogic-docs.rainboxlab.org/js
+    - After Effects Expressions: https://github.com/Rainbox-dev/DuAEF_ExpressionLib
