@@ -223,6 +223,10 @@
 
 <p>In this example, isRed is an instance of <code>FuzzyVeracity</code>;<br />
 <code>redChannel</code>, <code>greenChannel</code>, <code>blueChannel</code> are <code>FuzzyValues</code> and intense is a <code>FuzzySet</code></p>
+<p>It is the equivalent of the boolean logi:</p>
+<pre class="codehilite"><code class="language-js">var isRed = redChannel == intense &amp;&amp; !( greenChannel == intense || blueChannel == intenst )</code></pre>
+
+
 <blockquote>
 <p>-&gt; <a href="https://dufuzzylogic-docs.rainboxlab.org/js"><strong>Read the reference</strong></a> for all the details.</p>
 </blockquote>
@@ -279,5 +283,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-04-17 13:04:31
+Build Date UTC : 2020-04-17 14:28:48
 -->
