@@ -822,6 +822,15 @@ FuzzyVeracity.prototype.WITHOUT = FuzzyVeracity.prototype.DOES_NOT_IMPLY;
  */
 FuzzyVeracity.prototype.DOES_NOT_HAVE = FuzzyVeracity.prototype.DOES_NOT_IMPLY;
 
+
+/**
+ * The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
+ * @method
+ * @param {FuzzyVeracity} other The other operand.
+ * @return {FuzzyVeracity}
+ */
+FuzzyVeracity.prototype.AND_NOT = FuzzyVeracity.prototype.DOES_NOT_IMPLY;
+
 /**
  * The equivalent of the boolean operation <code>!(this && other)</code>
  * @param {FuzzyVeracity} other The other operand.
@@ -1246,29 +1255,63 @@ function Debug(a)
 }
 
 // Setup
-var logic = new FuzzyLogic(undefined, FuzzyCrispAlgorithm.CENTROID_LOWER);
+var logic = new FuzzyLogic(FuzzyLogicAlgorithm.HYPERBOLIC);
 
-// We don't need to worry about values above 255
-var intense = logic.newSet("Intense", 0, 255);
+var alive = logic.newSet("Alive", 0, 100, FuzzyShape.SIGMOID, FuzzyShape.CONSTANT);
+var inert = logic.newSet("Inert", 40, 0, FuzzyShape.CONSTANT, FuzzyShape.GAUSSIAN);
 
-// The color to test
-var color = [255,200,10];
-// The result
-var redness = logic.newValue();
+var heavy = logic.newSet("Heavy", 30, 100, FuzzyShape.GAUSSIAN, FuzzyShape.CONSTANT);
+var light = logic.newSet("Light", 70, 0, FuzzyShape.CONSTANT, FuzzyShape.GAUSSIAN);
 
-// Separate channels
-var redChannel = logic.newValue( color[0] );
-var greenChannel = logic.newValue( color[1] );
-var blueChannel = logic.newValue( color[2] );
+var rough = logic.newSet("Rough", 0, 100);
+
+var energetic = logic.newSet("Energetic", 0, -2, FuzzyShape.CONSTANT, FuzzyShape.LINEAR);
+var smooth = logic.newSet("Smooth", -.3, 0);
+var weighing = logic.newSet("Weighing", -.2, .5);
+var rubbing = logic.newSet("Rubbing", 0, 1,  FuzzyShape.LINEAR,  FuzzyShape.CONSTANT);
+
+var ownEnergy = logic.newValue(30);
+var weight = logic.newValue(10);
+var friction = logic.newValue(40);
+
+var gaussianRate = logic.newValue(0);
+gaussianRate.reportEnabled = true;
 
 logic.IF(
-    redChannel.IS( intense )
-    .AND(
-        greenChannel.IS( intense ).
-        NOR( blueChannel.IS( intense ))
-    )
+    ownEnergy.IS(alive)
+    .AND( weight.IS( light ) )
+);
+logic.THEN( gaussianRate, energetic );
+
+logic.IF (
+    ownEnergy.IS(alive)
+    .AND( weight.IS(heavy))
 )
-logic.THEN( redness, intense );
+logic.THEN( gaussianRate, smooth )
+
+logic.IF (
+    ownEnergy.IS( inert )
+    .AND ( weight.IS( light ))
+)
+logic.THEN( gaussianRate, smooth );
+
+logic.IF (
+    ownEnergy.IS( inert )
+    .AND ( weight.IS( heavy ))
+)
+logic.THEN( gaussianRate, weighing );
+
+logic.IF (
+    friction.IS( rough )
+)
+logic.THEN( gaussianRate, rubbing );
+
+
 
 // Print the result
-Debug("[" + color.toString() + "] is " + redness.quantify( intense ).toString() + " Red");
+Debug( gaussianRate.toString() );
+for (var i = 0, num = gaussianRate.report.length; i < num; i++)
+{
+    Debug( "" );
+    Debug( gaussianRate.report[i].join("<br />") );
+}
