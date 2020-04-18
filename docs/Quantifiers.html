@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Nicolas Dufresne and contributors">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Quantifiers - DuFuzzyLogic Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="style.css" rel="stylesheet">
+  <link href="video.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Quantifiers";
+    var mkdocs_page_input_path = "Quantifiers.md";
+    var mkdocs_page_url = "/Quantifiers.html";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> DuFuzzyLogic Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Fuzzy Logic</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Home.html">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="Advantages.html">Advantages</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Fuzzification.html">Fuzzification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Shapes.html">Shapes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Rules</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Rules.html">Logic operators</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="Quantifiers.html">Quantifiers</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#quantifiers">Quantifiers</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#condition-quantifiers">Condition quantifiers</a></li>
+        
+            <li><a class="toctree-l4" href="#a-game-of-words">A Game of words</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Crispification.html">Crispification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples (JavaScript)</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Redness.html">Color Redness</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="AirConditioning.html">HVAC Complex example</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Libraries.html">Existing Libraries</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js">JavaScript Reference</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/Rainbox-dev/DuAEF_ExpressionLib">After Effects Expressions</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">DuFuzzyLogic Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Rules &raquo;</li>
+        
+      
+    
+    <li>Quantifiers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src-docs/docs/Quantifiers.md"> Edit on Dufuzzylogic-Docs</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="quantifiers">Quantifiers</h1>
+<div class="toc">
+<ul>
+<li><a href="#quantifiers">Quantifiers</a><ul>
+<li><a href="#condition-quantifiers">Condition quantifiers</a></li>
+<li><a href="#a-game-of-words">A Game of words</a><ul>
+<li><a href="#linguistic">Linguistic</a></li>
+<li><a href="#newlinguistic-orwellian-newspeak">Newlinguistic - Orwellian (Newspeak)</a></li>
+<li><a href="#symbolic">Symbolic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>To improve the precision of the rules, we can use quantifiers, i.e. instead of just checking <code>IF temperature IS hot</code> we could check <code>IF temperature IS *VERY* hot</code> or <code>IF temperature IS *SLIGHTLY* hot</code>.</p>
+<p>Quantifiers are mostly used when checking the inclusion of a value in a set (i.e. the veracity of a propostion like &ldquo;IF anything IS <em>VERY</em> something&rdquo;), but they can also be used for setting a value (e.g. in the statement &ldquo;THEN SET something <em>VERY</em> anything&rdquo;)</p>
+<h2 id="condition-quantifiers">Condition quantifiers</h2>
+<p>Quantifiers could also be useful to adjust the global veracity of a statement instead of the veracity of each operand. For example, the statement <code>IF temperature IS SOMEWHAT hot AND humidity IS SOMEWHAT high</code> could become <code>MAYBE temperature IS hot AND humidity IS high</code>.</p>
+<p>In this case a possible list of these &ldquo;quantified conditions&rdquo; could be:<br />
+<strong><em>If, Probably, Maybe, Somewhat, Not</em></strong></p>
+<h2 id="a-game-of-words">A Game of words</h2>
+<p>Depending on the implementation of Fuzzy Logic, there may be several ways to represent quantifiers. They could be a value, for example varying in a [0, 1] range from &ldquo;just a bit&rdquo; to &ldquo;extremely&rdquo;. Or they may be linguistic, actual words, to keep the language intuitive and easy to use and understand, close to natural language.</p>
+<p>Linguistic quantifiers are also easier to differenciate from veracities which can also be reprensented as values in the range [0, 1] and could be easily confused with them. As veracities need to be precise, they need to be actual numbers. On the contrary, quantifiers do not need that precision and can be represented by a carefully chosen set of words.</p>
+<p>In case of linguistic quantifiers, the choice of the words to use is importanat: their interpretation will influence how they are used when coding with Fuzzy Logic. There can be three ways of defining linguistic quantifiers, to make them both easy to use and remember, and more or less precise or subtle:</p>
+<ol>
+<li><strong><em>Linguistic</em></strong>: actual words (English, or any other language) with their true meaning.</li>
+<li><strong><em>Newlinguistic</em></strong> or <strong><em>Orwellian</em></strong>: neologisms, like those Orwell describres in his <em>newspeak</em> in the novel <em>1984</em>, created to simplify natural language and make it both less subtle and more objective.</li>
+<li><strong><em>Symbolic</em></strong>: adjectives from natural language, but used differently than their true meanings, like the some properties of quantic particles, for example the <em>color charges</em> - red, green, blue, antigreen, antiblue, antired - or the <em>flavors</em> of quarks - strange, charm, bottom, top&hellip; - which obviously do not really describe any color or strangeness.</li>
+</ol>
+<h3 id="linguistic">Linguistic</h3>
+<p>As one goal of programming with Fuzzy Logic is to keep it simple and natural, using actual language and the <em>linguistic</em> version of quantifiers would be best, as they make the most intuitive and subtle possible. But with all the ambiguity and subjectiveness of language, this is <em>quite</em> a <em>very</em> difficult task to implement, unless each quantifier is precisely described in the documentation. Which makes it paradoxically <em>a bit</em> counter-intuitive.</p>
+<p>A possible list of English quantifiers could be (in this order ?):<br />
+<strong><em>Not, least, a bit, lesser, less than, quite (UK), rather, fairly, more or less, average, quite (US), very, extremely, almost, completely&hellip;</em></strong></p>
+<h3 id="newlinguistic-orwellian-newspeak">Newlinguistic - Orwellian (Newspeak)</h3>
+<p><em>Orwellian Newspaak</em> makes things easier while keeping the vocabulary user-friendly even if it is - by design - less subtle and more abstract.</p>
+<p>Newspeak quantifiers are a composite of the word <em>Plus</em> or <em>Minus</em> with a multiplier, to which we can add <em>Not</em>, <em>Average</em> and <em>Completely</em>, which gives us this list:<br />
+<strong><em>Not, tripleminus, doubleminus, minus, average, plus, doubleplus, tripleplus, completely</em></strong>.</p>
+<p>And this list can be expanded at will.</p>
+<h3 id="symbolic">Symbolic</h3>
+<p>Symbolic quantifiers are another way to abstractify the words describing quantifiers, while keeping them easy to use and remember.</p>
+<p>They could be adjectives which could be <em>more or less</em> intuitively sorted, like &ldquo;bright&rdquo; and &ldquo;dark&rdquo; or &ldquo;light&rdquo; and &ldquo;heavy&rdquo;, but it may be difficult to build a list long enough to allow the precision needed with some systems. One could combine different meanings and arbitrarily sort them to have a list like this:<br />
+<strong><em>Not, gaseous, light, liquid, fluid, floppy, solid, hard, heavy&hellip;</em></strong></p>
+<p>Or one could use alphabetically sorted adjectives:<br />
+<strong><em>able, bad, cool, dark&hellip;</em></strong></p>
+<p>Or even adjectives sorted by their number of letters:<br />
+<strong><em>Not, cool, green, purple, abstract, objective&hellip;</em></strong></p>
+<p>For systems which do not need too many quantifiers and thus too many words to remember, this method can actually be useful and funny to use.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Crispification.html" class="btn btn-neutral float-right" title="Crispification">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="Rules.html" class="btn btn-neutral" title="Logic operators"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2020 Nicolas Dufresne</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="Rules.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="Crispification.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="video.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>

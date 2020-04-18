@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Nicolas Dufresne and contributors">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>HVAC Complex example - DuFuzzyLogic Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="style.css" rel="stylesheet">
+  <link href="video.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "HVAC Complex example";
+    var mkdocs_page_input_path = "AirConditioning.md";
+    var mkdocs_page_url = "/AirConditioning.html";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> DuFuzzyLogic Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Fuzzy Logic</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Home.html">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="Advantages.html">Advantages</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Fuzzification.html">Fuzzification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Shapes.html">Shapes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Rules</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Rules.html">Logic operators</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="Quantifiers.html">Quantifiers</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Crispification.html">Crispification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples (JavaScript)</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="Redness.html">Color Redness</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="AirConditioning.html">HVAC Complex example</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#air-conditioning">Air conditioning</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#1-setup">1 - Setup</a></li>
+        
+            <li><a class="toctree-l4" href="#2-values">2 - Values</a></li>
+        
+            <li><a class="toctree-l4" href="#3-rules">3 - Rules</a></li>
+        
+            <li><a class="toctree-l4" href="#4-results">4 - Results</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="Libraries.html">Existing Libraries</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js">JavaScript Reference</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/Rainbox-dev/DuAEF_ExpressionLib">After Effects Expressions</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">DuFuzzyLogic Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Examples (JavaScript) &raquo;</li>
+        
+      
+    
+    <li>HVAC Complex example</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src-docs/docs/AirConditioning.md"> Edit on Dufuzzylogic-Docs</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="air-conditioning">Air conditioning</h1>
+<div class="toc">
+<ul>
+<li><a href="#air-conditioning">Air conditioning</a><ul>
+<li><a href="#1-setup">1 - Setup</a></li>
+<li><a href="#2-values">2 - Values</a></li>
+<li><a href="#3-rules">3 - Rules</a></li>
+<li><a href="#4-results">4 - Results</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This is a comprehensive example meant to show how to use multiple sets and rules to control a (fake) air conditioning system.</p>
+<p>Here&rsquo;s how this system is supposed to work, based on measured temperature (in <code>°C</code>) and humidity in the air (in <code>%</code>).</p>
+<ul>
+<li>The system is controlled by a &ldquo;power&rdquo; parameter in the range [-100%, 100%]. When it is negative, it cools down the room, when it is positive, it heats it up.</li>
+<li>The system takes the humidity into account. Let&rsquo;s say when the air is humid, we feel colder or hotter, so we need the system to run at a higher  - or lower if it cooling - power.</li>
+<li>With the same reasoning, when the air is dry, we want to lower the power consumption (because it&rsquo;s better for the planet).</li>
+</ul>
+<p>This system is designed to show how using Fuzzy Logic makes things simpler in the code, but it is unnecessarily complex. For example in real life, it would not be the same value which controls both heating and cooling, and the rules would be a bit simpler.</p>
+<h2 id="1-setup">1 - Setup</h2>
+<p>First things firts, let&rsquo;s create the engine.</p>
+<pre class="codehilite"><code class="language-JavaScript">var logic = new FuzzyLogic( FuzzyLogicAlgorithm.HYPERBOLIC );</code></pre>
+
+
+<p>The parameter changes the algorithm used for logic rules. It is optionnal, and slightly changes the behaviour of the system.</p>
+<p>Now we can create the sets. This is the most important part, the parameters used in the sets will have a big impact on the results. We can see these values as the settings of the air conditionning system.</p>
+<p>Humidity:</p>
+<pre class="codehilite"><code class="language-JavaScript">// Too wet is more than 70%, completely wet is 100%. Constant shape above 100%: it's still too wet!
+var wet = logic.newSet(&quot;Wet&quot;, 60, 100, FuzzyShape.GAUSSIAN, FuzzyShape.CONSTANT);
+// The comfort zone begins at 40%, and its most comfortable at 60%. We use the same shape above and below this comfort zone.
+var comfortable = logic.newSet(&quot;Comfortable&quot;, 40, 55, FuzzyShape.SIGMOID);
+// Too dry is less than 50%, completely dry is 0%. Constant shape under 0%: it's still too dry!
+    var dry = logic.newSet(&quot;Dry&quot;, 50, 0, FuzzyShape.CONSTANT, FuzzyShape.GAUSSIAN);</code></pre>
+
+
+<p>Temperature:</p>
+<pre class="codehilite"><code class="language-JavaScript">// Temperature
+// The principle is the same than humidity.
+var hot = logic.newSet(&quot;Hot&quot;, 21, 35, FuzzyShape.GAUSSIAN, FuzzyShape.CONSTANT);
+var warm = logic.newSet(&quot;Comfortably warm&quot;, 17, 20, FuzzyShape.GAUSSIAN);
+var cold = logic.newSet(&quot;Cold&quot;, 17, 10, FuzzyShape.CONSTANT, FuzzyShape.GAUSSIAN);</code></pre>
+
+
+<p>Heating, ventilation and air-conditioning power:</p>
+<pre class="codehilite"><code class="language-JavaScript">// Let's say a positive power (from 0% to 100%) heats the room, a negative one cools it.
+var heat = logic.newSet(&quot;Heat&quot;, 0, 100, FuzzyShape.LINEAR, FuzzyShape.CONSTANT);
+var refresh = logic.newSet(&quot;Refresh&quot;, 0, -100, FuzzyShape.CONSTANT, FuzzyShape.LINEAR);</code></pre>
+
+
+<h2 id="2-values">2 - Values</h2>
+<p>Input Values: We have two input values. These are what is going to vary, the result of the sensors.</p>
+<pre class="codehilite"><code class="language-JavaScript">// Change these values to test the engine
+var temperature = logic.newValue( 20, &quot;°C&quot; );
+var humidity = logic.newValue( 50 , &quot;%&quot; );</code></pre>
+
+
+<p>Output Value: There is one output value, which is the power of the air conditionning system.</p>
+<pre class="codehilite"><code class="language-JavaScript">var hvacPower = logic.newValue( 0, &quot;%&quot; );
+// Enable reports to be able to have a look at the result of the logic
+hvacPower.reportEnabled = true;</code></pre>
+
+
+<h2 id="3-rules">3 - Rules</h2>
+<p>This is the fun part, just write some rules!</p>
+<p>The easy ones first.</p>
+<pre class="codehilite"><code class="language-JavaScript">// If it's hot, let's cool down
+logic.IF( temperature.IS( hot ) );
+logic.THEN( hvacPower, refresh  ); // Rule #1
+
+// If it's cold, let's heat up
+logic.IF( temperature.IS( cold ) );
+logic.THEN( hvacPower, heat ); // Rule #2</code></pre>
+
+
+<p>But we want to adjust depending on the humidity.<br />
+The (fake) idea is that if it&rsquo;s too humid, we need more power (because we feel less comfortable?).  </p>
+<pre class="codehilite"><code class="language-JavaScript">// If it's hot and wet, we want to refresh more
+logic.IF(
+    temperature.IS( hot)
+    .AND ( humidity.IS( wet ) )
+);
+logic.THEN( hvacPower, refresh, &quot;More&quot; ); // Rule #3
+
+// If it's cold and wet, we want to heat more
+logic.IF(
+    temperature.IS(cold)
+    .AND ( humidity.IS( wet ) )
+);
+logic.THEN( hvacPower, heat, &quot;More&quot; ); // Rule #4
+
+If it's dry, we lower the power (because we don't want the hvac to make the air even drier)
+
+// If it's cold but not too cold and it is dry, we want to heat less to save energy
+logic.IF(
+    temperature.IS(cold)
+    .AND ( temperature.IS_NOT( cold, &quot;Extremely&quot;) )
+    .AND ( humidity.IS( dry ) )
+);
+logic.THEN( hvacPower, heat, &quot;Less&quot; ); // Rule #5
+
+// If it's hot but not too hot, and it is dry, we want to refresh less to save energy
+logic.IF(
+    temperature.IS( hot )
+    .AND ( temperature.IS_NOT( hot, &quot;Extremely&quot;) )
+    .AND ( humidity.IS( dry ) )
+);
+logic.THEN( hvacPower, refresh, &quot;Less&quot; ); // Rule #6</code></pre>
+
+
+<p>And if it&rsquo;s really comfortably warm or cold, but wet, let&rsquo;s raise the temperature a lil&rsquo;bit more</p>
+<pre class="codehilite"><code class="language-JavaScript">logic.IF(
+    temperature.IS( warm, &quot;very&quot; )
+    .OR ( temperature.IS(cold) )
+    .AND ( humidity.IS( wet ) )
+)
+logic.THEN( hvacPower, heat, &quot;Somewhat&quot; ); // Rule #7</code></pre>
+
+
+<p>Of course, if it&rsquo;s just comfortable, we want to stop the hvac.</p>
+<pre class="codehilite"><code class="language-JavaScript">logic.IF( temperature.IS( warm ) );
+logic.THEN( hvacPower, heat, &quot;not&quot;); // Rule #8
+logic.THEN( hvacPower, refresh, &quot;not&quot;); // Rule #9</code></pre>
+
+
+<h2 id="4-results">4 - Results</h2>
+<p>The Print() in this example can be replaced by any method which shows/prints a string.</p>
+<pre class="codehilite"><code class="language-JavaScript">// Print the result
+Print( temperature.toString( hot ) + &quot; and &quot; + temperature.toString( cold ) );
+Print( humidity.toString(wet) + &quot; and &quot; + humidity.toString( dry )  );
+Print( &quot;&quot; );
+Print( temperature.toString( warm ) );
+Print( humidity.toString( comfortable ) );
+Print( &quot;&quot; );
+Print( &quot;RESULT: the power of the air conditionner is &quot; + hvacPower.toString()  );
+Print( &quot;&quot; );
+Print( &quot;This is how this result is obtained:&quot;)
+for (var i = 0, num = hvacPower.report.length; i &lt; num; i++)
+{
+    Print( &quot;&quot; );
+    Print( hvacPower.report[i].join(&quot;&lt;br /&gt;&quot;) );
+}</code></pre>
+
+
+<p>This is what will be printed with 25°C and 75% humidity.</p>
+<blockquote>
+<p>25°C is Somewhat Hot and 25°C is Not Cold<br />
+75% is Somewhat Wet and 75% is Not Dry
+25°C is Not Comfortably warm<br />
+75% is Not Comfortable
+<strong>RESULT: the power of the air conditionner is <em>-47.51%</em></strong>
+This is how this result is obtained:<br />
+Rule #1: Set Refresh (Moderately)<br />
+Gives value: -23.303 from these values: [ -23.303 ]<br />
+With a veracity of: 0.243
+Rule #2: Set Heat (Moderately)<br />
+Gives value: 0 from these values: [ 0 ]<br />
+With a veracity of: 0
+Rule #3: Set Refresh (More)<br />
+Gives value: -119.8 from these values: [ -100, -100, -100, -200, -99 ]<br />
+With a veracity of: 0.082
+Rule #4: Set Heat (More)<br />
+Gives value: 120 from these values: [ 100, 100, 100, 100, 200 ]<br />
+With a veracity of: 0
+Rule #5: Set Heat (Less)<br />
+Gives value: 0 from these values: [ 0 ]<br />
+With a veracity of: 0
+Rule #6: Set Refresh (Less)<br />
+Gives value: 0 from these values: [ 0 ]<br />
+With a veracity of: 0
+Rule #7: Set Heat (Somewhat)<br />
+Gives value: 0 from these values: [ 0 ]<br />
+With a veracity of: 0
+Rule #9: Set Refresh (Not)<br />
+Gives value: 0 from these values: [ 0 ]<br />
+With a veracity of: 0
+Rule #9: Set Heat (Not)<br />
+Gives value: 0 from these values: [ 0 ]<br />
+With a veracity of: 0</p>
+</blockquote>
+<p>You can also compare different crispification algorithms quite easily:</p>
+<pre class="codehilite"><code class="language-JavaScript">// The default is CENTROID
+Print( &quot;RESULT CENTROID: the power of the air conditionner is &quot; + hvacPower.toString()  );
+
+Print( &quot;RESULT CENTROID_LOWER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.CENTROID_LOWER)  );
+
+Print( &quot;RESULT CENTROID_HIGHER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.CENTROID_HIGHER)  );
+
+Print( &quot;RESULT MEAN: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.MEAN)  );
+
+Print( &quot;RESULT MEAN_HIGHER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.MEAN_HIGHER)  );
+
+Print( &quot;RESULT MEAN_LOWER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.MEAN_LOWER)  );
+
+// Note that you can also globally set the algorithm as a second argument when creating the engine:
+var lowerLogic = new FuzzyLogic( FuzzyLogicAlgorithm.LINEAR, FuzzyCrispAlgorithm.CENTROID_LOWER);
+// The default for crispification will be the one passed to this engine</code></pre>
+
+
+<p>Which will print:</p>
+<blockquote>
+<p>RESULT CENTROID: the power of the air conditionner is -47.51%<br />
+RESULT CENTROID_LOWER: the power of the air conditionner is -67.71%<br />
+RESULT CENTROID_HIGHER: the power of the air conditionner is -42.27%<br />
+RESULT MEAN: the power of the air conditionner is -2.57%<br />
+RESULT MEAN_HIGHER: the power of the air conditionner is 8.63%<br />
+RESULT MEAN_LOWER: the power of the air conditionner is -13.7%</p>
+</blockquote>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Libraries.html" class="btn btn-neutral float-right" title="Existing Libraries">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="Redness.html" class="btn btn-neutral" title="Color Redness"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2020 Nicolas Dufresne</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="Redness.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="Libraries.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="video.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
