@@ -2,7 +2,7 @@
     "plugins": [],
     "recurseDepth": 1,
     "source": {
-		"include": [ "../FuzzyLogic.js" ],
+		"include": [ "../src/JavaScript/FuzzyLogic.js" ],
         "includePattern": ".+\\.js$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
@@ -24,6 +24,6 @@
 	"opts": {
         "template": "node_modules/tui-jsdoc-template",
 		"recurse": false,
-        "destination": "../../../docs/js"
+        "destination": "../docs/js"
     }
 }

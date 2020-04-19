@@ -22,7 +22,7 @@ With Fuzzy Logic, both the veracity and the result being fuzzy and more nuanced,
 
 For now, this is an implementation of Fuzzy Logic for JavaScript, but I plan to implement it the same way in Qt/C++, Python, and probably C# for Unity.
 
-The source is available in [this repo](https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src/JavaScript). Everything is fully [documented](https://dufuzzylogic-docs.rainboxlab.org/js).
+The source is available in [this repo](https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src/JavaScript). Everything is fully [documented](https://dufuzzylogic-docs.rainboxlab.org/js/index.html).
 
 The code is fully compatible with *Adobe ExtendScript* too.
 
@@ -54,7 +54,7 @@ It is the equivalent of the boolean logi:
 var isRed = redChannel == intense && !( greenChannel == intense || blueChannel == intenst )
 ```
 
-> -> [**Read the reference**](https://dufuzzylogic-docs.rainboxlab.org/js) for all the details.
+> -> [**Read the reference**](https://dufuzzylogic-docs.rainboxlab.org/js/index.html) for all the details.
 
 ## After Effects Expressions Implementation
 

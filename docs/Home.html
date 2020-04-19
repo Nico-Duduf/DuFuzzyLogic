@@ -9,8 +9,6 @@
   <meta name="author" content="Nicolas Dufresne and contributors">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>Introduction - DuFuzzyLogic Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
   <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
@@ -134,7 +132,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js">JavaScript Reference</a>
+    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js/index.html">JavaScript Reference</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -219,15 +217,17 @@
 <p>With Fuzzy Logic, both the veracity and the result being fuzzy and more nuanced, the same statement will adjust precisely the power of the fan according to the hotness. With a single simple rule like this, it is like a conversion (interpolation) of the temperature value into a power value.</p>
 <p><img alt="Logic" src="images/fuzzy-texture-Logic.png" /></p>
 <p>But like Boolean logic, Fuzzy Logic becomes very interesting when combining veracity and rules. For example, it becomes easy to code a program with these rules:</p>
-<pre class="codehilite"><code class="language-text">IF the temperature IS hot THEN SET the fan on and SET the heater off
+<div class="codehilite"><pre><span></span>IF the temperature IS hot THEN SET the fan on and SET the heater off
 IF the temperature IS warm THEN SET the fan off and SET the heater off
-IF the temperature IS cold THEN SET the fan off and SET the heater on</code></pre>
+IF the temperature IS cold THEN SET the fan off and SET the heater on
+</pre></div>
 
 
 <p>And if you combine other conditions and quantifiers, you can design quite a complex system:</p>
-<pre class="codehilite"><code class="language-text">IF temperature IS hot AND humidity is high THEN SET fan top speed
+<div class="codehilite"><pre><span></span>IF temperature IS hot AND humidity is high THEN SET fan top speed
 IF temperature IS hot AND humidity is VERY low THEN SET fan moderate speed
-etc.</code></pre>
+etc.
+</pre></div>
 
 
 <p>This logic can be used (and <em>is</em> used) in a lot of different domains and situation. Think about all kind of controls, auto-pilots, AI, animation&hellip;</p>

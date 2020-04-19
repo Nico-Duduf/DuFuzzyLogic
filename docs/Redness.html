@@ -9,8 +9,6 @@
   <meta name="author" content="Nicolas Dufresne and contributors">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>Color Redness - DuFuzzyLogic Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
   <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
@@ -128,7 +126,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js">JavaScript Reference</a>
+    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js/index.html">JavaScript Reference</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -175,33 +173,34 @@
             <div class="section">
               
                 <h1 id="color-evaluate-redness">Color: Evaluate Redness</h1>
-<pre class="codehilite"><code class="language-JavaScript">// Setup
-var logic = new FuzzyLogic();
+<div class="codehilite"><pre><span></span><span class="c1">// Setup</span>
+<span class="kd">var</span> <span class="nx">logic</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FuzzyLogic</span><span class="p">();</span>
 
-// We don't need to worry about values above 255
-var intense = logic.newSet(&quot;Intense&quot;, 0, 255);
+<span class="c1">// We don&#39;t need to worry about values above 255</span>
+<span class="kd">var</span> <span class="nx">intense</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Intense&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
 
-// The color to test
-var color = [255,200,10];
-// A value to store the result
-var redness = logic.newValue();
+<span class="c1">// The color to test</span>
+<span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span><span class="p">];</span>
+<span class="c1">// A value to store the result</span>
+<span class="kd">var</span> <span class="nx">redness</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newValue</span><span class="p">();</span>
 
-// Separate channels
-var redChannel = logic.newValue( color[0] );
-var greenChannel = logic.newValue( color[1] );
-var blueChannel = logic.newValue( color[2] );
+<span class="c1">// Separate channels</span>
+<span class="kd">var</span> <span class="nx">redChannel</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newValue</span><span class="p">(</span> <span class="nx">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+<span class="kd">var</span> <span class="nx">greenChannel</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newValue</span><span class="p">(</span> <span class="nx">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">);</span>
+<span class="kd">var</span> <span class="nx">blueChannel</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newValue</span><span class="p">(</span> <span class="nx">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">);</span>
 
-logic.IF(
-    redChannel.IS( intense )
-    .AND(
-        greenChannel.IS( intense ).
-        NOR( blueChannel.IS( intense ))
-    )
-)
-logic.THEN( redness, intense );
+<span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span>
+    <span class="nx">redChannel</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">intense</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span><span class="p">(</span>
+        <span class="nx">greenChannel</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">intense</span> <span class="p">).</span>
+        <span class="nx">NOR</span><span class="p">(</span> <span class="nx">blueChannel</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">intense</span> <span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">redness</span><span class="p">,</span> <span class="nx">intense</span> <span class="p">);</span>
 
-// Print the result
-Print(&quot;[&quot; + color.toString() + &quot;] is &quot; + redness.quantify( intense ).toString() + &quot; Red&quot;);</code></pre>
+<span class="c1">// Print the result</span>
+<span class="nx">Print</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nx">color</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;] is &quot;</span> <span class="o">+</span> <span class="nx">redness</span><span class="p">.</span><span class="nx">quantify</span><span class="p">(</span> <span class="nx">intense</span> <span class="p">).</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; Red&quot;</span><span class="p">);</span>
+</pre></div>
 
 
 <p>This is what is printed:</p>

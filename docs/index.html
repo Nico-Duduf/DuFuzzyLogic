@@ -9,8 +9,6 @@
   <meta name="author" content="Nicolas Dufresne and contributors">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>Home - DuFuzzyLogic Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
   <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
@@ -138,7 +136,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js">JavaScript Reference</a>
+    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js/index.html">JavaScript Reference</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -203,7 +201,7 @@
 </blockquote>
 <h2 id="javascript-implementation">JavaScript Implementation</h2>
 <p>For now, this is an implementation of Fuzzy Logic for JavaScript, but I plan to implement it the same way in Qt/C++, Python, and probably C# for Unity.</p>
-<p>The source is available in <a href="https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src/JavaScript">this repo</a>. Everything is fully <a href="https://dufuzzylogic-docs.rainboxlab.org/js">documented</a>.</p>
+<p>The source is available in <a href="https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src/JavaScript">this repo</a>. Everything is fully <a href="https://dufuzzylogic-docs.rainboxlab.org/js/index.html">documented</a>.</p>
 <p>The code is fully compatible with <em>Adobe ExtendScript</em> too.</p>
 <p>The implementation creates 4 new classes:</p>
 <ul>
@@ -214,21 +212,23 @@
 </ul>
 <p>This implementation uses fluent syntax for the logic, thus operators are methods of the <code>FuzzyVeracity</code> class which return <code>FuzzyVeracity</code> instances.</p>
 <p>Here is an example of a rule in this fluent syntax which result is stored in a variable:</p>
-<pre class="codehilite"><code class="language-js">var isRed = redChannel.IS( intense )
-     .AND(
-        greenChannel.IS( intense ).
-        NOR( blueChannel.IS( intense ))
-     )</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">isRed</span> <span class="o">=</span> <span class="nx">redChannel</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">intense</span> <span class="p">)</span>
+     <span class="p">.</span><span class="nx">AND</span><span class="p">(</span>
+        <span class="nx">greenChannel</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">intense</span> <span class="p">).</span>
+        <span class="nx">NOR</span><span class="p">(</span> <span class="nx">blueChannel</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">intense</span> <span class="p">))</span>
+     <span class="p">)</span>
+</pre></div>
 
 
 <p>In this example, isRed is an instance of <code>FuzzyVeracity</code>;<br />
 <code>redChannel</code>, <code>greenChannel</code>, <code>blueChannel</code> are <code>FuzzyValues</code> and intense is a <code>FuzzySet</code></p>
 <p>It is the equivalent of the boolean logi:</p>
-<pre class="codehilite"><code class="language-js">var isRed = redChannel == intense &amp;&amp; !( greenChannel == intense || blueChannel == intenst )</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">isRed</span> <span class="o">=</span> <span class="nx">redChannel</span> <span class="o">==</span> <span class="nx">intense</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span> <span class="nx">greenChannel</span> <span class="o">==</span> <span class="nx">intense</span> <span class="o">||</span> <span class="nx">blueChannel</span> <span class="o">==</span> <span class="nx">intenst</span> <span class="p">)</span>
+</pre></div>
 
 
 <blockquote>
-<p>-&gt; <a href="https://dufuzzylogic-docs.rainboxlab.org/js"><strong>Read the reference</strong></a> for all the details.</p>
+<p>-&gt; <a href="https://dufuzzylogic-docs.rainboxlab.org/js/index.html"><strong>Read the reference</strong></a> for all the details.</p>
 </blockquote>
 <h2 id="after-effects-expressions-implementation">After Effects Expressions Implementation</h2>
 <p>The implementation of the same library but adapted for expressions in After Effects (some changes have been made for better compatibility with both the extendscript and the javascript engine) is available as part of the <a href="https://github.com/Rainbox-dev/DuAEF_ExpressionLib">DuAEF Expression Library</a>.</p>
@@ -283,5 +283,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-04-17 14:28:48
+Build Date UTC : 2020-04-19 11:45:38
 -->

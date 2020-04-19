@@ -9,8 +9,6 @@
   <meta name="author" content="Nicolas Dufresne and contributors">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>HVAC Complex example - DuFuzzyLogic Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
   <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
@@ -140,7 +138,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js">JavaScript Reference</a>
+    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js/index.html">JavaScript Reference</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -208,126 +206,137 @@
 <p>This system is designed to show how using Fuzzy Logic makes things simpler in the code, but it is unnecessarily complex. For example in real life, it would not be the same value which controls both heating and cooling, and the rules would be a bit simpler.</p>
 <h2 id="1-setup">1 - Setup</h2>
 <p>First things firts, let&rsquo;s create the engine.</p>
-<pre class="codehilite"><code class="language-JavaScript">var logic = new FuzzyLogic( FuzzyLogicAlgorithm.HYPERBOLIC );</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">logic</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FuzzyLogic</span><span class="p">(</span> <span class="nx">FuzzyLogicAlgorithm</span><span class="p">.</span><span class="nx">HYPERBOLIC</span> <span class="p">);</span>
+</pre></div>
 
 
 <p>The parameter changes the algorithm used for logic rules. It is optionnal, and slightly changes the behaviour of the system.</p>
 <p>Now we can create the sets. This is the most important part, the parameters used in the sets will have a big impact on the results. We can see these values as the settings of the air conditionning system.</p>
 <p>Humidity:</p>
-<pre class="codehilite"><code class="language-JavaScript">// Too wet is more than 70%, completely wet is 100%. Constant shape above 100%: it's still too wet!
-var wet = logic.newSet(&quot;Wet&quot;, 60, 100, FuzzyShape.GAUSSIAN, FuzzyShape.CONSTANT);
-// The comfort zone begins at 40%, and its most comfortable at 60%. We use the same shape above and below this comfort zone.
-var comfortable = logic.newSet(&quot;Comfortable&quot;, 40, 55, FuzzyShape.SIGMOID);
-// Too dry is less than 50%, completely dry is 0%. Constant shape under 0%: it's still too dry!
-    var dry = logic.newSet(&quot;Dry&quot;, 50, 0, FuzzyShape.CONSTANT, FuzzyShape.GAUSSIAN);</code></pre>
+<div class="codehilite"><pre><span></span><span class="c1">// Too wet is more than 70%, completely wet is 100%. Constant shape above 100%: it&#39;s still too wet!</span>
+<span class="kd">var</span> <span class="nx">wet</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Wet&quot;</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">GAUSSIAN</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">CONSTANT</span><span class="p">);</span>
+<span class="c1">// The comfort zone begins at 40%, and its most comfortable at 60%. We use the same shape above and below this comfort zone.</span>
+<span class="kd">var</span> <span class="nx">comfortable</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Comfortable&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">SIGMOID</span><span class="p">);</span>
+<span class="c1">// Too dry is less than 50%, completely dry is 0%. Constant shape under 0%: it&#39;s still too dry!</span>
+    <span class="kd">var</span> <span class="nx">dry</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Dry&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">CONSTANT</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">GAUSSIAN</span><span class="p">);</span>
+</pre></div>
 
 
 <p>Temperature:</p>
-<pre class="codehilite"><code class="language-JavaScript">// Temperature
-// The principle is the same than humidity.
-var hot = logic.newSet(&quot;Hot&quot;, 21, 35, FuzzyShape.GAUSSIAN, FuzzyShape.CONSTANT);
-var warm = logic.newSet(&quot;Comfortably warm&quot;, 17, 20, FuzzyShape.GAUSSIAN);
-var cold = logic.newSet(&quot;Cold&quot;, 17, 10, FuzzyShape.CONSTANT, FuzzyShape.GAUSSIAN);</code></pre>
+<div class="codehilite"><pre><span></span><span class="c1">// Temperature</span>
+<span class="c1">// The principle is the same than humidity.</span>
+<span class="kd">var</span> <span class="nx">hot</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Hot&quot;</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">GAUSSIAN</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">CONSTANT</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">warm</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Comfortably warm&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">GAUSSIAN</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cold</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Cold&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">CONSTANT</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">GAUSSIAN</span><span class="p">);</span>
+</pre></div>
 
 
 <p>Heating, ventilation and air-conditioning power:</p>
-<pre class="codehilite"><code class="language-JavaScript">// Let's say a positive power (from 0% to 100%) heats the room, a negative one cools it.
-var heat = logic.newSet(&quot;Heat&quot;, 0, 100, FuzzyShape.LINEAR, FuzzyShape.CONSTANT);
-var refresh = logic.newSet(&quot;Refresh&quot;, 0, -100, FuzzyShape.CONSTANT, FuzzyShape.LINEAR);</code></pre>
+<div class="codehilite"><pre><span></span><span class="c1">// Let&#39;s say a positive power (from 0% to 100%) heats the room, a negative one cools it.</span>
+<span class="kd">var</span> <span class="nx">heat</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Heat&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">LINEAR</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">CONSTANT</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">refresh</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newSet</span><span class="p">(</span><span class="s2">&quot;Refresh&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">CONSTANT</span><span class="p">,</span> <span class="nx">FuzzyShape</span><span class="p">.</span><span class="nx">LINEAR</span><span class="p">);</span>
+</pre></div>
 
 
 <h2 id="2-values">2 - Values</h2>
 <p>Input Values: We have two input values. These are what is going to vary, the result of the sensors.</p>
-<pre class="codehilite"><code class="language-JavaScript">// Change these values to test the engine
-var temperature = logic.newValue( 20, &quot;°C&quot; );
-var humidity = logic.newValue( 50 , &quot;%&quot; );</code></pre>
+<div class="codehilite"><pre><span></span><span class="c1">// Change these values to test the engine</span>
+<span class="kd">var</span> <span class="nx">temperature</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newValue</span><span class="p">(</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;°C&quot;</span> <span class="p">);</span>
+<span class="kd">var</span> <span class="nx">humidity</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newValue</span><span class="p">(</span> <span class="mi">50</span> <span class="p">,</span> <span class="s2">&quot;%&quot;</span> <span class="p">);</span>
+</pre></div>
 
 
 <p>Output Value: There is one output value, which is the power of the air conditionning system.</p>
-<pre class="codehilite"><code class="language-JavaScript">var hvacPower = logic.newValue( 0, &quot;%&quot; );
-// Enable reports to be able to have a look at the result of the logic
-hvacPower.reportEnabled = true;</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">hvacPower</span> <span class="o">=</span> <span class="nx">logic</span><span class="p">.</span><span class="nx">newValue</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span> <span class="p">);</span>
+<span class="c1">// Enable reports to be able to have a look at the result of the logic</span>
+<span class="nx">hvacPower</span><span class="p">.</span><span class="nx">reportEnabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</pre></div>
 
 
 <h2 id="3-rules">3 - Rules</h2>
 <p>This is the fun part, just write some rules!</p>
 <p>The easy ones first.</p>
-<pre class="codehilite"><code class="language-JavaScript">// If it's hot, let's cool down
-logic.IF( temperature.IS( hot ) );
-logic.THEN( hvacPower, refresh  ); // Rule #1
+<div class="codehilite"><pre><span></span><span class="c1">// If it&#39;s hot, let&#39;s cool down</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">hot</span> <span class="p">)</span> <span class="p">);</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">refresh</span>  <span class="p">);</span> <span class="c1">// Rule #1</span>
 
-// If it's cold, let's heat up
-logic.IF( temperature.IS( cold ) );
-logic.THEN( hvacPower, heat ); // Rule #2</code></pre>
+<span class="c1">// If it&#39;s cold, let&#39;s heat up</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">cold</span> <span class="p">)</span> <span class="p">);</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">heat</span> <span class="p">);</span> <span class="c1">// Rule #2</span>
+</pre></div>
 
 
 <p>But we want to adjust depending on the humidity.<br />
 The (fake) idea is that if it&rsquo;s too humid, we need more power (because we feel less comfortable?).  </p>
-<pre class="codehilite"><code class="language-JavaScript">// If it's hot and wet, we want to refresh more
-logic.IF(
-    temperature.IS( hot)
-    .AND ( humidity.IS( wet ) )
-);
-logic.THEN( hvacPower, refresh, &quot;More&quot; ); // Rule #3
+<div class="codehilite"><pre><span></span><span class="c1">// If it&#39;s hot and wet, we want to refresh more</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span>
+    <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">hot</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span> <span class="p">(</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">wet</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">);</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">refresh</span><span class="p">,</span> <span class="s2">&quot;More&quot;</span> <span class="p">);</span> <span class="c1">// Rule #3</span>
 
-// If it's cold and wet, we want to heat more
-logic.IF(
-    temperature.IS(cold)
-    .AND ( humidity.IS( wet ) )
-);
-logic.THEN( hvacPower, heat, &quot;More&quot; ); // Rule #4
+<span class="c1">// If it&#39;s cold and wet, we want to heat more</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span>
+    <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span><span class="nx">cold</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span> <span class="p">(</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">wet</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">);</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">heat</span><span class="p">,</span> <span class="s2">&quot;More&quot;</span> <span class="p">);</span> <span class="c1">// Rule #4</span>
 
-If it's dry, we lower the power (because we don't want the hvac to make the air even drier)
+<span class="nx">If</span> <span class="nx">it</span><span class="s1">&#39;s dry, we lower the power (because we don&#39;</span><span class="nx">t</span> <span class="nx">want</span> <span class="nx">the</span> <span class="nx">hvac</span> <span class="nx">to</span> <span class="nx">make</span> <span class="nx">the</span> <span class="nx">air</span> <span class="nx">even</span> <span class="nx">drier</span><span class="p">)</span>
 
-// If it's cold but not too cold and it is dry, we want to heat less to save energy
-logic.IF(
-    temperature.IS(cold)
-    .AND ( temperature.IS_NOT( cold, &quot;Extremely&quot;) )
-    .AND ( humidity.IS( dry ) )
-);
-logic.THEN( hvacPower, heat, &quot;Less&quot; ); // Rule #5
+<span class="c1">// If it&#39;s cold but not too cold and it is dry, we want to heat less to save energy</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span>
+    <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span><span class="nx">cold</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span> <span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS_NOT</span><span class="p">(</span> <span class="nx">cold</span><span class="p">,</span> <span class="s2">&quot;Extremely&quot;</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span> <span class="p">(</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">dry</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">);</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">heat</span><span class="p">,</span> <span class="s2">&quot;Less&quot;</span> <span class="p">);</span> <span class="c1">// Rule #5</span>
 
-// If it's hot but not too hot, and it is dry, we want to refresh less to save energy
-logic.IF(
-    temperature.IS( hot )
-    .AND ( temperature.IS_NOT( hot, &quot;Extremely&quot;) )
-    .AND ( humidity.IS( dry ) )
-);
-logic.THEN( hvacPower, refresh, &quot;Less&quot; ); // Rule #6</code></pre>
+<span class="c1">// If it&#39;s hot but not too hot, and it is dry, we want to refresh less to save energy</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span>
+    <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">hot</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span> <span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS_NOT</span><span class="p">(</span> <span class="nx">hot</span><span class="p">,</span> <span class="s2">&quot;Extremely&quot;</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span> <span class="p">(</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">dry</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">);</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">refresh</span><span class="p">,</span> <span class="s2">&quot;Less&quot;</span> <span class="p">);</span> <span class="c1">// Rule #6</span>
+</pre></div>
 
 
 <p>And if it&rsquo;s really comfortably warm or cold, but wet, let&rsquo;s raise the temperature a lil&rsquo;bit more</p>
-<pre class="codehilite"><code class="language-JavaScript">logic.IF(
-    temperature.IS( warm, &quot;very&quot; )
-    .OR ( temperature.IS(cold) )
-    .AND ( humidity.IS( wet ) )
-)
-logic.THEN( hvacPower, heat, &quot;Somewhat&quot; ); // Rule #7</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span>
+    <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">warm</span><span class="p">,</span> <span class="s2">&quot;very&quot;</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">OR</span> <span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span><span class="nx">cold</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">AND</span> <span class="p">(</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">wet</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">)</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">heat</span><span class="p">,</span> <span class="s2">&quot;Somewhat&quot;</span> <span class="p">);</span> <span class="c1">// Rule #7</span>
+</pre></div>
 
 
 <p>Of course, if it&rsquo;s just comfortable, we want to stop the hvac.</p>
-<pre class="codehilite"><code class="language-JavaScript">logic.IF( temperature.IS( warm ) );
-logic.THEN( hvacPower, heat, &quot;not&quot;); // Rule #8
-logic.THEN( hvacPower, refresh, &quot;not&quot;); // Rule #9</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">logic</span><span class="p">.</span><span class="nx">IF</span><span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">IS</span><span class="p">(</span> <span class="nx">warm</span> <span class="p">)</span> <span class="p">);</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">heat</span><span class="p">,</span> <span class="s2">&quot;not&quot;</span><span class="p">);</span> <span class="c1">// Rule #8</span>
+<span class="nx">logic</span><span class="p">.</span><span class="nx">THEN</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">,</span> <span class="nx">refresh</span><span class="p">,</span> <span class="s2">&quot;not&quot;</span><span class="p">);</span> <span class="c1">// Rule #9</span>
+</pre></div>
 
 
 <h2 id="4-results">4 - Results</h2>
 <p>The Print() in this example can be replaced by any method which shows/prints a string.</p>
-<pre class="codehilite"><code class="language-JavaScript">// Print the result
-Print( temperature.toString( hot ) + &quot; and &quot; + temperature.toString( cold ) );
-Print( humidity.toString(wet) + &quot; and &quot; + humidity.toString( dry )  );
-Print( &quot;&quot; );
-Print( temperature.toString( warm ) );
-Print( humidity.toString( comfortable ) );
-Print( &quot;&quot; );
-Print( &quot;RESULT: the power of the air conditionner is &quot; + hvacPower.toString()  );
-Print( &quot;&quot; );
-Print( &quot;This is how this result is obtained:&quot;)
-for (var i = 0, num = hvacPower.report.length; i &lt; num; i++)
-{
-    Print( &quot;&quot; );
-    Print( hvacPower.report[i].join(&quot;&lt;br /&gt;&quot;) );
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="c1">// Print the result</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span> <span class="nx">hot</span> <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span> <span class="o">+</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span> <span class="nx">cold</span> <span class="p">)</span> <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">wet</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span> <span class="o">+</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span> <span class="nx">dry</span> <span class="p">)</span>  <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="nx">temperature</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span> <span class="nx">warm</span> <span class="p">)</span> <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="nx">humidity</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span> <span class="nx">comfortable</span> <span class="p">)</span> <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;RESULT: the power of the air conditionner is &quot;</span> <span class="o">+</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>  <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;This is how this result is obtained:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">num</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+    <span class="nx">Print</span><span class="p">(</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">report</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <p>This is what will be printed with 25°C and 75% humidity.</p>
@@ -367,22 +376,23 @@ Gives value: 0 from these values: [ 0 ]<br />
 With a veracity of: 0</p>
 </blockquote>
 <p>You can also compare different crispification algorithms quite easily:</p>
-<pre class="codehilite"><code class="language-JavaScript">// The default is CENTROID
-Print( &quot;RESULT CENTROID: the power of the air conditionner is &quot; + hvacPower.toString()  );
+<div class="codehilite"><pre><span></span><span class="c1">// The default is CENTROID</span>
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;RESULT CENTROID: the power of the air conditionner is &quot;</span> <span class="o">+</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>  <span class="p">);</span>
 
-Print( &quot;RESULT CENTROID_LOWER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.CENTROID_LOWER)  );
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;RESULT CENTROID_LOWER: the power of the air conditionner is &quot;</span> <span class="o">+</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">FuzzyCrispAlgorithm</span><span class="p">.</span><span class="nx">CENTROID_LOWER</span><span class="p">)</span>  <span class="p">);</span>
 
-Print( &quot;RESULT CENTROID_HIGHER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.CENTROID_HIGHER)  );
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;RESULT CENTROID_HIGHER: the power of the air conditionner is &quot;</span> <span class="o">+</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">FuzzyCrispAlgorithm</span><span class="p">.</span><span class="nx">CENTROID_HIGHER</span><span class="p">)</span>  <span class="p">);</span>
 
-Print( &quot;RESULT MEAN: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.MEAN)  );
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;RESULT MEAN: the power of the air conditionner is &quot;</span> <span class="o">+</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">FuzzyCrispAlgorithm</span><span class="p">.</span><span class="nx">MEAN</span><span class="p">)</span>  <span class="p">);</span>
 
-Print( &quot;RESULT MEAN_HIGHER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.MEAN_HIGHER)  );
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;RESULT MEAN_HIGHER: the power of the air conditionner is &quot;</span> <span class="o">+</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">FuzzyCrispAlgorithm</span><span class="p">.</span><span class="nx">MEAN_HIGHER</span><span class="p">)</span>  <span class="p">);</span>
 
-Print( &quot;RESULT MEAN_LOWER: the power of the air conditionner is &quot; + hvacPower.toString(FuzzyCrispAlgorithm.MEAN_LOWER)  );
+<span class="nx">Print</span><span class="p">(</span> <span class="s2">&quot;RESULT MEAN_LOWER: the power of the air conditionner is &quot;</span> <span class="o">+</span> <span class="nx">hvacPower</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">FuzzyCrispAlgorithm</span><span class="p">.</span><span class="nx">MEAN_LOWER</span><span class="p">)</span>  <span class="p">);</span>
 
-// Note that you can also globally set the algorithm as a second argument when creating the engine:
-var lowerLogic = new FuzzyLogic( FuzzyLogicAlgorithm.LINEAR, FuzzyCrispAlgorithm.CENTROID_LOWER);
-// The default for crispification will be the one passed to this engine</code></pre>
+<span class="c1">// Note that you can also globally set the algorithm as a second argument when creating the engine:</span>
+<span class="kd">var</span> <span class="nx">lowerLogic</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FuzzyLogic</span><span class="p">(</span> <span class="nx">FuzzyLogicAlgorithm</span><span class="p">.</span><span class="nx">LINEAR</span><span class="p">,</span> <span class="nx">FuzzyCrispAlgorithm</span><span class="p">.</span><span class="nx">CENTROID_LOWER</span><span class="p">);</span>
+<span class="c1">// The default for crispification will be the one passed to this engine</span>
+</pre></div>
 
 
 <p>Which will print:</p>
