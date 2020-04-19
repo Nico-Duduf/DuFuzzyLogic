@@ -59,3 +59,29 @@ var isRed = redChannel == intense && !( greenChannel == intense || blueChannel =
 ## After Effects Expressions Implementation
 
 The implementation of the same library but adapted for expressions in After Effects (some changes have been made for better compatibility with both the extendscript and the javascript engine) is available as part of the [DuAEF Expression Library](https://github.com/Rainbox-dev/DuAEF_ExpressionLib).
+
+## License
+
+![GNU](images/logos/gnu.png) 
+
+### This documentation
+
+**Copyright (C) 2020 Nicolas Dufresne and Contributors.**  
+Permission is granted to copy, distribute and/or modify this document under the terms of the *GNU Free Documentation License*, Version 1.3 or any later version published by the Free Software Foundation;  
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "[Documentation License](doc-license.md)".
+
+![GFDL](images/logos/gfdl-logo.png)
+
+### This implementation of Fuzzy Logics
+
+DuFuzzyLogic is free software released under the [GNU-General Public License v3](https://github.com/Rainbox-dev/DuAEF_Duik/blob/master/LICENSE). This license guarantees you four freedoms:
+
+- The freedom to **run the program as you wish**, for any purpose,  
+- The freedom to **study how the program works, and change it**, so it does your computing as you wish,  
+- The freedom to **redistribute copies** so you can help your fellow animator  
+- The freedom to distribute **copies of your modified versions** to others.
+
+A copy of the license is included in the section entitled "[GNU-GPLv3](gnu-gpl.md)".
+
+![GPL](images/logos/gplv3.png)

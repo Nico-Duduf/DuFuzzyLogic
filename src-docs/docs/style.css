@@ -11,8 +11,6 @@ a:hover {
 
 .wy-side-nav-search {
     background-color: #710132;
-    border-radius: 10px;
-    margin: 10px;
 }
 .wy-nav-side {
     background-color: #333333;
@@ -42,11 +40,9 @@ a:hover {
 
 .rst-versions {
     background-color: #333333;
-    margin-bottom: 10px;
 }
 
 .rst-versions .rst-current-version {
     background-color: #710132;
     box-shadow: 1px 4px 7px #232323;
-    border-radius: 10px;
 }

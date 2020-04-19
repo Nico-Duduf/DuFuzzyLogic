@@ -43,4 +43,6 @@ nav:
     - Existing Libraries: Libraries.md
     - JavaScript Reference: https://dufuzzylogic-docs.rainboxlab.org/js/index.html
     - After Effects Expressions: https://github.com/Rainbox-dev/DuAEF_ExpressionLib
-    
+    - License:
+        - GNU GPLv3: gnu-gpl.md
+        - Documentation license: doc-license.md
