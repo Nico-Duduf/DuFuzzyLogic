@@ -73,6 +73,21 @@ FzMath.gaussian = function( value, min, max, center, fwhm)
 }
 
 /**
+    * A "reversed" gaussian function, growing faster with low value
+    * @param {Number} value The variable
+    * @param {Number} [min=0] The minimum return value
+    * @param {Number} [max=1] The maximum return value
+    * @param {Number} [center=0] The center of the peak
+    * @param {Number} [fwhm=1] The full width at half maximum of the curve
+    * @return {Number} The result
+    */
+FzMath.reversedGaussian = function ( value, min, max, center, fwhm )
+{
+    r = -value-fwhm+1;
+    return gaussian( value, min, max, center, r);
+}
+
+/**
     * The inverse gaussian function
     * @param {Number} v The variable
     * @param {Number} [min=0] The minimum return value of the corresponding gaussian function
@@ -96,6 +111,21 @@ FzMath.inverseGaussian = function( v, min, max, center, fwhm)
     result = result / ( -4 * Math.LN2 );
     result = Math.sqrt( result );
     return [ result + center, -result + center ];
+}
+
+/**
+    * The inverse of the reversed gaussian function
+    * @param {Number} v The variable
+    * @param {Number} [min=0] The minimum return value of the corresponding gaussian function
+    * @param {Number} [max=1] The maximum return value of the corresponding gaussian function
+    * @param {Number} [center=0] The center of the peak of the corresponding gaussian function
+    * @param {Number} [fwhm=1] The full width at half maximum of the curve of the corresponding gaussian function
+    * @return {Number[]} The two possible results, the lower is the first in the list. If both are the same, it is the maximum
+    */
+FzMath.inverseReversedGaussian = function( v, min, max, center, fwhm)
+{
+    r = -value-fwhm+1;
+    return inverseGaussian( value, min, max, center, r);
 }
 
 /**
@@ -206,6 +236,11 @@ FuzzySet.prototype.contains = function ( v, quantifier )
             var width = this.plateauMin - this.min;
             return quantifier( FzMath.gaussian( value, 0, 1, this.plateauMin, width) , this.algorithm);
         }
+        else if (this.shapeIn === FuzzyShape.REVERSED_GAUSSIAN)
+        {
+            var width = this.plateauMin - this.min;
+            return quantifier( FzMath.reversedGaussian( value, 0, 1, this.plateauMin, width) , this.algorithm );
+        }
         else return quantifier(0, this.algorithm);
     }
     else
@@ -235,6 +270,11 @@ FuzzySet.prototype.contains = function ( v, quantifier )
         {
             var width = this.max - this.plateauMax;
             return quantifier( FzMath.gaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
+        }
+        else if (this.shapeOut === FuzzyShape.GAUSSIAN)
+        {
+            var width = this.max - this.plateauMax;
+            return quantifier( FzMath.reversedGaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
         }
         else return quantifier(0, this.algorithm);
     } 
@@ -285,6 +325,12 @@ FuzzySet.prototype.getValues = function ( veracity )
         var g = FzMath.inverseGaussian( veracity, 0, 1, this.plateauMin, width);
         crisp.push( g[0] );
     }
+    else if (this.shapeIn === FuzzyShape.REVERSED_GAUSSIAN)
+    {
+        var width = this.plateauMin - this.min;
+        var g = FzMath.inverseReversedGaussian( veracity, 0, 1, this.plateauMin, width);
+        crisp.push( g[0] );
+    }
 
     //above
     if (this.shapeOut === FuzzyShape.CONSTANT && veracity == 1)
@@ -311,6 +357,12 @@ FuzzySet.prototype.getValues = function ( veracity )
     {
         width = this.max - this.plateauMax;
         var g = FzMath.inverseGaussian( 1-veracity, 0, 1, this.plateauMax, width);
+        crisp.push( g[1] );
+    }
+    else if (this.shapeOut === FuzzyShape.GAUSSIAN)
+    {
+        width = this.max - this.plateauMax;
+        var g = FzMath.inverseReversedGaussian( 1-veracity, 0, 1, this.plateauMax, width);
         crisp.push( g[1] );
     }
 
@@ -1174,7 +1226,15 @@ FuzzyShape = {
     /**
      * Alias for {@link FuzzyShape.GAUSSIAN}
      */
-    BELL: "gaussian"
+    BELL: "gaussian",
+    /**
+     * Alias for {@link FuzzyShape.REVERSED_GAUSSIAN}
+     */
+    REVERSED_BELL: "reversed_gaussian",
+    /**
+     * The transition has a "reversed bell" shape, using the gaussian function.
+     */
+    REVERSED_GAUSSIAN: "reversed_gaussian"
 }
 
 
