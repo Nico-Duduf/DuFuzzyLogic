@@ -1,7 +1,7 @@
 // ====== SOME MATH FUNCTIONS =========
 
 /**
- * Some general purpose Math functions 
+ * Some general purpose Math functions
  * @namespace
  */
 FzMath = {};
@@ -191,92 +191,90 @@ function FuzzySet( name, valueNot, valueIS, shape, shapeAbove, plateauMin, plate
 
 /**
     * Checks if a value is contained in the set.
-    * @param {Number|FuzzyValue} v The value to test.
+    * @param {Number|FuzzyValue} value The value to test.
     * @param {FuzzyQuantifier|String} [quantifier=FuzzyQuantifier.NONE] Checks in which part of the set the value is in.
     * @return {FuzzyVeracity} The veracity.
     */
-FuzzySet.prototype.contains = function ( v, quantifier )
+FuzzySet.prototype.contains = function ( value, quantifier )
 {
-    var value;
-    if (v instanceof FuzzyValue) value = v.crispify(false);
-    else value = v;
+    if (typeof quantifier === 'undefined') quantifier = FuzzyQuantifier.NONE;
 
-    quantifier = FuzzyLogic.getQuantifier(quantifier);
+    if (value instanceof FuzzyValue) value = value.crispify(false);
 
     if (value >= this.plateauMin && value <= this.plateauMax)
     {
-        return quantifier(1, this.algorithm);
+        return FuzzyLogic.quantify(quantifier, 1, this.algorithm);
     }
     else if (value < this.plateauMin)
     {
         if (this.shapeIn === FuzzyShape.CONSTANT)
         {
-            return quantifier(1, this.algorithm);
+            return FuzzyLogic.quantify(quantifier, 1, this.algorithm);
         }
         else if (this.shapeIn === FuzzyShape.SQUARE)
         {
             var min = FzMath.mean(this.plateauMin, this.min);
-            if (value >= min) return quantifier(1, this.algorithm);
-            else return quantifier(0, this.algorithm);
+            if (value >= min) return FuzzyLogic.quantify(quantifier, 1, this.algorithm);
+            else return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
         }
         else if (this.shapeIn === FuzzyShape.LINEAR)
         {
-            if (value < this.min) return quantifier(0, this.algorithm);
-            else return quantifier( (value-this.min) / (this.plateauMin - this.min), this.algorithm );
+            if (value < this.min) return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
+            else return FuzzyLogic.quantify(quantifier, (value-this.min) / (this.plateauMin - this.min), this.algorithm );
         }
         else if (this.shapeIn === FuzzyShape.SIGMOID)
         {
             var mid = (this.plateauMin + this.min) / 2;
             var rate = 6 / (this.plateauMin - this.min);
-            return quantifier(FzMath.logistic(value, mid, 0, 1, rate), this.algorithm);
+            return FuzzyLogic.quantify(quantifier, FzMath.logistic(value, mid, 0, 1, rate), this.algorithm);
         }
         else if (this.shapeIn === FuzzyShape.GAUSSIAN)
         {
             var width = this.plateauMin - this.min;
-            return quantifier( FzMath.gaussian( value, 0, 1, this.plateauMin, width) , this.algorithm);
+            return FuzzyLogic.quantify(quantifier, FzMath.gaussian( value, 0, 1, this.plateauMin, width) , this.algorithm);
         }
         else if (this.shapeIn === FuzzyShape.REVERSED_GAUSSIAN)
         {
             var width = this.plateauMin - this.min;
-            return quantifier( FzMath.reversedGaussian( value, 0, 1, this.plateauMin, width) , this.algorithm );
+            return FuzzyLogic.quantify(quantifier, FzMath.reversedGaussian( value, 0, 1, this.plateauMin, width) , this.algorithm );
         }
-        else return quantifier(0, this.algorithm);
+        else return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
     }
     else
     {
         if (this.shapeOut === FuzzyShape.CONSTANT)
         {
-            return quantifier(1, this.algorithm);
+            return FuzzyLogic.quantify(quantifier, 1, this.algorithm);
         }
         else if (this.shapeOut === FuzzyShape.SQUARE)
         {
             var max = FzMath.mean(this.plateauMax, this.max);
-            if (value <= max) return quantifier(1, this.algorithm);
-            else return quantifier(0, this.algorithm);
+            if (value <= max) return FuzzyLogic.quantify(quantifier, 1, this.algorithm);
+            else return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
         }
         else if (this.shapeOut === FuzzyShape.LINEAR)
         {
-            if (value > this.max) return quantifier(0, this.algorithm);
-            else return quantifier (1 - ((value - this.plateauMax ) / (this.max - this.plateauMax) ), this.algorithm);
+            if (value > this.max) return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
+            else return FuzzyLogic.quantify(quantifier, 1 - ((value - this.plateauMax ) / (this.max - this.plateauMax) ), this.algorithm);
         }
         else if (this.shapeOut === FuzzyShape.SIGMOID)
         {
             var mid = (this.plateauMax + this.max) / 2;
             var rate = 6 / (this.max - this.plateauMax);
-            return quantifier( 1 - FzMath.logistic(value, mid, 0, 1, rate) , this.algorithm);
+            return FuzzyLogic.quantify(quantifier, 1 - FzMath.logistic(value, mid, 0, 1, rate) , this.algorithm);
         }
         else if (this.shapeOut === FuzzyShape.GAUSSIAN)
         {
             var width = this.max - this.plateauMax;
-            return quantifier( FzMath.gaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
+            return FuzzyLogic.quantify(quantifier, FzMath.gaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
         }
         else if (this.shapeOut === FuzzyShape.REVERSED_GAUSSIAN)
         {
             var width = this.max - this.plateauMax;
-            return quantifier( FzMath.reversedGaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
+            return FuzzyLogic.quantify(quantifier, FzMath.reversedGaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
         }
-        else return quantifier(0, this.algorithm);
-    } 
+        else return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
+    }
 }
 
 /**
@@ -377,19 +375,20 @@ FuzzySet.prototype.getValues = function ( veracity )
 
 /**
     * Gets a list of precise values from the set corresponding to the quantifier
-    * @param {FuzzyModifier} [quantifier=FuzzyModifier.AVERAGE] The quantifier
-    * @param {FuzzyVeracity|Number} [veracity=0.5] The veracity
+    * @param {FuzzyModifier} [quantifier=FuzzyQuantifier.AVERAGE] The quantifier
+    * @param {FuzzyVeracity|float} [veracity=0.5] The veracity
     * @return {Number[]} The list of possible crisp values, ordered from min to max.
     */
 FuzzySet.prototype.crispify = function ( quantifier, veracity )
 {
-    quantifier = FuzzyQuantifier.getQuantifier(quantifier);
+    if (typeof quantifier === 'undefined') quantifier = FuzzyQuantifier.AVERAGE;
+
     var v;
-    if (typeof veracity === "undefined") v = quantifier();
+    if (typeof veracity === "undefined") v = FuzzyLogic.quantify(quantifier);
     else if (veracity instanceof FuzzyVeracity) v = veracity.veracity;
     else v = veracity;
 
-    v = quantifier(v, this.algorithm, true).veracity;
+    v = FuzzyLogic.quantify(quantifier, v, this.algorithm, true).veracity;
     return this.getValues( v );
 }
 
@@ -417,7 +416,7 @@ FuzzySet.prototype.quantify = function ( value )
     for (var i in FuzzyQuantifier)
     {
         var q = FuzzyQuantifier[i];
-        var test = Math.abs( q() - veracity );
+        var test = Math.abs( FuzzyLogic.quantify(q) - veracity );
         
         if (test < distance)
         {
@@ -478,7 +477,7 @@ function FuzzyValue( value, unit, algorithm, crispAlgorithm )
 /**
  * Tests the inclusion of the value in the set
  * @param {FuzzySet} set The set which may include the value.
- * @param {FuzzyQuantifier|string} quantifier A quantifier.
+ * @param {FuzzyQuantifier|string} [quantifier] A quantifier.
  * @return {FuzzyVeracity} The veracity of the inclusion of the value in the set.
  */
 FuzzyValue.prototype.IS = function(set, quantifier)
@@ -490,7 +489,7 @@ FuzzyValue.prototype.IS = function(set, quantifier)
 /**
  * Tests the exclusion of the value in the set
  * @param {FuzzySet} set The set which may (not) include the value.
- * @param {FuzzyQuantifier|string} quantifier A quantifier.
+ * @param {FuzzyQuantifier|string} [quantifier] A quantifier.
  * @return {FuzzyVeracity} The veracity of the exclusion of the value in the set.
  */
 FuzzyValue.prototype.IS_NOT = function (set, quantifier)
@@ -502,15 +501,14 @@ FuzzyValue.prototype.IS_NOT = function (set, quantifier)
 /**
  * Changes the value according to a new veracity.
  * @param {FuzzySet} set The set.
- * @param {FuzzyModifier} [quantifier=FuzzyModifier.NONE] The quantifier
+ * @param {FuzzyModifier} [quantifier=FuzzyQuantifier.NONE] The quantifier
  * @param {FuzzyVeracity} [veracity] The veracity.
  */
 FuzzyValue.prototype.SET = function ( set,  quantifier, veracity )
 {
     if (typeof veracity === "undefined") veracity = new FuzzyVeracity(1, this.algorithm);
-    
-    quantifier = FuzzyQuantifier.getQuantifier(quantifier);
-    
+    if (typeof quantifier === "undefined") quantifier = FuzzyQuantifier.NONE;
+        
     this.numRules++;
     veracity.ruleNum = this.numRules;
 
@@ -595,7 +593,7 @@ FuzzyValue.prototype.crispify = function ( clearSets, algorithm )
                 }
 
                 var reportRule = [];
-                reportRule.push( "Rule #" + v.ruleNum +": Set " + set.toString() + " (" + q.toString() + ")" );
+                reportRule.push( "Rule #" + v.ruleNum +": Set " + set.toString() + " (" + q + ")" );
                 reportRule.push( "Gives value: " + Math.round(val*1000)/1000 + " from these values: [ " + vals.join(", ") + " ]");
                 reportRule.push( "With a veracity of: " + Math.round(ver*1000)/1000 );
                 reportRule.number = v.ruleNum;
@@ -1038,7 +1036,7 @@ FuzzyLogic.prototype.IF = function ( veracity )
 }
 
 /**
- * This function sets a value in a new set, using the veracity resulting from the previous call to {@link FuzzyLogic.IS}.<br /|
+ * This function sets a value in a new set, using the veracity resulting from the previous call to {@link FuzzyLogic.IS}.<br />
  * It can be called several times after any call to IF.
  * @example
  * var logic = new FuzzyLogic();
@@ -1065,133 +1063,103 @@ FuzzyLogic.prototype.THEN = function ( value, set, quantifier )
 
 // ========= ENUMS =============
 
-// Quantifiers
+/**
+ * Enum of available quantifiers
+ * @namespace
+ */
+FuzzyQuantifier = {
+    /**
+     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
+     */
+    IS_NOT: "Not",
+    /**
+     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
+     */
+    LESS: "Less",
+    /**
+     * Slightly
+     */
+    DOUBLE_MINUS: "Slightly",
+    /**
+     * Somewhat
+     */
+    MINUS: "Somewhat",
+    /**
+     * Moderately
+     */
+    AVERAGE: "Moderately",
+    /**
+     * None
+     */
+    NONE: "",
+    /**
+     * Very
+     */
+    PLUS: "Very",
+    /**
+     * Extremely
+     */
+    DOUBLE_PLUS: "Extremely",
+    /**
+     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
+     */
+    IS: "Completely",
+    /**
+     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
+     */
+    MORE: "More"
+}
+
+// low-level undocumented method
+// adjusts an existing veracity according to the quantifier
+// returns a new adjusted veracity
+// or returns a factor if veracity is undefined
+FuzzyLogic.quantify = function( quantifier, veracity, algorithm, inverse)
 {
-    /**
-        * Enum of quantifiers. You can use both the JS name (e.g. FuzzyQuantifier.MINUS) or the string (e.g. "Somewhat") in your code.
-        * @namespace
-        */
-    FuzzyQuantifier = {};
+    var v = veracity;
 
-    /**
-     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-     * @type {string}
-     * @default "Not"
-     */
-    FuzzyQuantifier.IS_NOT = function (v, algorithm, inverse) {
-        if (typeof v === "undefined") return 0;
-        var q = inverse ? 0 : 1;
-        return new FuzzyVeracity(q, algorithm);
-    };
-    FuzzyQuantifier.IS_NOT.toString = function() {return "Not"; };
-
-    /**
-     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-     * @type {string}
-     * @default "Less"
-     */
-    FuzzyQuantifier.LESS = function (v, algorithm, inverse) {
-        if (typeof v === "undefined") return 0;
-        var q = inverse ? 0 : 1;
-        return new FuzzyVeracity(q, algorithm);
-    };
-    FuzzyQuantifier.LESS.toString = function() {return "Less"; };
-
-    /**
-     * @type {string}
-     * @default "Slightly"
-     */
-    FuzzyQuantifier.DOUBLE_MINUS = FuzzyQuantifier.createQuantifier( 1/3, "Slightly");
-
-    /**
-     * @type {string}
-     * @default "Somewhat"
-     */
-    FuzzyQuantifier.MINUS = FuzzyQuantifier.createQuantifier( 0.5, "Somewhat");
-
-    /**
-     * @type {string}
-     * @default "Moderately"
-     */
-    FuzzyQuantifier.AVERAGE = function (v, algorithm) {
-        if (typeof v === "undefined") return 0.5;
-        else return new FuzzyVeracity( v, algorithm);
-    };
-    FuzzyQuantifier.AVERAGE.toString = function() {return "Moderately"; };
-
-    /**
-     * @type {string}
-     * @default "Very"
-     */
-    FuzzyQuantifier.PLUS = FuzzyQuantifier.createQuantifier( 2, "Very");
-
-    /**
-     * @type {string}
-     * @default "Extremely"
-     */
-    FuzzyQuantifier.DOUBLE_PLUS = FuzzyQuantifier.createQuantifier( 3, "Extremely");
-
-    /**
-     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-     * @type {string}
-     * @default "Completely"
-     */
-    FuzzyQuantifier.IS = function (v, algorithm, inverse) { 
-        if (typeof v === "undefined") return 1;
-        var q = inverse ? 1 : 0;
-        return new FuzzyVeracity( q, algorithm);
-    };
-    FuzzyQuantifier.IS.toString = function() { return "Completely"; };
-
-    /**
-     * This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-     * @type {string}
-     * @default "More"
-     */
-    FuzzyQuantifier.MORE = function (v, algorithm, inverse) {
-        if (typeof v === "undefined") return 1;
-        var q = inverse ? 1 : 0;
-        return new FuzzyVeracity( q, algorithm);
-    };
-    FuzzyQuantifier.MORE .toString = function() {return "More"; };
-
-
-    // ====== LOW-LEVEL UTILS =====
-
-    // low-level undocumented function.
-    // gets a quantifier by its name
-    FuzzyQuantifier.getQuantifier = function( quantifier )
+    if (quantifier == FuzzyQuantifier.IS_NOT || quantifier == FuzzyQuantifier.LESS)
     {
-        if (typeof quantifier === "undefined") return FuzzyQuantifier.AVERAGE;
-        if (typeof quantifier === "function") return quantifier;
-        if (quantifier === "") return FuzzyQuantifier.AVERAGE;
-        
-        quantifier = quantifier.toLowerCase();
-
-        for(var i in FuzzyQuantifier)
-        {
-            var q = FuzzyQuantifier[i];
-            var n = q.toString().toLowerCase();
-
-            if (n === quantifier) return q;
-        }
-
-        throw ("Quantifier \"" + quantifier + "\" is unknown.");
+        if (typeof veracity === "undefined") return 0;
+        if (inverse) v = 0;
+        else v = 1;
+    }
+    else if (quantifier == FuzzyQuantifier.DOUBLE_MINUS)
+    {
+        if (typeof veracity === "undefined") return Math.pow( 0.5, 3 );
+        if (inverse) v = Math.pow(veracity, 3);
+        else v = Math.pow(veracity, 1/3);
+    }
+    else if (quantifier == FuzzyQuantifier.MINUS)
+    {
+        if (typeof veracity === "undefined") return Math.pow( 0.5, 2 );
+        if (inverse) v = Math.pow(veracity, 2);
+        else v = Math.pow(veracity, 0.5);
+    }
+    else if (quantifier == FuzzyQuantifier.AVERAGE || quantifier == FuzzyQuantifier.NONE)
+    {
+        if (typeof veracity === "undefined") return 0.5;
+    }
+    else if (quantifier == FuzzyQuantifier.PLUS)
+    {
+        if (typeof veracity === "undefined") return Math.pow( 0.5, 0.5 );
+        if (inverse) v = Math.pow(veracity, 0.5);
+        else v = Math.pow(veracity, 2);
+    }
+    else if (quantifier == FuzzyQuantifier.DOUBLE_PLUS)
+    {
+        if (typeof veracity === "undefined") return Math.pow( 0.5, 1/3 );
+        if (inverse) v = Math.pow(veracity, 1/3);
+        else v = Math.pow(veracity, 3);
+    }
+    else if (quantifier == FuzzyQuantifier.IS || quantifier == FuzzyQuantifier.MORE)
+    {
+        if (typeof veracity === "undefined") return 1;
+        if (inverse) v = 1;
+        else v = 0;
     }
 
-    // low-level undocumented function.
-    // creates a quantifier
-    FuzzyQuantifier.createQuantifier = function(q , name )
-    {
-        function qObj (v, algorithm, inverse) {
-            if (typeof v === "undefined") return Math.pow( 0.5, 1/q);
-            var p = inverse ? 1/q : q;
-            return new FuzzyVeracity( Math.pow(v, p), algorithm);
-        };
-        qObj.toString = function (){return name;};
-        return qObj;
-    }
-
+    return new FuzzyVeracity(v, algorithm);
 }
 
 /**

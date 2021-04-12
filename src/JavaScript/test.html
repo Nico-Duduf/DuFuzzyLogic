@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JS Debugging</title>
-<meta charset="utf-8"/>
+    <title>DuFuzzyLogic JS Tests</title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="FuzzyLogic.js"></script>
 </head>
 <body>
     <p>===== <strong>Beginning of Debug log</strong> =====</p>
-    <p><script type="text/javascript" src="FuzzyLogic.js"></script></p>
+    <p>
+        <script type="text/javascript">
+            function print(text) {
+                document.write(text + "<br />");
+            }
+
+            function printP(text) {
+                document.write("<p>"+ text + "/p>");
+            }
+
+            print(FuzzyShape.CONSTANT);
+        </script>
+    </p>
     <p>===== <strong>End of Debug log</strong> =====</p>
 </body>
-</html> 
+</html>
