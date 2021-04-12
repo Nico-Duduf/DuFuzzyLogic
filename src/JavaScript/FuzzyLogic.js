@@ -192,7 +192,7 @@ function FuzzySet( name, valueNot, valueIS, shape, shapeAbove, plateauMin, plate
 /**
     * Checks if a value is contained in the set.
     * @param {Number|FuzzyValue} v The value to test.
-    * @param {FuzzyQuantifier|Number} [quantifier=FuzzyQuantifier.NONE] Checks in which part of the set the value is in.
+    * @param {FuzzyQuantifier|String} [quantifier=FuzzyQuantifier.NONE] Checks in which part of the set the value is in.
     * @return {FuzzyVeracity} The veracity.
     */
 FuzzySet.prototype.contains = function ( v, quantifier )
@@ -270,7 +270,7 @@ FuzzySet.prototype.contains = function ( v, quantifier )
             var width = this.max - this.plateauMax;
             return quantifier( FzMath.gaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
         }
-        else if (this.shapeOut === FuzzyShape.GAUSSIAN)
+        else if (this.shapeOut === FuzzyShape.REVERSED_GAUSSIAN)
         {
             var width = this.max - this.plateauMax;
             return quantifier( FzMath.reversedGaussian( value, 0, 1, this.plateauMax, width), this.algorithm );
@@ -358,7 +358,7 @@ FuzzySet.prototype.getValues = function ( veracity )
         var g = FzMath.inverseGaussian( 1-veracity, 0, 1, this.plateauMax, width);
         crisp.push( g[1] );
     }
-    else if (this.shapeOut === FuzzyShape.GAUSSIAN)
+    else if (this.shapeOut === FuzzyShape.REVERSED_GAUSSIAN)
     {
         width = this.max - this.plateauMax;
         var g = FzMath.inverseReversedGaussian( 1-veracity, 0, 1, this.plateauMax, width);
