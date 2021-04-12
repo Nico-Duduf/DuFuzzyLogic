@@ -18,8 +18,8 @@ FzMath = {};
 FzMath.logistic = function( value, midValue, min, max, rate)
 {
     if (typeof midValue === "undefined") midValue = 0;
-    if (typeof max === "undefined") max = 1;
     if (typeof min === "undefined") min = 0;
+    if (typeof max === "undefined") max = 1;
     if (typeof rate === "undefined") rate = 1;
     var exp = -rate*(value - midValue);
     var result = 1 / (1 + Math.pow(Math.E, exp));
@@ -115,14 +115,14 @@ FzMath.inverseGaussian = function( v, min, max, center, fwhm)
 
 /**
     * The inverse of the reversed gaussian function
-    * @param {Number} v The variable
+    * @param {Number} value The variable
     * @param {Number} [min=0] The minimum return value of the corresponding gaussian function
     * @param {Number} [max=1] The maximum return value of the corresponding gaussian function
     * @param {Number} [center=0] The center of the peak of the corresponding gaussian function
     * @param {Number} [fwhm=1] The full width at half maximum of the curve of the corresponding gaussian function
     * @return {Number[]} The two possible results, the lower is the first in the list. If both are the same, it is the maximum
     */
-FzMath.inverseReversedGaussian = function( v, min, max, center, fwhm)
+FzMath.inverseReversedGaussian = function( value, min, max, center, fwhm)
 {
     r = -value-fwhm+1;
     return inverseGaussian( value, min, max, center, r);
