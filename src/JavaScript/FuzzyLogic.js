@@ -692,7 +692,6 @@ FuzzyValue.prototype.toString = function( crispAlgorithm, set )
  */
 function FuzzyVeracity( veracity, algorithm )
 {
-    if (typeof above === "undefined") above = false;
     if (typeof algorithm === "undefined") algorithm = FuzzyLogicAlgorithm.LINEAR;
     this.veracity = veracity;
     this.algorithm = algorithm;
