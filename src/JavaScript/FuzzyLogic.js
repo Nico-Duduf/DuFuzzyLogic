@@ -943,7 +943,7 @@ FuzzyVeracity.prototype.WEIGHTED = function( other, weight )
     var x = this.veracity;
     var y = other.veracity;
 
-    var v = (1-w)*x +  w*y;
+    var v = (1-weight)*x +  weight*y;
 
     return new FuzzyVeracity( v );
 }
