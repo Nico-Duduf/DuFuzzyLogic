@@ -214,7 +214,7 @@ FuzzySet.prototype.contains = function ( value, quantifier )
         }
         else if (this.shapeIn === FuzzyShape.SQUARE)
         {
-            var min = FzMath.mean(this.plateauMin, this.min);
+            var min = FzMath.mean( [this.plateauMin, this.min] );
             if (value >= min) return FuzzyLogic.quantify(quantifier, 1, this.algorithm);
             else return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
         }
@@ -249,7 +249,7 @@ FuzzySet.prototype.contains = function ( value, quantifier )
         }
         else if (this.shapeOut === FuzzyShape.SQUARE)
         {
-            var max = FzMath.mean(this.plateauMax, this.max);
+            var max = FzMath.mean( [this.plateauMax, this.max] );
             if (value <= max) return FuzzyLogic.quantify(quantifier, 1, this.algorithm);
             else return FuzzyLogic.quantify(quantifier, 0, this.algorithm);
         }
