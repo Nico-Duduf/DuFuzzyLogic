@@ -307,17 +307,17 @@ You can also compare different crispification algorithms quite easily:
 
 ```JavaScript
 // The default is CENTROID
-Print( "RESULT CENTROID: the power of the air conditionner is " + hvacPower.toString()  );
+print( "RESULT CENTROID: the power of the air conditionner is " + hvacPower.toString()  );
 
-Print( "RESULT CENTROID_LOWER: the power of the air conditionner is " + hvacPower.toString(FuzzyCrispAlgorithm.CENTROID_LOWER)  );
+print( "RESULT CENTROID_LOWER: the power of the air conditionner is " + hvacPower.toString(undefined, FuzzyCrispAlgorithm.CENTROID_LOWER)  );
 
-Print( "RESULT CENTROID_HIGHER: the power of the air conditionner is " + hvacPower.toString(FuzzyCrispAlgorithm.CENTROID_HIGHER)  );
+print( "RESULT CENTROID_HIGHER: the power of the air conditionner is " + hvacPower.toString(undefined, FuzzyCrispAlgorithm.CENTROID_HIGHER)  );
 
-Print( "RESULT MEAN: the power of the air conditionner is " + hvacPower.toString(FuzzyCrispAlgorithm.MEAN)  );
+print( "RESULT MEAN: the power of the air conditionner is " + hvacPower.toString(undefined, FuzzyCrispAlgorithm.MEAN)  );
 
-Print( "RESULT MEAN_HIGHER: the power of the air conditionner is " + hvacPower.toString(FuzzyCrispAlgorithm.MEAN_HIGHER)  );
+print( "RESULT MEAN_HIGHER: the power of the air conditionner is " + hvacPower.toString(undefined, FuzzyCrispAlgorithm.MEAN_HIGHER)  );
 
-Print( "RESULT MEAN_LOWER: the power of the air conditionner is " + hvacPower.toString(FuzzyCrispAlgorithm.MEAN_LOWER)  );
+print( "RESULT MEAN_LOWER: the power of the air conditionner is " + hvacPower.toString(undefined, FuzzyCrispAlgorithm.MEAN_LOWER)  );
 
 // Note that you can also globally set the algorithm as a second argument when creating the engine:
 var lowerLogic = new FuzzyLogic( FuzzyLogicAlgorithm.LINEAR, FuzzyCrispAlgorithm.CENTROID_LOWER);
