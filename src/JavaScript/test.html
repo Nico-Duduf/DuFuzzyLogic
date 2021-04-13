@@ -4,20 +4,13 @@
     <title>DuFuzzyLogic JS Tests</title>
     <meta charset="utf-8"/>
     <script type="text/javascript" src="FuzzyLogic.js"></script>
+    <script type="text/javascript" src="test.js"></script>
 </head>
 <body>
     <p>===== <strong>Beginning of Debug log</strong> =====</p>
     <p>
         <script type="text/javascript">
-            function print(text) {
-                document.write(text + "<br />");
-            }
-
-            function printP(text) {
-                document.write("<p>"+ text + "/p>");
-            }
-
-            print(FuzzyShape.CONSTANT);
+            runTests();            
         </script>
     </p>
     <p>===== <strong>End of Debug log</strong> =====</p>
