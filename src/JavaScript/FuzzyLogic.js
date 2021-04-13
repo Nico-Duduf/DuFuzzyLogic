@@ -154,12 +154,13 @@ FzMath.mean = function( values )
     * @property {string} name The name of this set .
     * @property {Number} valueNOT One of the closest value which is not in the set (either above or below).
     * @property {Number} valueIS The value which best fits in the set, the most extreme/maximum in the set.
-    * @property {FuzzyShape} shape The shape (i.e. interpolation or transition) when getting in (below) the set.
-    * @property {FuzzyShape} shapeAbove The shape (i.e. interpolation or transition) when getting out (above) of the set.
+    * @property {FuzzyShape} shapeIn The shape (i.e. interpolation or transition) when getting in (below) the set.
+    * @property {FuzzyShape} shapeOut The shape (i.e. interpolation or transition) when getting out (above) of the set.
     * @property {Number} plateauMin The value above which a value is considered completely included.
     * @property {Number} plateauMax The value under which a value is considered completely included.
+    * @property {FuzzyLogicAlgorithm} algorithm The algorithm used in the logic engine.
     */
-function FuzzySet( name, valueNot, valueIS, shape, shapeAbove, plateauMin, plateauMax, algorithm)
+function FuzzySet( name, valueNot, valueIS, shapeIn, shapeOut, plateauMin, plateauMax, algorithm)
 {
     var min;
     var max;
@@ -173,16 +174,16 @@ function FuzzySet( name, valueNot, valueIS, shape, shapeAbove, plateauMin, plate
         max = valueNot + (valueIS - valueNot) * 2;
     }
 
-    if (typeof shape === "undefined") shape = FuzzyShape.LINEAR;
-    if (typeof shapeAbove === "undefined") shapeAbove = shape;
+    if (typeof shapeIn === "undefined") shapeIn = FuzzyShape.LINEAR;
+    if (typeof shapeOut === "undefined") shapeOut = shapeIn;
     if (typeof plateauMin === "undefined") plateauMin = FzMath.mean([min, max]);
     if (typeof plateauMax === "undefined") plateauMax = FzMath.mean([min, max]);
 
     this.name = name;
     this.min = min;
     this.max = max;
-    this.shapeIn = shape;
-    this.shapeOut = shapeAbove;
+    this.shapeIn = shapeIn;
+    this.shapeOut = shapeOut;
     this.plateauMin = plateauMin;
     this.plateauMax = plateauMax;
 
@@ -647,11 +648,11 @@ FuzzyValue.prototype.quantify = function (set)
 
 /**
  * Returns a string representation of the value with its unit (if any)
- * @param {FuzzyCrispAlgorithm} [crispAlgorithm] The algorithm to use for crispification before returning the string. Uses the algorithm set when creating the {@link FuzzyLogic} instance by default.
  * @param {FuzzySet} [set] A set to quantify the value
+ * @param {FuzzyCrispAlgorithm} [crispAlgorithm] The algorithm to use for crispification before returning the string. Uses the algorithm set when creating the {@link FuzzyLogic} instance by default.
  * @return {string} The description of the value
  */
-FuzzyValue.prototype.toString = function( crispAlgorithm, set )
+FuzzyValue.prototype.toString = function( set, crispAlgorithm )
 {
     var v = this.crispify( false, crispAlgorithm );
     v = Math.round( v * 100 ) / 100;
@@ -995,23 +996,23 @@ FuzzyLogic.prototype.newVeracity = function (veracity)
     * @example
     * var logic = new FuzzyLogic();
     * // Temperatures between 15 and 25 will be considered comfortable, 20 being the most comfortable
-    * var comfortabble = logic.newSet("Warm", 15, 20);
+    * var comfortable = logic.newSet("Warm", 15, 20);
     * // Temperatures under 17 are cold, and temperatures under 0 are the most cold (because of the constant shape below)
     * var cold = logic.newSet("Cold", 17, 0, FuzzyShape.CONSTANT);
     * // Temperatures above 23 are hot, and all temperatures above 35 are the most hot (because of the constant shape above)
     * var hot = logic.newSet("Hot", 23, 35, FuzzyShape.GAUSSIAN, FuzzyShape.CONSTANT);
     * @param {string} name The unique name of this set (e.g. "hot", "fast", "red", "flower addict"...). <strong>It must be unique!</strong>
-    * @property {Number} valueNOT One of the closest value which is not in the set (either above or below).
-    * @property {Number} valueIS The value which best fits in the set, the most extreme/maximum in the set.
-    * @param {FuzzyShape} [shapeBelow=FuzzyShape.LINEAR] The shape (i.e. interpolation or transition) when getting in the set.
-    * @param {FuzzyShape} [shapeAbove=shape] The shape (i.e. interpolation or transition) when getting out of the set. By default, same as shape.
+    * @property {Number} extremeValue One of the closest value which is not in the set (either above or below).
+    * @property {Number} referenceValue The value which best fits in the set, the most extreme/maximum in the set.
+    * @param {FuzzyShape} [shapeIn=FuzzyShape.LINEAR] The shape (i.e. interpolation or transition) when getting in the set.
+    * @param {FuzzyShape} [shapeOut=shapeIn] The shape (i.e. interpolation or transition) when getting out of the set. By default, same as shape.
     * @param {Number} [plateauMin] The value above which it is considered completely included. By default, it is at the middle between min and max.
     * @param {Number} [plateauMax] The value under which it is considered completely included. By default, it is at the middle between min and max.
     * @return {FuzzySet} The set.
     */
-FuzzyLogic.prototype.newSet = function ( name, extremeValue, referenceValue, shape, shapeAbove, plateauMin, plateauMax)
+FuzzyLogic.prototype.newSet = function ( name, extremeValue, referenceValue, shapeIn, shapeOut, plateauMin, plateauMax)
 {
-    return new FuzzySet(name, extremeValue, referenceValue, shape, shapeAbove, plateauMin, plateauMax, this.algorithm);
+    return new FuzzySet(name, extremeValue, referenceValue, shapeIn, shapeOut, plateauMin, plateauMax, this.algorithm);
 }
 
 /**
@@ -1022,10 +1023,10 @@ FuzzyLogic.prototype.newSet = function ( name, extremeValue, referenceValue, sha
  * var temperature = logic.newValue( 18 );
  * // Test if this temperature is comfortable
  * logic.IF(
- *    temperature.IS_NOT(comfortable);
+ *    temperature.IS_NOT(comfortable)
  * )
  * // Set it very comfortable
- * logic.THEN ( temperature.SET(comfortable, "Very"); )
+ * logic.THEN( temperature, comfortable, "Very" );
  * @param {FuzzyVeracity} [fzVeracity] The veracity of the statement.
  * @return {FuzzyVeracity} The value passed as argument.
  */ 
