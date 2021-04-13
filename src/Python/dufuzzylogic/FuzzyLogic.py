@@ -1,13 +1,11 @@
-from FuzzyVeracity import *
-from FzMath import *
-from Namespace import *
-from FuzzyValue import *
-from FuzzyQuantifier import *
-from FuzzySets import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.Namespace import *
+
 
 class FuzzyLogic:
 
-    def __init__(self, algorithm, crispAlgorithm):
+    def __init__(self, algorithm=FuzzyLogicAlgorithm.LINEAR, crispAlgorithm=FuzzyCrispAlgorithm.CENTROID):
         """
         Creates a new Fuzzy Logic Engine.
         @class
@@ -19,9 +17,6 @@ class FuzzyLogic:
         :param algorithm: {FuzzyLogicAlgorithm} [algorithm=FuzzyLogicAlgorithm.LINEAR] The algorithm to use for logic operations
         :param crispAlgorithm: {FuzzyCrispAlgorithm} [crispAlgorithm=FuzzyCrispAlgorithm.CENTROID] The algorithm to use for crispification
         """
-        algorithm = algorithm or FuzzyLogicAlgorithm.LINEAR
-        crispAlgorithm = crispAlgorithm or FuzzyCrispAlgorithm.CENTROID
-
         self.algorithm = algorithm
         self.veracity = FuzzyVeracity(0)
         self.crispAlgorithm = crispAlgorithm
@@ -59,13 +54,13 @@ class FuzzyLogic:
         :param referenceValue: {Number} valueIS The value which best fits in the set, the most extreme/maximum in the set.
         :param shape: {FuzzyShape} [shapeBelow=FuzzyShape.LINEAR] The shape (i.e. interpolation or transition) when getting in the set.
         :param shapeAbove: {FuzzyShape} [shapeAbove=shape] The shape (i.e. interpolation or transition) when getting out of the set. By default, same as shape.
-        :param plateauMin: {Number} The value above which it is considered completely included. By default, it is at the middle between min and max.
-        :param plateauMax: {Number} The value under which it is considered completely included. By default, it is at the middle between min and max.
+        :param plateauMin: {Number} The value above which it is considered completely included. By default, it is at the middle between minimum and maximum.
+        :param plateauMax: {Number} The value under which it is considered completely included. By default, it is at the middle between minimum and maximum.
         :return: {FuzzySet} The set.
         """
         return FuzzySet(name, extremeValue, referenceValue, shape, shapeAbove, plateauMin, plateauMax, self.algorithm)
 
-    def IF(self, veracity):
+    def FLogic_IF(self, veracity):
         """
         This function internally stores the veracity to be used with {@link FuzzyLogic.THEN}.
          @example
@@ -84,7 +79,7 @@ class FuzzyLogic:
         self.veracity = veracity
         return veracity
 
-    def THEN(self, value, fuzzySet, quantifier):
+    def FLogic_THEN(self, value, fuzzySet, quantifier):
         """
         This function sets a value in a new set, using the veracity resulting from the previous call to {@link FuzzyLogic.IS}.<br /|
          It can be called several times after any call to IF.
@@ -102,9 +97,9 @@ class FuzzyLogic:
          logic.THEN ( temperature.SET(comfortable, "Very"); )
          // and turn on the fan
          logic.THEN ( fanPower.SET( power ); )
-        :param value: {FuzzyValue} The value to set.
-        :param set: {FuzzySet} The set the value has to be included in.
-        :param quantifier: {FuzzyQuantifier} A quantifier to apply for setting the value.
+        :param value: The value to set.
+        :param fuzzySet: The set the value has to be included in.
+        :param quantifier: A quantifier to apply for setting the value.
         :return:
         """
-        value.SET(fuzzySet, quantifier, self.veracity)
+        value.FValue_SET(fuzzySet, quantifier, self.veracity)

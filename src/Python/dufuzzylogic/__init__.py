@@ -1,7 +1,8 @@
 from FuzzyLogic import *
 from FuzzyQuantifier import *
-from FuzzySets import *
-from FuzzyValue import *
-from FuzzyVeracity import *
 from FzMath import *
-from Namespace import *
+
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzySet import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.Namespace import *

@@ -1,12 +1,7 @@
-from FzMath import *
-from Namespace import *
-from FuzzyValue import *
-from FuzzyLogic import *
-from FuzzyVeracity import *
-from FuzzyQuantifier import *
+from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyLogicAlgorithm
+
 
 # ========== FUZZY VERACITY ==========
-
 
 class FuzzyVeracity:
     """
@@ -34,18 +29,19 @@ class FuzzyVeracity:
         )
     @property {Number} veracity The veracity level in the range [0.0, 1.0]
     """
-    def __init__(self, veracity, algorithm = FuzzyLogicAlgorithm.LINEAR):
+
+    def __init__(self, veracity, algorithm=FuzzyLogicAlgorithm.LINEAR):
         self.veracity = veracity
         self.algorithm = algorithm
 
-    def NEGATE(self):
+    def FVeracity_NEGATE(self):
         """
         Negates the current veracity. A new veracity is returned, and the current veracity is not changed.
         :return: {FuzzyVeracity} The negation of this veracity.
         """
         return FuzzyVeracity(1 - self.veracity, self.algorithm)
 
-    def AND(self, other):
+    def FVeracity_AND(self, other):
         """
         The equivalent of the boolean operation <code>this && other</code>
         :param other: {FuzzyVeracity} The other operand.
@@ -54,13 +50,13 @@ class FuzzyVeracity:
         x = self.veracity
         y = other.veracity
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = min(x, y)
+            veracity = min(x, y)
         else:
-            v = x * y
+            veracity = x * y
 
-        return FuzzyVeracity(v, self.algorithm)
+        return FuzzyVeracity(veracity, self.algorithm)
 
-    def OR(self, other):
+    def FVeracity_OR(self, other):
         """
         The equivalent of the boolean operation <code>this || other</code>
         :param other: {FuzzyVeracity} The other operand.
@@ -69,13 +65,13 @@ class FuzzyVeracity:
         x = self.veracity
         y = other.veracity
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = max(x, y)
+            veracity = max(x, y)
         else:
-            v = x + y - x*y
+            veracity = x + y - x * y
 
-        return FuzzyVeracity(v, self.algorithm)
+        return FuzzyVeracity(veracity, self.algorithm)
 
-    def XOR(self, other):
+    def FVeracity_XOR(self, other):
         """
         The equivalent of the boolean operation <code>this != other</code>
         :param other: {FuzzyVeracity} The other operand.
@@ -84,19 +80,29 @@ class FuzzyVeracity:
         x = self.veracity
         y = other.veracity
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = x + y - 2 * min(x, y)
+            veracity = x + y - 2 * min(x, y)
         else:
-            v = x + y - 2 * x * y
+            veracity = x + y - 2 * x * y
 
-        return FuzzyVeracity(v, self.algorithm)
+        return FuzzyVeracity(veracity, self.algorithm)
 
-    """The equivalent of the boolean operation <code>this != other</code>"""
-    self.IS_NOT = self.XOR
+    def FVeracity_IS_NOT(self, other):
+        """
+        The equivalent of the boolean operation <code>this != other</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_XOR(other)
 
-    """The equivalent of the boolean operation <code>this != other</code>"""
-    self.DIFFERENT = self.XOR
+    def FVeracity_DIFFERENT(self, other):
+        """
+        The equivalent of the boolean operation <code>this != other</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_XOR(other)
 
-    def NXR(self, other):
+    def FVeracity_NXR(self, other):
         """
         The equivalent of the boolean operation <code>this == other</code>
         :param other: {FuzzyVeracity} The other operand.
@@ -106,19 +112,29 @@ class FuzzyVeracity:
         y = other.veracity
 
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = 1 - x - y + 2 * min(x, y)
+            veracity = 1 - x - y + 2 * min(x, y)
         else:
-            v = 1 - x - y + 2 * x *y
+            veracity = 1 - x - y + 2 * x * y
 
-        return FuzzyVeracity(v, self.algorithm)
+        return FuzzyVeracity(veracity, self.algorithm)
 
-    """The equivalent of the boolean operation <code>this == other</code>"""
-    self.IS = self.NXR
+    def FVeracity_IS(self, other):
+        """
+        The equivalent of the boolean operation <code>this == other</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_NXR(other)
 
-    """The equivalent of the boolean operation <code>this == other</code>"""
-    self.EQUALS = self.NXR
+    def FVeracity_EQUALS(self, other):
+        """
+        The equivalent of the boolean operation <code>this == other</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_NXR(other)
 
-    def IMPLIES(self, other):
+    def FVeracity_IMPLIES(self, other):
         """
         The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>
         :param other: {FuzzyVeracity} The other operand.
@@ -128,44 +144,69 @@ class FuzzyVeracity:
         y = other.veracity
 
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = 1 - min(x, 1-y)
+            veracity = 1 - min(x, 1 - y)
         else:
-            v = 1-x + x * y
+            veracity = 1 - x + x * y
 
-        return FuzzyVeracity(v, self.algorithm)
+        return FuzzyVeracity(veracity, self.algorithm)
 
-    """The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>"""
-    FuzzyVeracity.WITH = self.IMPLIES
+    def FVeracity_WITH(self, other):
+        """
+        The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_IMPLIES(other)
 
-    """The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>"""
-    FuzzyVeracity.HAS = self.IMPLIES
+    def FVeracity_HAS(self, other):
+        """
+        The equivalent of the boolean operation <code>!(this && other)</code> or <code>!this || other</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_IMPLIES(other)
 
-    def DOES_NOT_IMPLY(self, other):
+    def FVeracity_DOES_NOT_IMPLY(self, other):
         """
         The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
-        :param other: {FuzzyVeracity}  The other operand.
-        :return:
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
         """
         x = self.veracity
         y = other.veracity
 
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = min(x, 1-y)
+            veracity = min(x, 1 - y)
         else:
-            v = x * (1-y)
+            veracity = x * (1 - y)
 
-        return FuzzyVeracity(v)     # 1 seul argument
+        return FuzzyVeracity(veracity)
 
-    """The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>"""
-    FuzzyVeracity.WITHOUT = DOES_NOT_IMPLY()
+    def FVeracity_WITHOUT(self, other):
+        """
+        The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_DOES_NOT_IMPLY(other)
 
-    """The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>"""
-    FuzzyVeracity.DOES_NOT_HAVE = DOES_NOT_IMPLY()
+    def FVeracity_DOES_NOT_HAVE(self, other):
+        """
+        The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_DOES_NOT_IMPLY(other)
 
-    """The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>"""
-    FuzzyVeracity.AND_NOT = DOES_NOT_IMPLY()
+    def FVeracity_AND_NOT(self, other):
+        """
+        The equivalent of the boolean operation <code>this && !other</code> or <code>!(this || other)</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_DOES_NOT_IMPLY(other)
 
-    def NAND(self, other):
+    def FVeracity_NAND(self, other):
         """
         The equivalent of the boolean operation <code>!(this && other)</code>
         :param other: {FuzzyVeracity} The other operand.
@@ -175,16 +216,21 @@ class FuzzyVeracity:
         y = other.veracity
 
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = 1 - min(x, y)
+            veracity = 1 - min(x, y)
         else:
-            v = 1 - x * y
+            veracity = 1 - x * y
 
-        return FuzzyVeracity(v)     # 1 seul argument
+        return FuzzyVeracity(veracity)
 
-    """The equivalent of the boolean operation <code>!(this && other)</code>"""
-    FuzzyVeracity.NOT_BOTH = NAND()
+    def FVeracity_NOT_BOTH(self, other):
+        """
+        The equivalent of the boolean operation <code>!(this && other)</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_NAND(other)
 
-    def NOR(self, other):
+    def FVeracity_NOR(self, other):
         """
         The equivalent of the boolean operation <code>!(this || other)</code>
         :param other: {FuzzyVeracity} The other operand.
@@ -194,16 +240,21 @@ class FuzzyVeracity:
         y = other.veracity
 
         if self.algorithm == FuzzyLogicAlgorithm.LINEAR:
-            v = 1 - max(x, y)
+            veracity = 1 - max(x, y)
         else:
-            v = 1 - x - y + x * y
+            veracity = 1 - x - y + x * y
 
-        return FuzzyVeracity(v)     # 1 seul argument
+        return FuzzyVeracity(veracity)
 
-    """The equivalent of the boolean operation <code>!(this || other)</code>"""
-    FuzzyVeracity.NONE = NOR()
+    def FVeracity_NONE(self, other):
+        """
+        The equivalent of the boolean operation <code>!(this || other)</code>
+        :param other: {FuzzyVeracity} The other operand.
+        :return: {FuzzyVeracity}
+        """
+        self.FVeracity_NOR(other)
 
-    def WEIGHTED(self, other, weight):
+    def FVeracity_WEIGHTED(self, other, weight):
         """
         Weights this and other according to a given factor.
         The weight factor is applied to the other operand, and the <code>1 - weight</code> factor is applied to this.
@@ -214,6 +265,6 @@ class FuzzyVeracity:
         x = self.veracity
         y = other.veracity
 
-        v = (1 - weight * x + weight * y)       # ATTENTION, sur le fichier.js c'est w au lieu de weight !?
+        veracity = (1 - weight * x + weight * y)
 
-        return FuzzyVeracity(v)     # 1 seul argument
+        return FuzzyVeracity(veracity)
