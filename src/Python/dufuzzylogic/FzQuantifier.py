@@ -1,4 +1,4 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyQuantifier, FuzzyVeracity, FuzzyLogicAlgorithm
+from DuFuzzyLogic.src.Python.dufuzzylogic import *
 
 """
     low-level undocumented method
@@ -7,7 +7,8 @@ from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyQuantifier, FuzzyVeracity,
     or returns a factor if veracity is undefined
 """
 
-def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=True):  # Vérifier les valeurs par défaut... :-/
+
+def quantify(quantifier, veracity, algorithm, inverse=True):
     v = veracity
 
     if quantifier == FuzzyQuantifier.IS_NOT or quantifier == FuzzyQuantifier.LESS:
@@ -24,7 +25,7 @@ def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=T
         if inverse:
             v = pow(veracity, 3)
         else:
-            v = pow(veracity, 1/3)
+            v = pow(veracity, 1 / 3)
 
     elif quantifier == FuzzyQuantifier.MINUS:
         if veracity is None:
@@ -48,9 +49,9 @@ def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=T
 
     elif quantifier == FuzzyQuantifier.DOUBLE_PLUS:
         if veracity is None:
-            return pow(0.5, 1/3)
+            return pow(0.5, 1 / 3)
         if inverse:
-            v = pow(veracity, 1/3)
+            v = pow(veracity, 1 / 3)
         else:
             v = pow(veracity, 3)
 

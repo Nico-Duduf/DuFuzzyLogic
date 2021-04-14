@@ -1,7 +1,3 @@
-from FuzzyLogic import *
-from FuzzyQuantifier import *
-from FzMath import *
-
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzySet import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
