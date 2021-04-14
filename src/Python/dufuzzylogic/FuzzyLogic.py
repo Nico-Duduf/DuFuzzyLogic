@@ -1,5 +1,8 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyLogicAlgorithm, FuzzyCrispAlgorithm, FuzzyVeracity, FuzzyValue, \
-    FuzzySet
+from .FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
+from .FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
+from .FuzzyVeracity import FuzzyVeracity
+from .FuzzyValue import FuzzyValue
+from .FuzzySet import FuzzySet
 
 class FuzzyLogic:
 
