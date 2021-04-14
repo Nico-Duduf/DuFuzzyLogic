@@ -1,5 +1,4 @@
 from DuFuzzyLogic.src.Python.dufuzzylogic import *
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyLogicAlgorithm
 
 # ========= FUZZY VALUES =============
 
@@ -154,7 +153,7 @@ class FuzzyValue:
 
         # sort the report
         if self.reportEnabled:
-            self.report.sort(ruleSorter())
+            self.report.sort()
 
         if clearSets:
             # freeze all

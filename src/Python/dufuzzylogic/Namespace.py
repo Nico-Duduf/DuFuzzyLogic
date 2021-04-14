@@ -22,6 +22,10 @@ class FuzzyQuantifier():
     ## This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
     MORE = "More"
 
+    FuzzyQuantifierList = {
+        IS_NOT: "Not", LESS: "Less", DOUBLE_MINUS: "Slightly", MINUS: "Somewhat", AVERAGE: "Moderately",
+        NONE: "", PLUS: "Very", DOUBLE_PLUS: "Extremely", IS: "Completely", MORE: "More"
+    }
 
 class FuzzyShape():
     """! Enum of the shapes used as member functions of {@link FuzzySet}. """

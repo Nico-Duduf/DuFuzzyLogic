@@ -1,3 +1,4 @@
+from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzySet
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.Namespace import *
@@ -81,7 +82,7 @@ class FuzzyLogic:
 
     def FLogic_THEN(self, value, fuzzySet, quantifier):
         """
-        This function sets a value in a new set, using the veracity resulting from the previous call to {@link FuzzyLogic.IS}.<br /|
+        This function sets a value in a new set, using the veracity resulting from the previous call to {@link FuzzyLogic.IS}.
          It can be called several times after any call to IF.
          @example
          var logic = new FuzzyLogic();

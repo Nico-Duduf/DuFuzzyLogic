@@ -1,172 +1,65 @@
-from FuzzyVeracity import *
-from FuzzyVeracity import *
-from FuzzyLogic import *
-import math
+from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyQuantifier, FuzzyVeracity, FuzzyLogicAlgorithm
 
-class FuzzyQuantifier():
-    def __init__(self, name, quantifyValue):
-        self.name = name
-        self._quantifyValue = quantifyValue
+"""
+    low-level undocumented method
+    adjusts an existing veracity according to the quantifier
+    returns a new adjusted veracity
+    or returns a factor if veracity is undefined
+"""
 
-    def quantify(self, value, algorithm, inverse):
-        if not value:
-            math.pow( 0.5, 1/self._quantifyValue )
-        if inverse:
-            p = 1/self._quantifyValue
-        else:
-            p = self._quantifyValue
-        return FuzzyVeracity( math.pow(value, p), algorithm)
+def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=True):  # Vérifier les valeurs par défaut... :-/
+    v = veracity
 
-class FuzzyQuantifierIS_NOT( FuzzyQuantifier ):
-    def __init__(self):
-        self.name = "Not"
-
-    def quantify( self, value, algorithm, inverse):
-        """
-        This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-        @type {string}
-        @default "Not"
-
-        :param v:
-        :param algorithm:
-        :param inverse:
-        :return:
-        """
-        if value is None:
+    if quantifier == FuzzyQuantifier.IS_NOT or quantifier == FuzzyQuantifier.LESS:
+        if veracity is None:
             return 0
         if inverse:
-            q = 0
+            v = 0
         else:
-            q = 1
-        return FuzzyVeracity(q, algorithm)
+            v = 1
 
-FuzzyQuantifiers = {
-    'DOUBLE_MINUS' = FuzzyQuantifier( 1 / 3, "Slightly" ),
-    'IS_NOT' = FuzzyQuantifierIS_NOT()
-}  
+    elif quantifier == FuzzyQuantifier.DOUBLE_MINUS:
+        if veracity is None:
+            return pow(0.5, 3)
+        if inverse:
+            v = pow(veracity, 3)
+        else:
+            v = pow(veracity, 1/3)
 
-def getQuantifier(quantifier):
-    """low-level undocumented function.
-    gets a quantifier by its name"""
-    if not quantifier:
-        return FuzzyQuantifier['AVERAGE']
+    elif quantifier == FuzzyQuantifier.MINUS:
+        if veracity is None:
+            return pow(0.5, 2)
+        if inverse:
+            v = pow(veracity, 2)
+        else:
+            v = pow(veracity, 0.5)
 
-    try:
-        n = quantifier.name
-        return quantifier
-    except:
-        for q in FuzzyQuantifiers:
-            if q.name == quantifier:
-                return q
+    elif quantifier == FuzzyQuantifier.AVERAGE or quantifier == FuzzyQuantifier.NONE:
+        if veracity is None:
+            return 0.5
 
-    raise Exception("Quantifier : " + str(quantifier) + " is unknown.")
+    elif quantifier == FuzzyQuantifier.PLUS:
+        if veracity is None:
+            return pow(0.5, 0.5)
+        if inverse:
+            v = pow(veracity, 0.5)
+        else:
+            v = pow(veracity, 2)
 
-# ========= ENUMS =============
+    elif quantifier == FuzzyQuantifier.DOUBLE_PLUS:
+        if veracity is None:
+            return pow(0.5, 1/3)
+        if inverse:
+            v = pow(veracity, 1/3)
+        else:
+            v = pow(veracity, 3)
 
-# Quantifiers
+    elif quantifier == FuzzyQuantifier.IS or quantifier == FuzzyQuantifier.MORE:
+        if veracity is None:
+            return 1
+        if inverse:
+            v = 1
+        else:
+            v = 0
 
-
-def LESS(v, algorithm, inverse):
-    """
-    This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-    @type {string}
-    @default "Less"
-    :param v:
-    :param algorithm:
-    :param inverse:
-    :return:
-    """
-    if v is None:
-        return 0
-    if inverse:
-        q = 0
-    else:
-        q = 1
-
-
-def LESS_ToString():
-    return "Less"
-
-
-FuzzyQuantifier.DOUBLE_MINUS = createQuantifier(1 / 3, "Slightly")
-"""
-@type {string}
-@default "Slightly"
-"""
-
-FuzzyQuantifier.MINUS = createQuantifier(0.5, "Somewhat")
-"""
-@type {string}
-@default "Somewhat"
-"""
-
-
-def AVERAGE(v, algorithm):
-    """
-    @type {string}
-    @default "Moderately"
-    :param v:
-    :param algorithm:
-    :return:
-    """
-    if v is None:
-        return 0.5
-    else:
-        return FuzzyVeracity(v, algorithm)
-
-
-def AVERAGE_ToString():
-    return "Moderately"
-
-
-FuzzyQuantifier.PLUS = createQuantifier(2, "Very")
-"""
-@type {string}
-@default "Very"
-"""
-
-FuzzyQuantifier.DOUBLE_PLUS = createQuantifier(3, "Extremely")
-"""
-@type {string}
-@default "Extremely"
-"""
-
-
-def IS(v, algorithm, inverse):
-    """
-    This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-    @type {string}
-    @default "Completely"
-    :param v:
-    :param algorithm:
-    :param inverse:
-    :return:
-    """
-    if v is None:
-        return 1
-    q = 1 if inverse else 0
-    return FuzzyVeracity(q, algorithm)
-
-
-def IS_ToString():
-    return "Completely"
-
-
-def MORE(v, algorithm, inverse):
-    """
-    This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-    @type {string}
-    @default "More"
-    :param v:
-    :param algorithm:
-    :param inverse:
-    :return:
-    """
-    if v is None:
-        return 1
-    q = 1 if inverse else 0
-    return FuzzyVeracity(q, algorithm)
-
-
-def MORE_ToString():
-    return "More"
+    return FuzzyVeracity(v, algorithm)
