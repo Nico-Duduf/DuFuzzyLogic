@@ -1,4 +1,5 @@
 from DuFuzzyLogic.src.Python.dufuzzylogic import *
+from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyLogicAlgorithm
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import quantify
 from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
 
