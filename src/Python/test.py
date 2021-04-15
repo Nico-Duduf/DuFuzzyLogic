@@ -19,52 +19,55 @@ def runTest():
 
     temperatures = [-3, 0, 5, 10, 15, 17, 19, 21, 25, 30, 40]
 
-    for i in temperatures:
+    for i in range(0, len(temperatures)):
         temperature = logic.newValue(temperatures[i], "°C")
 
-        print("\nTesting " + str(temperature))
+        print("\nTesting " + FuzzyValue.FValue_toString(temperature, None, None))
 
         logic.FLogic_IF(temperature.FValue_IS_NOT(comfortable, None))
-        print("\nUncomfortable: " + str(logic.veracity.veracity))
+        print("Uncomfortable: " + str(logic.veracity.veracity))
 
         logic.FLogic_IF(temperature.FValue_IS(comfortable, None))
-        print("\ncomfortable: " + str(logic.veracity.veracity))
+        print("Comfortable: " + str(logic.veracity.veracity))
 
         logic.FLogic_IF(temperature.FValue_IS(hot, "hot"))
-        print("\nhot: " + str(logic.veracity.veracity))
+        print("Hot: " + str(logic.veracity.veracity))
 
         logic.FLogic_IF(temperature.FValue_IS(cold, "cold"))
-        print("\ncold: " + str(logic.veracity.veracity))
+        print("Cold: " + str(logic.veracity.veracity))
 
-    print("\n \n--- Quantifiers Test ---\n \n")
+        print("\n===========================")
+
+    print("\n \n--- Quantifiers Test ---\n")
 
     temperatures = [0, 14, 16, 18, 19, 20, 21, 23, 24, 25, 30, 40]
-    quantifiers = [
-        FuzzyQuantifier.IS_NOT,
-        FuzzyQuantifier.DOUBLE_MINUS,
-        FuzzyQuantifier.MINUS,
-        FuzzyQuantifier.AVERAGE,
-        FuzzyQuantifier.NONE,
-        FuzzyQuantifier.PLUS,
-        FuzzyQuantifier.DOUBLE_PLUS,
-        FuzzyQuantifier.IS]
+    quantifiers = [FuzzyQuantifier.IS_NOT,
+                   FuzzyQuantifier.DOUBLE_MINUS,
+                   FuzzyQuantifier.MINUS,
+                   FuzzyQuantifier.AVERAGE,
+                   FuzzyQuantifier.NONE,
+                   FuzzyQuantifier.PLUS,
+                   FuzzyQuantifier.DOUBLE_PLUS,
+                   FuzzyQuantifier.IS]
 
-    for i in temperatures:
+    for i in range(0, len(temperatures)):
         temperature = logic.newValue(temperatures[i], "°C")
 
-        print("\nTesting " + str(temperature))
+        print("\n===========================")
+        print("\nTesting " + FuzzyValue.FValue_toString(temperature, None, None))
 
-        for j in quantifiers:
+        for j in range(0, len(quantifiers)):
             quantifier = quantifiers[j]
 
             logic.FLogic_IF(temperature.FValue_IS(comfortable, quantifier))
 
-            print("\n" + str(quantifier) + " comfortable: " + str(logic.veracity.veracity))
+            print(str(quantifier) + " comfortable: " + str(logic.veracity.veracity))
 
+    print("\n===========================")
     print("\n \n--- Color Example ---\n \n")
 
     # Setup
-    logic = FuzzyLogic
+    logic = FuzzyLogic(FuzzyLogicAlgorithm.HYPERBOLIC, FuzzyCrispAlgorithm.CENTROID)
 
     # We don't need to worry about values above 255
     intense = logic.newSet("Intense", 0, 255)
@@ -75,11 +78,12 @@ def runTest():
     redness = logic.newValue
 
     # Separate channels
-    redChannel = logic.newValue(color[0])
-    greenChannel = logic.newValue(color[1])
-    blueChannel = logic.newValue(color[2])
+    redChannel = logic.newValue(color[0], None)
+    greenChannel = logic.newValue(color[1], None)
+    blueChannel = logic.newValue(color[2], None)
 
-    logic.FLogic_IF(redChannel.FValue_IS(intense).FValue_AND(greenChannel.FValue_IS(intense).FValue_NOR(blueChannel.FValue_IS(intense))))
+    logic.FLogic_IF(redChannel.FValue_IS(intense, None).FValue_AND(
+        greenChannel.FValue_IS(intense).FValue_NOR(blueChannel.FValue_IS(intense))))
     logic.FLogic_THEN(redness, intense)
 
     # print the result
@@ -116,19 +120,19 @@ def runTest():
 
     # If it's hot, let's cool down
     logic.FLogic_IF(temperature.FValue_IS(hot))
-    logic.FLogic_THEN(hvacPower, refresh)           # Rule #1
+    logic.FLogic_THEN(hvacPower, refresh)  # Rule #1
 
     # If it's cold, let's heat up
     logic.FLogic_IF(temperature.FValue_IS(cold))
-    logic.FLogic_THEN(hvacPower, heat)              # Rule #2
+    logic.FLogic_THEN(hvacPower, heat)  # Rule #2
 
     # If it's hot and wet, we want to refresh more
     logic.FLogic_IF(temperature.FValue_IS(hot).FVeracity_AND(humidity.FValue_IS(wet)))
-    logic.FLogic_THEN(hvacPower, refresh, "More")   # Rule #3
+    logic.FLogic_THEN(hvacPower, refresh, "More")  # Rule #3
 
     # If it's cold and wet, we want to heat more
     logic.FLogic_IF(temperature.FValue_IS(cold).FVeracity_AND(humidity.FValue_IS(wet)))
-    logic.FLogic_THEN(hvacPower, heat, "More")      # Rule #4
+    logic.FLogic_THEN(hvacPower, heat, "More")  # Rule #4
 
     # If it's dry, we lower the power (because we don't want the hvac to make the air even drier)
 
@@ -136,25 +140,22 @@ def runTest():
     logic.FLogic_IF(temperature.FValue_IS(cold)
                     .FVeracity_AND(temperature.FValue_IS_NOT(cold, "Extremly"))
                     .FVeracity_AND(humidity.FValue_IS(dry)))
-    logic.FLogic_THEN(hvacPower, heat, "Less")      # Rule #5
+    logic.FLogic_THEN(hvacPower, heat, "Less")  # Rule #5
 
     # If it's hot but not too hot, and it is dry, we want to refresh less to save energy
     logic.FLogic_IF(temperature.FValue_IS(hot)
                     .FVeracity_AND(temperature.FValue_IS_NOT(hot, "Extremly"))
                     .FVeracity_AND(humidity.FValue_IS(dry)))
-    logic.FLogic_THEN(hvacPower, refresh, "Less")   # Rule #6
-
+    logic.FLogic_THEN(hvacPower, refresh, "Less")  # Rule #6
 
     logic.FLogic_IF(temperature.FValue_IS(warm, "very")
                     .FVeracity_OR(temperature.FValue_IS(cold))
                     .FVeracity_AND(humidity.FValue_IS(wet)))
     logic.FLogic_THEN(hvacPower, heat, "Somewhat")  # Rule #7
 
-
     logic.FLogic_IF(temperature.FValue_IS(warm))
-    logic.FLogic_THEN(hvacPower, heat, "not")       # Rule #8
-    logic.FLogic_THEN(hvacPower, refresh, "not")    # Rule #9
-
+    logic.FLogic_THEN(hvacPower, heat, "not")  # Rule #8
+    logic.FLogic_THEN(hvacPower, refresh, "not")  # Rule #9
 
     # print the result
 
@@ -176,16 +177,19 @@ def runTest():
     # The default is CENTROID
     print("\nRESULT CENTROID: the power of the air conditionner is " + str(hvacPower))
 
-    print("\nRESULT CENTROID_LOWER: the power of the air conditionner is " + str(hvacPower(None, FuzzyCrispAlgorithm.CENTROID_LOWER)))
+    print("\nRESULT CENTROID_LOWER: the power of the air conditionner is " + str(
+        hvacPower(None, FuzzyCrispAlgorithm.CENTROID_LOWER)))
 
-    print("\nRESULT CENTROID_HIGHER: the power of the air conditionner is " + str(hvacPower(None, FuzzyCrispAlgorithm.CENTROID_HIGHER)))
+    print("\nRESULT CENTROID_HIGHER: the power of the air conditionner is " + str(
+        hvacPower(None, FuzzyCrispAlgorithm.CENTROID_HIGHER)))
 
     print("\nRESULT MEAN: the power of the air conditionner is " + str(hvacPower(None, FuzzyCrispAlgorithm.MEAN)))
 
-    print("\nRESULT MEAN_HIGHER: the power of the air conditionner is " + str(hvacPower(None, FuzzyCrispAlgorithm.MEAN_HIGHER)))
+    print("\nRESULT MEAN_HIGHER: the power of the air conditionner is " + str(
+        hvacPower(None, FuzzyCrispAlgorithm.MEAN_HIGHER)))
 
-    print("\nRESULT MEAN_LOWER: the power of the air conditionner is " + str(hvacPower(None, FuzzyCrispAlgorithm.MEAN_LOWER)))
-
+    print("\nRESULT MEAN_LOWER: the power of the air conditionner is " + str(
+        hvacPower(None, FuzzyCrispAlgorithm.MEAN_LOWER)))
 
 
 runTest()

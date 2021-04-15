@@ -201,7 +201,7 @@ class FuzzyValue:
         """
         v = self.FValue_crispify(False, crispAlgorithm)
         v = round(v * 100) / 100
-        string = v + self.unit
+        string = str(v) + self.unit
         if fuzzySet is not None:
             string = str(string) + " is " + str(fuzzySet.quanfity(self)) + " " + str(fuzzySet)
         return string
