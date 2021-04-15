@@ -1,7 +1,9 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic import *
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyLogicAlgorithm
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import quantify
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FzQuantifier import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyShape import FuzzyShape
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
 
 
 # =========== FUZZY SETS ============
@@ -34,7 +36,7 @@ class FuzzySet:
         if shapeOut is None:
             self.shapeOut = shapeIn
         if plateauMin is None:
-            self.plateauMin = mean([minimum, maximum])
+            plateauMin = mean([minimum, maximum])
         if plateauMax is None:
             plateauMax = mean([minimum, maximum])
 

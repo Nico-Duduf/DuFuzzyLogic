@@ -1,4 +1,7 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
 
 # ========= FUZZY VALUES =============
 
