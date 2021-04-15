@@ -1,7 +1,10 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic import *
+from .fz_math import logistic, inverseLogistic, gaussian, reversedGaussian, inverseGaussian, inverseReversedGaussian, mean
+from .fz_crispalgorithm import FuzzyCrispAlgorithm
+from .fz_quantifier import FuzzyQuantifier
+from .fz_veracity import FuzzyVeracity
+from .fz_logicalgorithm import FuzzyLogicAlgorithm
 
 # ========= FUZZY VALUES =============
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyVeracity
 
 """
 * Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.<br >
@@ -24,8 +27,6 @@ from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyVeracity
  * It is an Array containing Arrays of strings. Each sub-array is the report of one rule, which you can print with <code>.join(newLine)</code> for example.
  */
 """
-
-
 class FuzzyValue:
     def __init__(self, value, unit, algorithm, crispAlgorithm):
         if value is None:

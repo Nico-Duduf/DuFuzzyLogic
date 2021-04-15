@@ -1,10 +1,11 @@
+from .fz_value import FuzzyValue
+from .fz_quantifier import quantify
+from .fz_veracity import FuzzyVeracity
+from .fz_math import logistic, inverseLogistic, gaussian, reversedGaussian, inverseGaussian, inverseReversedGaussian, mean
+from .fz_shape import FuzzyShape
+from .fz_logicalgorithm import FuzzyLogicAlgorithm
+from .fz_quantifier import FuzzyQuantifier
 import math
-
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyValue, FuzzyVeracity
-from DuFuzzyLogic.src.Python.dufuzzylogic.FzQuantifier import quantify
-from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
-from DuFuzzyLogic.src.Python.dufuzzylogic import *
-from DuFuzzyLogic.src.Python.dufuzzylogic.Namespace import *
 
 # =========== FUZZY SETS ============
 
@@ -203,7 +204,7 @@ class FuzzySet:
         elif self.shapeOut == FuzzyShape.REVERSED_GAUSSIAN:
             width = self.maximum - self.plateauMax
             g = inverseReversedGaussian(1 - veracity, 0, 1, self.plateauMax, width)
-            crisp.append(g(1))
+            crisp.append(g[1])
 
         # clamp
         for i in range(0, len(crisp)):

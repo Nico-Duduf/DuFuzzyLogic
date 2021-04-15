@@ -1,7 +1,4 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyLogic
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogic import FuzzyLogic
-from DuFuzzyLogic.src.Python.dufuzzylogic.FzQuantifier import quantify
-from DuFuzzyLogic.src.Python.dufuzzylogic.Namespace import *
+from dufuzzylogic import *
 
 def runTest():
     print("--- FuzzyLogic ---\n \n")

@@ -1,8 +1,9 @@
-from .FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
-from .FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
-from .FuzzyVeracity import FuzzyVeracity
-from .FuzzyValue import FuzzyValue
-from .FuzzySet import FuzzySet
+from .fz_set import FuzzySet
+from .fz_shape import FuzzyShape
+from .fz_value import FuzzyValue
+from .fz_veracity import FuzzyVeracity
+from .fz_logicalgorithm import FuzzyLogicAlgorithm
+from .fz_crispalgorithm import FuzzyCrispAlgorithm
 
 class FuzzyLogic:
 
