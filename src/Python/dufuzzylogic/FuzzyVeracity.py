@@ -1,6 +1,8 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic.Namespace import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
 
 # ========== FUZZY VERACITY ==========
+
+
 
 class FuzzyVeracity:
     """

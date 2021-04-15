@@ -2,23 +2,23 @@ class FuzzyQuantifier():
     """! Enum of available quantifiers. """
 
     ## This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-    IS_NOT = "Not",
+    IS_NOT = "Not"
     ## This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-    LESS = "Less",
+    LESS = "Less"
     ## Slightly
-    DOUBLE_MINUS = "Slightly",
+    DOUBLE_MINUS = "Slightly"
     ## Somewhat
-    MINUS = "Somewhat",
+    MINUS = "Somewhat"
     ## Moderately
-    AVERAGE = "Moderately",
+    AVERAGE = "Moderately"
     ## None
-    NONE = "",
+    NONE = ""
     ## Very
-    PLUS = "Very",
+    PLUS = "Very"
     ## Extremely
-    DOUBLE_PLUS = "Extremely",
+    DOUBLE_PLUS = "Extremely"
     ## This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
-    IS = "Completely",
+    IS = "Completely"
     ## This quantifier is meant to be used for crispification (with {@link FuzzyLogic.SET} or {@link FuzzyValue.SET})
     MORE = "More"
 

@@ -1,8 +1,8 @@
-from .FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
-from .FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
-from .FuzzyVeracity import FuzzyVeracity
-from .FuzzyValue import FuzzyValue
-from .FuzzySet import FuzzySet
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzySet import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
 
 class FuzzyLogic:
 
@@ -39,7 +39,7 @@ class FuzzyLogic:
         """
         return FuzzyVeracity(veracity, self.algorithm)
 
-    def newSet(self, name, extremeValue, referenceValue, shape, shapeAbove, plateauMin, plateauMax):
+    def newSet(self, name, extremeValue, referenceValue, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=0, plateauMax=0):  # Attention : Vérifier les valeurs par défaut...
         """
         Creates a new {@link FuzzySet}.
         @example
@@ -53,13 +53,15 @@ class FuzzyLogic:
         :param name: {string} The unique name of this set (e.g. "hot", "fast", "red", "flower addict"...). <strong>It must be unique!</strong>
         :param extremeValue: property {Number} valueNOT One of the closest value which is not in the set (either above or below).
         :param referenceValue: {Number} valueIS The value which best fits in the set, the most extreme/maximum in the set.
-        :param shape: {FuzzyShape} [shapeBelow=FuzzyShape.LINEAR] The shape (i.e. interpolation or transition) when getting in the set.
-        :param shapeAbove: {FuzzyShape} [shapeAbove=shape] The shape (i.e. interpolation or transition) when getting out of the set. By default, same as shape.
+        :param shapeIn: {FuzzyShape} [shapeBelow=FuzzyShape.LINEAR] The shape (i.e. interpolation or transition) when getting in the set.
+        :param shapeOut: {FuzzyShape} [shapeAbove=shape] The shape (i.e. interpolation or transition) when getting out of the set. By default, same as shape.
         :param plateauMin: {Number} The value above which it is considered completely included. By default, it is at the middle between minimum and maximum.
         :param plateauMax: {Number} The value under which it is considered completely included. By default, it is at the middle between minimum and maximum.
         :return: {FuzzySet} The set.
         """
-        return FuzzySet(name, extremeValue, referenceValue, shape, shapeAbove, plateauMin, plateauMax, self.algorithm)
+        if shapeOut is None:
+            shapeOut = shapeIn
+        return FuzzySet(name, extremeValue, referenceValue, shapeIn, shapeOut, plateauMin, plateauMax, self.algorithm)
 
     def FLogic_IF(self, veracity):
         """

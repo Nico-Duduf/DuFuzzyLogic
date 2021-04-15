@@ -1,5 +1,10 @@
-import math
 
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FzQuantifier import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyShape import FuzzyShape
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
 from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyValue, FuzzyVeracity
 from DuFuzzyLogic.src.Python.dufuzzylogic.FzQuantifier import quantify
 from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *

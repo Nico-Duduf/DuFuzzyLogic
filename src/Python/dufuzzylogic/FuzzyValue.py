@@ -1,4 +1,7 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
+from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
 
 # ========= FUZZY VALUES =============
 from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyVeracity
@@ -203,7 +206,7 @@ class FuzzyValue:
         """
         v = self.FValue_crispify(False, crispAlgorithm)
         v = round(v * 100) / 100
-        string = v + self.unit
+        string = str(v) + self.unit
         if fuzzySet is not None:
             string = str(string) + " is " + str(fuzzySet.quanfity(self)) + " " + str(fuzzySet)
         return string
