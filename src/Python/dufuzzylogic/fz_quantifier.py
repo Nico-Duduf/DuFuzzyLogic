@@ -53,7 +53,7 @@ def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=T
         if inverse:
             v = pow(veracity, 3)
         else:
-            v = pow(veracity, 1 / 3)
+            v = pow(veracity, 1/3)
 
     elif quantifier == FuzzyQuantifier.MINUS:
         if veracity is None:
@@ -77,9 +77,9 @@ def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=T
 
     elif quantifier == FuzzyQuantifier.DOUBLE_PLUS:
         if veracity is None:
-            return pow(0.5, 1 / 3)
+            return pow(0.5, 1/3)
         if inverse:
-            v = pow(veracity, 1 / 3)
+            v = pow(veracity, 1/3)
         else:
             v = pow(veracity, 3)
 

@@ -3,6 +3,8 @@ from .fz_logicalgorithm import FuzzyLogicAlgorithm
 
 # ========== FUZZY VERACITY ==========
 
+
+
 class FuzzyVeracity:
     """
     @class

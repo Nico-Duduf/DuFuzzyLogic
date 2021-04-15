@@ -123,5 +123,5 @@ def mean(values):
     num = len(values)
     result = 0
     for i in range(0, num):
-        result += values[i]
+        result = result + values[i]
     return result / num
