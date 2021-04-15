@@ -1,16 +1,22 @@
+
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FzQuantifier import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyShape import FuzzyShape
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
-
+from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyValue, FuzzyVeracity
+from DuFuzzyLogic.src.Python.dufuzzylogic.FzQuantifier import quantify
+from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
+from DuFuzzyLogic.src.Python.dufuzzylogic import *
+from DuFuzzyLogic.src.Python.dufuzzylogic.Namespace import *
 
 # =========== FUZZY SETS ============
 
+
 class FuzzySet:
-    def __init__(self, name, valueNot, valueIS, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=None,
-                 plateauMax=None, algorithm=FuzzyLogicAlgorithm):  # Vérifier si algo est bien FuzzyLogicAlgo !?
+    def __init__(self, name, valueNot, valueIS, shapeIn=None, shapeOut=None, plateauMin=None,
+                 plateauMax=None, algorithm=None):
         """"
         Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.
         Most of the time you won't need to access the properties nor use the methods of this class, but use the methods of {@link FuzzyLogic}, {@link FuzzyValue}, {@link FuzzyVeracity}
@@ -33,8 +39,10 @@ class FuzzySet:
             minimum = valueNot
             maximum = valueNot + (valueIS - valueNot) * 2
 
+        if shapeIn is None:
+            shapeIn = FuzzyShape.LINEAR
         if shapeOut is None:
-            self.shapeOut = shapeIn
+            shapeOut = shapeIn
         if plateauMin is None:
             plateauMin = mean([minimum, maximum])
         if plateauMax is None:
@@ -49,17 +57,21 @@ class FuzzySet:
         self.plateauMax = plateauMax
         self.algorithm = algorithm
 
-    def FSet_contains(self, value, quantifier=FuzzyQuantifier.NONE):
+    def FSet_contains(self, value, quantifier):
         """
         Checks if a value is contained in the set.
         :param value: {Number|FuzzyValue} The value to test.
         :param quantifier: {FuzzyQuantifier|Number} [quantifier=FuzzyQuantifier.NONE] Checks in which part of the set the value is in.
         :return: {FuzzyVeracity} The veracity.
         """
-        if isinstance(value, FuzzyValue):
+        # if isinstance(value, FuzzyValue):
+        if value is FuzzyValue:
             value = value.FValue_crispify(False)
 
-        if value >= self.plateauMin and value <= self.plateauMax:
+        if quantifier is None:
+            quantifier = FuzzyQuantifier.NONE
+
+        if self.plateauMin <= value <= self.plateauMax:
             return quantify(quantifier, 1, self.algorithm)
 
         elif value < self.plateauMin:
@@ -78,7 +90,7 @@ class FuzzySet:
                     return quantify(quantifier, 0, self.algorithm)
                 else:
                     return quantify(quantifier, (value - self.minimum) / (self.plateauMin - self.minimum),
-                                               self.algorithm)
+                                    self.algorithm)
 
             elif self.shapeIn == FuzzyShape.SIGMOID:
                 mid = (self.plateauMin + self.minimum) / 2
@@ -112,7 +124,7 @@ class FuzzySet:
                     return quantify(quantifier, 0, self.algorithm)
                 else:
                     return quantify(quantifier, 1 - ((value - self.plateauMax) / (self.maximum - self.plateauMax)),
-                                      self.algorithm)
+                                    self.algorithm)
 
             elif self.shapeOut == FuzzyShape.SIGMOID:
                 mid = (self.plateauMax + self.maximum) / 2
@@ -248,7 +260,7 @@ class FuzzySet:
         if self.plateauMin <= val <= self.plateauMax:
             return FuzzyQuantifier.IS
 
-        quantifier = FuzzyQuantifier.IS_NOT        # Attention, c'était FuzzyQuantifier.NOT en js !?
+        quantifier = FuzzyQuantifier.IS_NOT  # Attention, c'était FuzzyQuantifier.NOT en js !?
         veracity = self.FSet_contains(val).veracity
 
         distance = 1

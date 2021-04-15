@@ -4,7 +4,6 @@ from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
 
-
 class FuzzyLogic:
 
     def __init__(self, algorithm=FuzzyLogicAlgorithm.LINEAR, crispAlgorithm=FuzzyCrispAlgorithm.CENTROID):

@@ -1,6 +1,5 @@
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
 
-
 # ========== FUZZY VERACITY ==========
 
 

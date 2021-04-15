@@ -4,7 +4,6 @@ from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyShape import FuzzyShape
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
 
-
 def runTest():
     print("--- FuzzyLogic ---\n \n")
 
@@ -90,7 +89,7 @@ def runTest():
     print("\n[" + str(color) + "] is " + str(quantify(redness, intense)) + " Red")
 
     print("\n \n--- HVAC Example ---\n \n")
-
+    
     logic = FuzzyLogic(FuzzyLogicAlgorithm.HYPERBOLIC)
 
     # Too wet is more than 70%, completely wet is 100%. Constant shape above 100%: it's still too wet!

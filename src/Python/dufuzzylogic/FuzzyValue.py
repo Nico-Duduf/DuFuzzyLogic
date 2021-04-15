@@ -4,7 +4,7 @@ from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
 from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
 
 # ========= FUZZY VALUES =============
-
+from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyVeracity
 
 """
 * Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.<br >
@@ -30,8 +30,11 @@ from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
 
 
 class FuzzyValue:
-    def __init__(self, value=0, unit="", algorithm=FuzzyLogicAlgorithm,
-                 crispAlgorithm=FuzzyCrispAlgorithm):  # Vérifier les valeurs par défauts de algo et crispAlgo
+    def __init__(self, value, unit, algorithm, crispAlgorithm):
+        if value is None:
+            value = 0
+        if unit is None:
+            unit = ""
         self.value = value
         self.unit = unit
         self.sets = []
@@ -62,7 +65,7 @@ class FuzzyValue:
         x = FuzzySet.FSet_contains(self.value, quantifier)
         return x.FVeracity_NEGATE()
 
-    def FValue_SET(self, FuzzySet, quantifier=FuzzyQuantifier.NONE, veracity=None):
+    def FValue_SET(self, FuzzySet, quantifier=None, veracity=None):
         """
         Changes the value according to a new veracity.
         :param FuzzySet: The set.
@@ -70,6 +73,8 @@ class FuzzyValue:
         :param veracity: [quantifier=FuzzyQuantifier.NONE] The quantifier
         :return:
         """
+        if quantifier is None:
+            quantifier = FuzzyQuantifier.NONE
         if veracity is None:
             veracity = FuzzyVeracity(1, self.algorithm)
 
