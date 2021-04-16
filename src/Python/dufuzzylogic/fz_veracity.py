@@ -1,6 +1,5 @@
 from .fz_logicalgorithm import FuzzyLogicAlgorithm
 
-
 # ========== FUZZY VERACITY ==========
 
 

@@ -7,12 +7,12 @@ from .fz_logicalgorithm import FuzzyLogicAlgorithm
 from .fz_quantifier import FuzzyQuantifier
 import math
 
+
 # =========== FUZZY SETS ============
 
-
 class FuzzySet:
-    def __init__(self, name, valueNot, valueIS, shapeIn=None, shapeOut=None, plateauMin=None,
-                 plateauMax=None, algorithm=None):
+    def __init__(self, name, valueNot, valueIS, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=None,
+                 plateauMax=None, algorithm=FuzzyLogicAlgorithm):  # Vérifier si algo est bien FuzzyLogicAlgo !?
         """"
         Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.
         Most of the time you won't need to access the properties nor use the methods of this class, but use the methods of {@link FuzzyLogic}, {@link FuzzyValue}, {@link FuzzyVeracity}
@@ -35,10 +35,8 @@ class FuzzySet:
             minimum = valueNot
             maximum = valueNot + (valueIS - valueNot) * 2
 
-        if shapeIn is None:
-            shapeIn = FuzzyShape.LINEAR
         if shapeOut is None:
-            shapeOut = shapeIn
+            self.shapeOut = shapeIn
         if plateauMin is None:
             plateauMin = mean([minimum, maximum])
         if plateauMax is None:
@@ -53,21 +51,17 @@ class FuzzySet:
         self.plateauMax = plateauMax
         self.algorithm = algorithm
 
-    def FSet_contains(self, value, quantifier):
+    def FSet_contains(self, value, quantifier=FuzzyQuantifier.NONE):
         """
         Checks if a value is contained in the set.
         :param value: {Number|FuzzyValue} The value to test.
         :param quantifier: {FuzzyQuantifier|Number} [quantifier=FuzzyQuantifier.NONE] Checks in which part of the set the value is in.
         :return: {FuzzyVeracity} The veracity.
         """
-        # if isinstance(value, FuzzyValue):
-        if value is FuzzyValue:
+        if isinstance(value, FuzzyValue):
             value = value.FValue_crispify(False)
 
-        if quantifier is None:
-            quantifier = FuzzyQuantifier.NONE
-
-        if self.plateauMin <= value <= self.plateauMax:
+        if value >= self.plateauMin and value <= self.plateauMax:
             return quantify(quantifier, 1, self.algorithm)
 
         elif value < self.plateauMin:
@@ -144,7 +138,6 @@ class FuzzySet:
         :param veracity: {FuzzyVeracity|Number} [veracity=0.5] The veracity
         :return: {Number[]} The list of possible crisp values, ordered from minimum to maximum.
         """
-        global range
         veracity = veracity or 0.5
         if isinstance(veracity, FuzzyVeracity):
             veracity = veracity.veracity
@@ -169,8 +162,8 @@ class FuzzySet:
             else:
                 crisp.append(self.minimum)
         elif self.shapeIn == FuzzyShape.LINEAR:
-            range = self.plateauMin - self.minimum
-            crisp.append(self.minimum + range * veracity)
+            Rang = self.plateauMin - self.minimum
+            crisp.append(self.minimum + Rang * veracity)
         elif self.shapeIn == FuzzyShape.SIGMOID:
             mid = (self.plateauMin + self.minimum) / 2
             crisp.append(inverseLogistic(veracity, mid))  # seulement 2 arguments pour inverseLogistic !?
@@ -192,8 +185,8 @@ class FuzzySet:
             else:
                 crisp.append(self.maximum)
         elif self.shapeOut == FuzzyShape.LINEAR:
-            range = self.maximum - self.plateauMax
-            crisp.append(self.maximum + 1 - (range * veracity))
+            Rang = self.maximum - self.plateauMax
+            crisp.append(self.maximum + 1 - (Rang * veracity))
         elif self.shapeOut == FuzzyShape.SIGMOID:
             mid = (self.plateauMax + self.maximum) / 2
             crisp.append(inverseLogistic(1 - veracity, mid, 0, 1))  # seulement 4 arguments pour inverseLogistic !?
@@ -204,7 +197,7 @@ class FuzzySet:
         elif self.shapeOut == FuzzyShape.REVERSED_GAUSSIAN:
             width = self.maximum - self.plateauMax
             g = inverseReversedGaussian(1 - veracity, 0, 1, self.plateauMax, width)
-            crisp.append(g[1])
+            crisp.append(g(1))
 
         # clamp
         for i in range(0, len(crisp)):
@@ -213,7 +206,7 @@ class FuzzySet:
             if crisp[i] < self.minimum:
                 crisp[i] = self.minimum
 
-        return crisp.sort()
+        return sorted(crisp)
 
     def FSet_crispify(self, quantifier=FuzzyQuantifier.AVERAGE, veracity=0.5):
         """
@@ -223,7 +216,7 @@ class FuzzySet:
         :return: {Number[]} The list of possible crisp values, ordered from minimum to maximum.
         """
         v = None
-        if not veracity:
+        if veracity is None:
             v = quantify(quantifier)
         elif isinstance(veracity, FuzzyVeracity):
             v = veracity.veracity
@@ -256,7 +249,7 @@ class FuzzySet:
         if self.plateauMin <= val <= self.plateauMax:
             return FuzzyQuantifier.IS
 
-        quantifier = FuzzyQuantifier.IS_NOT  # Attention, c'était FuzzyQuantifier.NOT en js !?
+        quantifier = FuzzyQuantifier.IS_NOT        # Attention, c'était FuzzyQuantifier.NOT en js !?
         veracity = self.FSet_contains(val).veracity
 
         distance = 1

@@ -1,6 +1,7 @@
 from .fz_veracity import FuzzyVeracity
 from .fz_logicalgorithm import FuzzyLogicAlgorithm
 
+
 class FuzzyQuantifier():
     """! Enum of available quantifiers. """
 
@@ -30,12 +31,14 @@ class FuzzyQuantifier():
         NONE: "", PLUS: "Very", DOUBLE_PLUS: "Extremely", IS: "Completely", MORE: "More"
     }
 
+
 """
     low-level undocumented method
     adjusts an existing veracity according to the quantifier
     returns a new adjusted veracity
     or returns a factor if veracity is undefined
 """
+
 def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=True):  # Vérifier les valeurs par défaut... :-/
     v = veracity
 
