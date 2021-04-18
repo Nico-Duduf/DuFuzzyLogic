@@ -64,7 +64,7 @@ def runTest():
     print("\n \n--- Color Example ---\n \n")
 
     # Setup
-    logic = FuzzyLogic(FuzzyLogicAlgorithm.HYPERBOLIC, FuzzyCrispAlgorithm.CENTROID)  # là ici, j'ai modifié
+    logic = FuzzyLogic(FuzzyLogicAlgorithm.HYPERBOLIC, FuzzyCrispAlgorithm.CENTROID)  # là ici, j'ai modifié : Si on mets None, None >>> Not Red
 
     # We don't need to worry about values above 255
     intense = logic.newSet("Intense", 0, 255)
@@ -72,7 +72,7 @@ def runTest():
     # The color to test
     color = [128, 200, 10]
     # A value to store the result
-    redness = logic.newValue(None, None)  # A verifier...
+    redness = logic.newValue(None, None)
 
     # Separate channels
     redChannel = logic.newValue(color[0], None)
@@ -158,6 +158,8 @@ def runTest():
 
     logic.FLogic_IF(temperature.FValue_IS(warm, None))
     logic.FLogic_THEN(hvacPower, heat, "not")  # Rule #8
+
+    logic.FLogic_IF(temperature.FValue_IS(warm, None))
     logic.FLogic_THEN(hvacPower, refresh, "not")  # Rule #9
 
     # print the result

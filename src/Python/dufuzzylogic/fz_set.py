@@ -11,7 +11,7 @@ import math
 # =========== FUZZY SETS ============
 
 class FuzzySet:
-    def __init__(self, name, valueNot, valueIS, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=None,
+    def __init__(self, name, valueNot, valueIS, shapeIn=None, shapeOut=None, plateauMin=None,
                  plateauMax=None, algorithm=None):
         """"
         Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.
@@ -28,6 +28,8 @@ class FuzzySet:
         :param algorithm:
         :return:
         """
+        if shapeIn is None:
+            shapeIn = FuzzyShape.LINEAR
         if valueNot > valueIS:
             maximum = valueNot
             minimum = valueNot - (valueNot - valueIS) * 2
@@ -69,7 +71,7 @@ class FuzzySet:
                 return quantify(quantifier, 1, self.algorithm)
 
             elif self.shapeIn == FuzzyShape.SQUARE:
-                minimum = mean((self.plateauMin, self.minimum))  # 2 arguments au lieu d'un seul => créé une liste
+                minimum = mean([self.plateauMin, self.minimum])  # 2 arguments au lieu d'un seul => créé une liste
                 if value >= minimum:
                     return quantify(quantifier, 1, self.algorithm)
                 else:
@@ -103,7 +105,7 @@ class FuzzySet:
                 return quantify(quantifier, 1, self.algorithm)
 
             elif self.shapeOut == FuzzyShape.SQUARE:
-                maximum = mean((self.plateauMax, self.maximum))  # 2 arguments au lieu d'un seul => créé une liste
+                maximum = mean([self.plateauMax, self.maximum])  # 2 arguments au lieu d'un seul => créé une liste
                 if value <= maximum:
                     return quantify(quantifier, 1, self.algorithm)
                 else:
@@ -208,14 +210,14 @@ class FuzzySet:
 
         return sorted(crisp)
 
-    def FSet_crispify(self, quantifier=FuzzyQuantifier.AVERAGE, veracity=0.5):
+    def FSet_crispify(self, quantifier, veracity):
         """
         Gets a list of precise values from the set corresponding to the quantifier
         :param quantifier: {FuzzyModifier} [quantifier=FuzzyModifier.AVERAGE] The quantifier
         :param veracity: {FuzzyVeracity|Number} [veracity=0.5] The veracity
         :return: {Number[]} The list of possible crisp values, ordered from minimum to maximum.
         """
-        v = None
+
         if veracity is None:
             v = quantify(quantifier)
         elif isinstance(veracity, FuzzyVeracity):
