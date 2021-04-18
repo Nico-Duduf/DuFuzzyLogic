@@ -31,8 +31,8 @@ from .fz_logicalgorithm import FuzzyLogicAlgorithm
 
 
 class FuzzyValue:
-    def __init__(self, value=0, unit="", algorithm=FuzzyLogicAlgorithm,
-                 crispAlgorithm=FuzzyCrispAlgorithm):  # Vérifier les valeurs par défauts de algo et crispAlgo
+    def __init__(self, value=0, unit="", algorithm=None,
+                 crispAlgorithm=None):
         self.value = value
         self.unit = unit
         self.sets = []
@@ -119,8 +119,8 @@ class FuzzyValue:
                 q = singleSet.quantifiers[j]
                 # the corresponding values
                 vals = singleSet.FSet_crispify(q, v)
-                val = None
-                ver = None
+                val = 0
+                ver = 0
 
                 if algorithm == FuzzyCrispAlgorithm.CENTROID or algorithm == FuzzyCrispAlgorithm.MEAN:
                     val = mean(vals)
@@ -143,11 +143,11 @@ class FuzzyValue:
                     for iVals in range(0, len(vals), 1):
                         vals[iVals] = round(vals[iVals] * 1000) / 1000
 
-                    valeurs = ",".join(str(vals))
+                    valeurs = "".join(str(vals))
                     reportRule = []
-                    reportRule.append("Rule #" + str(v.ruleNum) + ": Set " + str(singleSet) + " (" + str(q) + ")")
+                    reportRule.append("Rule #" + str(v.ruleNum) + ": Set " + str(singleSet.name) + " (" + str(q) + ")")
                     reportRule.append(
-                        "Gives value: " + str(round(val * 1000) / 1000) + " from these values: [" + valeurs + "]")
+                        "Gives value: " + str(round(val * 1000) / 1000) + " from these values: " + valeurs)
                     reportRule.append("with a veracity of : " + str(round(ver * 1000) / 1000))
                     # reportRule.number = v.ruleNum
                     self.report.append(reportRule)

@@ -40,7 +40,7 @@ class FuzzyLogic:
         """
         return FuzzyVeracity(veracity, self.algorithm)
 
-    def newSet(self, name, extremeValue, referenceValue, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=0, plateauMax=1):  # Attention : Vérifier les valeurs par défaut...
+    def newSet(self, name, extremeValue, referenceValue, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=None, plateauMax=None):
         """
         Creates a new {@link FuzzySet}.
         @example

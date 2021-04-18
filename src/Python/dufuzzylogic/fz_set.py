@@ -12,7 +12,7 @@ import math
 
 class FuzzySet:
     def __init__(self, name, valueNot, valueIS, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=None,
-                 plateauMax=None, algorithm=FuzzyLogicAlgorithm):  # Vérifier si algo est bien FuzzyLogicAlgo !?
+                 plateauMax=None, algorithm=None):
         """"
         Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.
         Most of the time you won't need to access the properties nor use the methods of this class, but use the methods of {@link FuzzyLogic}, {@link FuzzyValue}, {@link FuzzyVeracity}

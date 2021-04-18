@@ -1,6 +1,7 @@
 from .dufuzzylogic import *
 
 
+
 def runTest():
     print("--- FuzzyLogic ---\n \n")
 
@@ -9,7 +10,7 @@ def runTest():
     print("CrispAlgo: " + str(logic.crispAlgorithm))
 
     print("\n \n--- Basic Logic Test ---\n \n")
-    comfortable = logic.newSet("Warm", 15, 20, FuzzyShape.LINEAR, FuzzyShape.LINEAR, 0, 1)
+    comfortable = logic.newSet("Warm", 15, 20, FuzzyShape.LINEAR, FuzzyShape.LINEAR, None, None)
     cold = logic.newSet("Cold", 17, 0, FuzzyShape.CONSTANT, FuzzyShape.GAUSSIAN, None, None)
     hot = logic.newSet("Hot", 23, 35, FuzzyShape.GAUSSIAN, FuzzyShape.CONSTANT, None, None)
 
@@ -63,7 +64,7 @@ def runTest():
     print("\n \n--- Color Example ---\n \n")
 
     # Setup
-    logic = FuzzyLogic(FuzzyLogicAlgorithm.HYPERBOLIC, FuzzyCrispAlgorithm.CENTROID)
+    logic = FuzzyLogic(FuzzyLogicAlgorithm.HYPERBOLIC, FuzzyCrispAlgorithm.CENTROID)  # là ici, j'ai modifié
 
     # We don't need to worry about values above 255
     intense = logic.newSet("Intense", 0, 255)
@@ -163,22 +164,21 @@ def runTest():
 
     print(str(temperature.FValue_toString(None, hot)) + " and " + str(temperature.FValue_toString(None, cold)))
     print(str(humidity.FValue_toString(None, wet)) + " and " + str(humidity.FValue_toString(None, dry)))
-    print("\n")
-    print(str(temperature.FValue_toString(warm, None)))
-    print(str(humidity.FValue_toString(comfortable, None)))
-    print("\n")
-    print("RESULT : the power of the air conditionner is " + str(hvacPower.FValue_toString(FuzzyCrispAlgorithm.CENTROID, None)))
-    print("\n")
+    print("")
+    print(str(temperature.FValue_toString(None, warm)))
+    print(str(humidity.FValue_toString(None, comfortable)))
+    print("")
+    print("RESULT : the power of the air conditionner is " + str(hvacPower.FValue_toString(None, None)))
+    print("")
     print("This is how this result is obtained: \n")
 
     for i in range(0, len(hvacPower.report)):
         print("")
-        #print(str(hvacPower.report[i].join))
         print(str("\n").join(hvacPower.report[i]))
         print("")
 
     # The default is CENTROID
-    print("\nRESULT CENTROID: the power of the air conditionner is " + str(hvacPower.FValue_toString(FuzzyCrispAlgorithm.CENTROID, None)))
+    print("\nRESULT CENTROID: the power of the air conditionner is " + str(hvacPower.FValue_toString(None, None)))
 
     print("\nRESULT CENTROID_LOWER: the power of the air conditionner is " + str(
         hvacPower.FValue_toString(FuzzyCrispAlgorithm.CENTROID_LOWER, None)))
