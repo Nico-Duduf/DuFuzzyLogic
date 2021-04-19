@@ -290,7 +290,8 @@ FuzzySet.prototype.getValues = function ( veracity )
 
     var defaultValue = FzMath.mean( [this.plateauMin, this.plateauMax] );
 
-    if ( this.shapeIn === FuzzyShape.CONSTANT && this.shapeOut === FuzzyShape.CONSTANT ) return [ this.min, this.plateauMin, defaultValue, this.plateauMax, this.max];
+    if ( this.shapeIn === FuzzyShape.CONSTANT && this.shapeOut === FuzzyShape.CONSTANT )
+        return [ this.min, this.plateauMin, defaultValue, this.plateauMax, this.max];
     
     var crisp = [];
     
@@ -483,8 +484,9 @@ function FuzzyValue( value, unit, algorithm, crispAlgorithm )
  */
 FuzzyValue.prototype.IS = function(set, quantifier)
 {
-    var v = set.contains( this, quantifier );
-    return v;
+    if (typeof quantifier === 'undefined') quantifier = FuzzyQuantifier.NONE;
+    var veracity = set.contains( this, quantifier );
+    return veracity;
 }
 
 /**
@@ -546,11 +548,6 @@ FuzzyValue.prototype.crispify = function ( clearSets, algorithm )
     var crisp = 0;
     this.report = [];
 
-    function ruleSorter(a, b)
-    {
-        return a.number - b.number;
-    }
-
     // get all average values
     // and veracities from the sets
     var sumWeights = 0;
@@ -597,7 +594,6 @@ FuzzyValue.prototype.crispify = function ( clearSets, algorithm )
                 reportRule.push( "Rule #" + v.ruleNum +": Set " + set.toString() + " (" + q + ")" );
                 reportRule.push( "Gives value: " + Math.round(val*1000)/1000 + " from these values: [ " + vals.join(", ") + " ]");
                 reportRule.push( "With a veracity of: " + Math.round(ver*1000)/1000 );
-                reportRule.number = v.ruleNum;
                 this.report.push( reportRule );
             }
         }
@@ -605,9 +601,11 @@ FuzzyValue.prototype.crispify = function ( clearSets, algorithm )
             
     if (sumWeights != 0) crisp = crisp / sumWeights;
 
-
-    //sort the report
-    if (this.reportEnabled) this.report.sort(ruleSorter);
+    // sort the report
+    if (this.reportEnabled)
+    {
+        this.report.sort()
+    }
 
     if (clearSets)
     {
@@ -1117,6 +1115,9 @@ FuzzyQuantifier = {
 // or returns a factor if veracity is undefined
 FuzzyLogic.quantify = function( quantifier, veracity, algorithm, inverse)
 {
+    if (typeof inverse === 'undefined') inverse = false;
+    if (typeof algorithm === 'undefined') algorithm = FuzzyLogicAlgorithm.LINEAR;
+
     var v = veracity;
 
     if (quantifier == FuzzyQuantifier.IS_NOT || quantifier == FuzzyQuantifier.LESS)

@@ -43,14 +43,14 @@ class FuzzyValue:
         self.reportEnabled = False
         self.numRules = 0
 
-    def FValue_IS(self, FuzzySet, quantifier):
+    def FValue_IS(self, fuzzySet, quantifier=FuzzyQuantifier.NONE):
         """
         Tests the inclusion of the value in the set
         :param FuzzySet: {FuzzySet} The set which may include the value.
         :param quantifier: {FuzzyQuantifier|string} A quantifier.
         :return: {FuzzyVeracity} The veracity of the inclusion of the value in the set.
         """
-        veracity = FuzzySet.FSet_contains(self, quantifier)
+        veracity = fuzzySet.FSet_contains(self, quantifier)
         return veracity
 
     def FValue_IS_NOT(self, FuzzySet, quantifier):
@@ -105,14 +105,10 @@ class FuzzyValue:
         crisp = 0
         self.report = []
 
-        def ruleSorter(a, b):
-            return a.number - b.number
-
         # get all average values and veracities from the sets
         sumWeights = 0
 
-        for i in range(0, len(self.sets)):
-            singleSet = self.sets[i]
+        for singleSet in self.sets:
             for j in range(0, len(singleSet.veracities)):
                 #  the veracity
                 v = singleSet.veracities[j]
@@ -145,11 +141,10 @@ class FuzzyValue:
 
                     valeurs = "".join(str(vals))
                     reportRule = []
-                    reportRule.append("Rule #" + str(v.ruleNum) + ": Set " + str(singleSet.name) + " (" + str(q) + ")")
+                    reportRule.append("Rule #" + str(v.ruleNum) + ": Set " + singleSet.name + " (" + str(q) + ")")
                     reportRule.append(
                         "Gives value: " + str(round(val * 1000) / 1000) + " from these values: " + valeurs)
                     reportRule.append("with a veracity of : " + str(round(ver * 1000) / 1000))
-                    # reportRule.number = v.ruleNum
                     self.report.append(reportRule)
 
         if sumWeights != 0:

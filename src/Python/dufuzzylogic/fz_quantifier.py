@@ -39,7 +39,7 @@ class FuzzyQuantifier():
     or returns a factor if veracity is undefined
 """
 
-def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm, inverse=True):  # Vérifier les valeurs par défaut... :-/
+def quantify(quantifier, veracity=None, algorithm=FuzzyLogicAlgorithm.LINEAR, inverse=False):
     v = veracity
 
     if quantifier == FuzzyQuantifier.IS_NOT or quantifier == FuzzyQuantifier.LESS:

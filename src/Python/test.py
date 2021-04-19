@@ -1,6 +1,6 @@
-from .dufuzzylogic import *
+# -*- coding: utf-8 -*-
 
-
+from dufuzzylogic import *
 
 def runTest():
     print("--- FuzzyLogic ---\n \n")
@@ -58,7 +58,7 @@ def runTest():
 
             logic.FLogic_IF(temperature.FValue_IS(comfortable, quantifier))
 
-            print(str(quantifier) + " comfortable: " + str(logic.veracity.veracity))
+            print( quantifier + " comfortable: " + str(logic.veracity.veracity))
 
     print("\n===========================")
     print("\n \n--- Color Example ---\n \n")
@@ -122,45 +122,44 @@ def runTest():
     hvacPower.reportEnabled = True
 
     # If it's hot, let's cool down
-    logic.FLogic_IF(temperature.FValue_IS(hot, None))
+    logic.FLogic_IF(temperature.FValue_IS( hot ))
     logic.FLogic_THEN(hvacPower, refresh, None)  # Rule #1
 
     # If it's cold, let's heat up
-    logic.FLogic_IF(temperature.FValue_IS(cold, None))
+    logic.FLogic_IF(temperature.FValue_IS( cold ))
     logic.FLogic_THEN(hvacPower, heat, None)  # Rule #2
 
     # If it's hot and wet, we want to refresh more
-    logic.FLogic_IF(temperature.FValue_IS(hot, None).FVeracity_AND(humidity.FValue_IS(wet, None)))
+    logic.FLogic_IF(temperature.FValue_IS( hot ).FVeracity_AND(humidity.FValue_IS(wet)))
     logic.FLogic_THEN(hvacPower, refresh, "More")  # Rule #3
 
     # If it's cold and wet, we want to heat more
-    logic.FLogic_IF(temperature.FValue_IS(cold, None).FVeracity_AND(humidity.FValue_IS(wet, None)))
+    logic.FLogic_IF(temperature.FValue_IS( cold ).FVeracity_AND(humidity.FValue_IS(wet)))
     logic.FLogic_THEN(hvacPower, heat, "More")  # Rule #4
 
     # If it's dry, we lower the power (because we don't want the hvac to make the air even drier)
 
     # If it's cold but not too cold and it is dry, we want to heat less to save energy
-    logic.FLogic_IF(temperature.FValue_IS(cold, None)
-                    .FVeracity_AND(temperature.FValue_IS_NOT(cold, "Extremly"))
-                    .FVeracity_AND(humidity.FValue_IS(dry, None)))
-    logic.FLogic_THEN(hvacPower, heat, "Less")  # Rule #5
+    logic.FLogic_IF(
+        temperature.FValue_IS( cold )
+        .FVeracity_AND(temperature.FValue_IS_NOT( cold, "Extremely" ))
+        .FVeracity_AND(humidity.FValue_IS(dry )))
+    logic.FLogic_THEN( hvacPower, heat, "Less" )  # Rule #5
 
     # If it's hot but not too hot, and it is dry, we want to refresh less to save energy
-    logic.FLogic_IF(temperature.FValue_IS(hot, None)
-                    .FVeracity_AND(temperature.FValue_IS_NOT(hot, "Extremly"))
-                    .FVeracity_AND(humidity.FValue_IS(dry, None)))
+    logic.FLogic_IF(temperature.FValue_IS( hot )
+                    .FVeracity_AND(temperature.FValue_IS_NOT(hot, "Extremely"))
+                    .FVeracity_AND(humidity.FValue_IS(dry)))
     logic.FLogic_THEN(hvacPower, refresh, "Less")  # Rule #6
 
     logic.FLogic_IF(temperature.FValue_IS(warm, "very")
-                    .FVeracity_OR(temperature.FValue_IS(cold, None))
-                    .FVeracity_AND(humidity.FValue_IS(wet, None)))
+                    .FVeracity_OR(temperature.FValue_IS(cold))
+                    .FVeracity_AND(humidity.FValue_IS(wet)))
     logic.FLogic_THEN(hvacPower, heat, "Somewhat")  # Rule #7
 
-    logic.FLogic_IF(temperature.FValue_IS(warm, None))
-    logic.FLogic_THEN(hvacPower, heat, "not")  # Rule #8
-
-    logic.FLogic_IF(temperature.FValue_IS(warm, None))
+    logic.FLogic_IF(temperature.FValue_IS( warm ))
     logic.FLogic_THEN(hvacPower, refresh, "not")  # Rule #9
+    logic.FLogic_THEN(hvacPower, heat, "not")  # Rule #9
 
     # print the result
 
@@ -176,7 +175,7 @@ def runTest():
 
     for i in range(0, len(hvacPower.report)):
         print("")
-        print(str("\n").join(hvacPower.report[i]))
+        print( "\n".join(hvacPower.report[i]) )
         print("")
 
     # The default is CENTROID
