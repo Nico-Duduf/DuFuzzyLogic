@@ -1,4 +1,4 @@
-# Python
+# JavaScript
 
 ## Introduction
 
