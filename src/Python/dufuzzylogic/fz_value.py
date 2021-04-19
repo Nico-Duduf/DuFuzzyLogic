@@ -1,10 +1,11 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic.FzMath import *
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyQuantifier import FuzzyQuantifier
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
+from .fz_math import logistic, inverseLogistic, gaussian, reversedGaussian, inverseGaussian, inverseReversedGaussian, mean
+from .fz_crispalgorithm import FuzzyCrispAlgorithm
+from .fz_quantifier import FuzzyQuantifier
+from .fz_veracity import FuzzyVeracity
+from .fz_logicalgorithm import FuzzyLogicAlgorithm
 
 # ========= FUZZY VALUES =============
-from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyVeracity
+
 
 """
 * Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.<br >
@@ -30,11 +31,8 @@ from DuFuzzyLogic.src.Python.dufuzzylogic import FuzzyVeracity
 
 
 class FuzzyValue:
-    def __init__(self, value, unit, algorithm, crispAlgorithm):
-        if value is None:
-            value = 0
-        if unit is None:
-            unit = ""
+    def __init__(self, value=0, unit="", algorithm=None,
+                 crispAlgorithm=None):
         self.value = value
         self.unit = unit
         self.sets = []
@@ -65,7 +63,7 @@ class FuzzyValue:
         x = FuzzySet.FSet_contains(self.value, quantifier)
         return x.FVeracity_NEGATE()
 
-    def FValue_SET(self, FuzzySet, quantifier=None, veracity=None):
+    def FValue_SET(self, FuzzySet, quantifier=FuzzyQuantifier.NONE, veracity=None):
         """
         Changes the value according to a new veracity.
         :param FuzzySet: The set.
@@ -73,8 +71,6 @@ class FuzzyValue:
         :param veracity: [quantifier=FuzzyQuantifier.NONE] The quantifier
         :return:
         """
-        if quantifier is None:
-            quantifier = FuzzyQuantifier.NONE
         if veracity is None:
             veracity = FuzzyVeracity(1, self.algorithm)
 
@@ -82,10 +78,10 @@ class FuzzyValue:
         veracity.ruleNum = self.numRules
 
         # Check if this set is already here
-        for i in range(0, len(self.sets), 1):
+        for i in range(0, len(self.sets)):
             if FuzzySet.name == self.sets[i].name:
                 self.sets[i].quantifiers.append(quantifier)
-                self.sets[i].veracities.appends(veracity)
+                self.sets[i].veracities.append(veracity)
                 return
 
         # Otherwise, add it
@@ -114,24 +110,24 @@ class FuzzyValue:
 
         # get all average values and veracities from the sets
         sumWeights = 0
-        for i in self.sets:  # for singleSet in self.sets: ???
+
+        for i in range(0, len(self.sets)):
             singleSet = self.sets[i]
-            for j in range(0, len(singleSet.veracities), 1):
+            for j in range(0, len(singleSet.veracities)):
                 #  the veracity
                 v = singleSet.veracities[j]
                 q = singleSet.quantifiers[j]
                 # the corresponding values
-                vals = singleSet.crispify(q, v)
-
-                val = None
-                ver = None
+                vals = singleSet.FSet_crispify(q, v)
+                val = 0
+                ver = 0
 
                 if algorithm == FuzzyCrispAlgorithm.CENTROID or algorithm == FuzzyCrispAlgorithm.MEAN:
                     val = mean(vals)
                 elif algorithm == FuzzyCrispAlgorithm.CENTROID_LOWER or algorithm == FuzzyCrispAlgorithm.MEAN_LOWER:
                     val = vals[0]
                 elif algorithm == FuzzyCrispAlgorithm.CENTROID_HIGHER or algorithm == FuzzyCrispAlgorithm.MEAN_HIGHER:
-                    val = vals[len(vals - 1)]
+                    val = vals[len(vals)-1]
 
                 if algorithm == FuzzyCrispAlgorithm.CENTROID or algorithm == FuzzyCrispAlgorithm.CENTROID_LOWER or algorithm == FuzzyCrispAlgorithm.CENTROID_HIGHER:
                     crisp += val * v.veracity
@@ -147,13 +143,13 @@ class FuzzyValue:
                     for iVals in range(0, len(vals), 1):
                         vals[iVals] = round(vals[iVals] * 1000) / 1000
 
+                    valeurs = "".join(str(vals))
                     reportRule = []
-                    reportRule.append("Rule #" + v.ruleNum + ": Set " + str(singleSet) + " (" + str(q) + ")")
+                    reportRule.append("Rule #" + str(v.ruleNum) + ": Set " + str(singleSet.name) + " (" + str(q) + ")")
                     reportRule.append(
-                        "Gives value: " + str(round(val * 1000) / 1000) + " from these values: [" + ",".join(
-                            vals) + "]")
+                        "Gives value: " + str(round(val * 1000) / 1000) + " from these values: " + valeurs)
                     reportRule.append("with a veracity of : " + str(round(ver * 1000) / 1000))
-                    reportRule.number = v.ruleNum
+                    # reportRule.number = v.ruleNum
                     self.report.append(reportRule)
 
         if sumWeights != 0:
@@ -173,19 +169,19 @@ class FuzzyValue:
 
     def FValue_toNumber(self, clearSets, algorithm):
         """
-        This is an alias for {@link FuzzyValue.prototype.crispify};     
+        This is an alias for {@link FuzzyValue.prototype.crispify};
         """
         return self.FValue_crispify(clearSets, algorithm)
 
     def FValue_toFloat(self, clearSets, algorithm):
         """
-        This is an alias for {@link FuzzyValue.prototype.crispify};     
+        This is an alias for {@link FuzzyValue.prototype.crispify};
         """
         return self.FValue_crispify(clearSets, algorithm)
 
     def FValue_defuzzify(self, clearSets, algorithm):
         """
-        This is an alias for {@link FuzzyValue.prototype.crispify};     
+        This is an alias for {@link FuzzyValue.prototype.crispify};
         """
         return self.FValue_crispify(clearSets, algorithm)
 
@@ -208,5 +204,5 @@ class FuzzyValue:
         v = round(v * 100) / 100
         string = str(v) + self.unit
         if fuzzySet is not None:
-            string = str(string) + " is " + str(fuzzySet.quanfity(self)) + " " + str(fuzzySet)
+            string = str(string) + " is " + str(fuzzySet.FSet_quantify(self)) + " " + str(fuzzySet.name)
         return string

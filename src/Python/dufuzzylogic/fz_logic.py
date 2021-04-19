@@ -1,8 +1,9 @@
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzySet import *
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyValue import *
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyVeracity import *
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyLogicAlgorithm import FuzzyLogicAlgorithm
-from DuFuzzyLogic.src.Python.dufuzzylogic.FuzzyCrispAlgorithm import FuzzyCrispAlgorithm
+from .fz_set import FuzzySet
+from .fz_shape import FuzzyShape
+from .fz_value import FuzzyValue
+from .fz_veracity import FuzzyVeracity
+from .fz_logicalgorithm import FuzzyLogicAlgorithm
+from .fz_crispalgorithm import FuzzyCrispAlgorithm
 
 class FuzzyLogic:
 
@@ -39,7 +40,7 @@ class FuzzyLogic:
         """
         return FuzzyVeracity(veracity, self.algorithm)
 
-    def newSet(self, name, extremeValue, referenceValue, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=0, plateauMax=0):  # Attention : Vérifier les valeurs par défaut...
+    def newSet(self, name, extremeValue, referenceValue, shapeIn=FuzzyShape.LINEAR, shapeOut=None, plateauMin=None, plateauMax=None):
         """
         Creates a new {@link FuzzySet}.
         @example
