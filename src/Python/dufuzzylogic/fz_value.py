@@ -43,27 +43,27 @@ class FuzzyValue:
         self.reportEnabled = False
         self.numRules = 0
 
-    def FValue_IS(self, fuzzySet, quantifier=FuzzyQuantifier.NONE):
+    def IS(self, fuzzySet, quantifier=FuzzyQuantifier.NONE):
         """
         Tests the inclusion of the value in the set
         :param FuzzySet: {FuzzySet} The set which may include the value.
         :param quantifier: {FuzzyQuantifier|string} A quantifier.
         :return: {FuzzyVeracity} The veracity of the inclusion of the value in the set.
         """
-        veracity = fuzzySet.FSet_contains(self, quantifier)
+        veracity = fuzzySet.contains(self, quantifier)
         return veracity
 
-    def FValue_IS_NOT(self, FuzzySet, quantifier):
+    def IS_NOT(self, FuzzySet, quantifier):
         """
         Tests the exclusion of the value in the set
         :param FuzzySet: {FuzzySet} The set which may (not) include the value.
         :param quantifier: {FuzzyQuantifier|string} A quantifier.
         :return: {FuzzyVeracity} The veracity of the exclusion of the value in the set.
         """
-        x = FuzzySet.FSet_contains(self.value, quantifier)
-        return x.FVeracity_NEGATE()
+        x = FuzzySet.contains(self.value, quantifier)
+        return x.NEGATE()
 
-    def FValue_SET(self, FuzzySet, quantifier=FuzzyQuantifier.NONE, veracity=None):
+    def SET(self, FuzzySet, quantifier=FuzzyQuantifier.NONE, veracity=None):
         """
         Changes the value according to a new veracity.
         :param FuzzySet: The set.
@@ -89,7 +89,7 @@ class FuzzyValue:
         FuzzySet.veracities = [veracity]
         self.sets.append(FuzzySet)
 
-    def FValue_crispify(self, clearSets=True, algorithm=None):
+    def crispify(self, clearSets=True, algorithm=None):
         """
         Computes a crisp value depending on the inclusions which have been set before using {@link FuzzyValue.SET}.
         :param clearSets: {bool} [clearSets=true] When crispifying, the sets added with {@link FuzzyValue.SET} are cleared, this means changes made before the call to crispify() will be lost in subsequent calls. Set this parameter to false to keep these previous changes.
@@ -114,7 +114,7 @@ class FuzzyValue:
                 v = singleSet.veracities[j]
                 q = singleSet.quantifiers[j]
                 # the corresponding values
-                vals = singleSet.FSet_crispify(q, v)
+                vals = singleSet.crispify(q, v)
                 val = 0
                 ver = 0
 
@@ -162,42 +162,42 @@ class FuzzyValue:
 
         return crisp
 
-    def FValue_toNumber(self, clearSets, algorithm):
+    def toNumber(self, clearSets, algorithm):
         """
         This is an alias for {@link FuzzyValue.prototype.crispify};
         """
-        return self.FValue_crispify(clearSets, algorithm)
+        return self.crispify(clearSets, algorithm)
 
-    def FValue_toFloat(self, clearSets, algorithm):
+    def toFloat(self, clearSets, algorithm):
         """
         This is an alias for {@link FuzzyValue.prototype.crispify};
         """
-        return self.FValue_crispify(clearSets, algorithm)
+        return self.crispify(clearSets, algorithm)
 
-    def FValue_defuzzify(self, clearSets, algorithm):
+    def defuzzify(self, clearSets, algorithm):
         """
         This is an alias for {@link FuzzyValue.prototype.crispify};
         """
-        return self.FValue_crispify(clearSets, algorithm)
+        return self.crispify(clearSets, algorithm)
 
-    def FValue_quantify(self, fuzzySet):
+    def quantify(self, fuzzySet):
         """
         Returns the closest quantifier for this value in this set
         :param fuzzySet: {FuzzySet} The set
         :return: {FuzzyQuantifier} The quantifier
         """
-        return fuzzySet.FSet_quantify(self)
+        return fuzzySet.quantify(self)
 
-    def FValue_toString(self, crispAlgorithm, fuzzySet):
+    def toString(self, crispAlgorithm, fuzzySet):
         """
         Returns a string representation of the value with its unit (if any)
         :param crispAlgorithm: {FuzzyCrispAlgorithm} [crispAlgorithm] The algorithm to use for crispification before returning the string. Uses the algorithm set when creating the {@link FuzzyLogic} instance by default.
         :param fuzzySet: {FuzzySet} [set] A set to quantify the value
         :return: {string} The description of the value
         """
-        v = self.FValue_crispify(False, crispAlgorithm)
+        v = self.crispify(False, crispAlgorithm)
         v = round(v * 100) / 100
         string = str(v) + self.unit
         if fuzzySet is not None:
-            string = str(string) + " is " + str(fuzzySet.FSet_quantify(self)) + " " + str(fuzzySet.name)
+            string = str(string) + " is " + str(fuzzySet.quantify(self)) + " " + str(fuzzySet.name)
         return string

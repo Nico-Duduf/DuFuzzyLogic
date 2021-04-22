@@ -64,7 +64,7 @@ class FuzzyLogic:
             shapeOut = shapeIn
         return FuzzySet(name, extremeValue, referenceValue, shapeIn, shapeOut, plateauMin, plateauMax, self.algorithm)
 
-    def FLogic_IF(self, veracity):
+    def IF(self, veracity):
         """
         This function internally stores the veracity to be used with {@link FuzzyLogic.THEN}.
          @example
@@ -83,7 +83,7 @@ class FuzzyLogic:
         self.veracity = veracity
         return veracity
 
-    def FLogic_THEN(self, value, fuzzySet, quantifier):
+    def THEN(self, value, fuzzySet, quantifier):
         """
         This function sets a value in a new set, using the veracity resulting from the previous call to {@link FuzzyLogic.IS}.
          It can be called several times after any call to IF.
@@ -106,4 +106,4 @@ class FuzzyLogic:
         :param quantifier: A quantifier to apply for setting the value.
         :return:
         """
-        value.FValue_SET(fuzzySet, quantifier, self.veracity)
+        value.SET(fuzzySet, quantifier, self.veracity)

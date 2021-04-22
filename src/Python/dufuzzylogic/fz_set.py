@@ -53,7 +53,7 @@ class FuzzySet:
         self.plateauMax = plateauMax
         self.algorithm = algorithm
 
-    def FSet_contains(self, value, quantifier=FuzzyQuantifier.NONE):
+    def contains(self, value, quantifier=FuzzyQuantifier.NONE):
         """
         Checks if a value is contained in the set.
         :param value: {Number|FuzzyValue} The value to test.
@@ -61,7 +61,7 @@ class FuzzySet:
         :return: {FuzzyVeracity} The veracity.
         """
         if isinstance(value, FuzzyValue):
-            value = value.FValue_crispify(False)
+            value = value.crispify(False)
 
         if value >= self.plateauMin and value <= self.plateauMax:
             return quantify(quantifier, 1, self.algorithm)
@@ -134,7 +134,7 @@ class FuzzySet:
             else:
                 return quantify(quantifier, 0, self.algorithm)
 
-    def FSet_getValues(self, veracity=0.5):
+    def getValues(self, veracity=0.5):
         """
         Gets a list of precise values from the set corresponding to the given veracity.
         :param veracity: {FuzzyVeracity|Number} [veracity=0.5] The veracity
@@ -209,7 +209,7 @@ class FuzzySet:
 
         return sorted(crisp)
 
-    def FSet_crispify(self, quantifier=FuzzyQuantifier.AVERAGE, veracity=None):
+    def crispify(self, quantifier=FuzzyQuantifier.AVERAGE, veracity=None):
         """
         Gets a list of precise values from the set corresponding to the quantifier
         :param quantifier: {FuzzyModifier} [quantifier=FuzzyModifier.AVERAGE] The quantifier
@@ -225,9 +225,9 @@ class FuzzySet:
             v = veracity
 
         v = quantify(quantifier, v, self.algorithm, True).veracity
-        return self.FSet_getValues(v)
+        return self.getValues(v)
 
-    def FSet_quantify(self, value):
+    def quantify(self, value):
         """
         Gets the closest quantifier to this value
         :param value: {Number|FuzzyValue} The value to quantify
@@ -235,7 +235,7 @@ class FuzzySet:
         """
         if not isinstance(value, FuzzyValue):
             value = FuzzyValue(value, "", self.algorithm)
-        val = value.FValue_crispify(False)
+        val = value.crispify(False)
 
         if self.shapeIn == FuzzyShape.CONSTANT and self.shapeOut == FuzzyShape.CONSTANT:
             return FuzzyQuantifier.IS
@@ -251,7 +251,7 @@ class FuzzySet:
             return FuzzyQuantifier.IS
 
         quantifier = FuzzyQuantifier.IS_NOT        # Attention, c'était FuzzyQuantifier.NOT en js !?
-        veracity = self.FSet_contains(val).veracity
+        veracity = self.contains(val).veracity
 
         distance = 1
         for i in FuzzyQuantifier.FuzzyQuantifierList:
@@ -264,7 +264,7 @@ class FuzzySet:
 
         return quantifier
 
-    def FSet_toString(self):
+    def toString(self):
         """
         Gets the name of this set.
         :return: {string} The name of the set.
