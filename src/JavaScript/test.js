@@ -197,7 +197,7 @@ function runTests() {
     logic.THEN( hvacPower, heat, "Somewhat" ); // Rule #7
 
     logic.IF( temperature.IS( warm ) );
-    logic.THEN( hvacPower, heat, "not"); // Rule #8
+    logic.THEN( hvacPower, heat, "not"); // Rule #9
     logic.THEN( hvacPower, refresh, "not"); // Rule #9
 
     // print the result
