@@ -518,8 +518,10 @@ FuzzyValue.prototype.SET = function ( set,  quantifier, veracity )
     // Check if this set is already here
     for (var i = 0, num = this.sets.length; i < num; i++)
     {
-        if (set.name == this.sets[i].name) 
+        var s = this.sets[i].fuzzyset;
+        if (set.name == s.name) 
         {
+            
             this.sets[i].quantifiers.push(quantifier);
             this.sets[i].veracities.push(veracity);
             return;
@@ -527,9 +529,11 @@ FuzzyValue.prototype.SET = function ( set,  quantifier, veracity )
     }
 
     //otherwise, add it
-    set.quantifiers = [quantifier];
-    set.veracities = [veracity];
-    this.sets.push( set );
+    var s = {};
+    s.fuzzyset = fuzzyset;
+    s.quantifiers = [quantifier];
+    s.veracities = [veracity];
+    this.sets.push( s );
 }
 
 /**
