@@ -45,6 +45,7 @@ nav:
         - JavaScript Reference: https://dufuzzylogic.rxlab.io/js-reference/index.html
         - After Effects Expressions: https://github.com/Rainbox-dev/DuAEF_ExpressionLib
     - ...:
+        - All the RxLab documents: http://rxlab.guide
         - License:
             - GNU GPLv3: gnu-gpl.md
             - Documentation license: doc-license.md
