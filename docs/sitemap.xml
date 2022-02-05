@@ -1,78 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-     <loc>http://rainboxlab.org/index.html</loc>
-     <lastmod>2020-04-19</lastmod>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/index.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Home.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Home.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Advantages.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Advantages.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Fuzzification.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Fuzzification.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Shapes.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Shapes.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Rules.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Rules.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Quantifiers.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Quantifiers.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Crispification.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Crispification.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Redness.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Redness.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/AirConditioning.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/AirConditioning.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/Libraries.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/Libraries.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc></loc>
-     
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/gnu-gpl.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc></loc>
-     
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/gnu-gpl.html</loc>
-     <lastmod>2020-04-19</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>http://rainboxlab.org/doc-license.html</loc>
-     <lastmod>2020-04-19</lastmod>
+    </url><url>
+     <loc>https://rxlaboratory.org/tools/dufuzzylogic/doc-license.html</loc>
+     <lastmod>2022-02-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -1,199 +1,403 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta name="author" content="Nicolas Dufresne and contributors">
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Advantages - DuFuzzyLogic Documentation</title>
-  <link rel="stylesheet" href="css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="style.css" rel="stylesheet">
-  <link href="video.css" rel="stylesheet">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Advantages";
-    var mkdocs_page_input_path = "Advantages.md";
-    var mkdocs_page_url = "/Advantages.html";
-  </script>
-  
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The DuFuzzyLogic documentation">
+    <meta name="author" content="Nicolas Dufresne and contributors">
+    <link rel="canonical" href="https://rxlaboratory.org/tools/dufuzzylogic/Advantages.html">
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    
+    <title>Advantages - DuFuzzyLogic Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="css/base.min.css" rel="stylesheet">
+    <link href="css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+        
+    
+    <link href="style.csss" rel="stylesheet">
+    <link href="video.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
 
-  <div class="wy-grid-for-nav">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="icon icon-home"> DuFuzzyLogic Documentation</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="index.html">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Fuzzy Logic</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="Home.html">Introduction</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="Advantages.html">Advantages</a>
-    <ul class="subnav">
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             
-    <li class="toctree-l3"><a href="#advantages">Advantages</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#principle">Principle</a></li>
-        
-        </ul>
-    
 
-    </ul>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="Fuzzification.html">Fuzzification</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="Shapes.html">Shapes</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Rules</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="Rules.html">Logic operators</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="Quantifiers.html">Quantifiers</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="Crispification.html">Crispification</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Examples (JavaScript)</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="Redness.html">Color Redness</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="AirConditioning.html">HVAC Complex example</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="Libraries.html">Existing Libraries</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="https://dufuzzylogic-docs.rainboxlab.org/js/index.html">JavaScript Reference</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="https://github.com/Rainbox-dev/DuAEF_ExpressionLib">After Effects Expressions</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">License</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="gnu-gpl.html">GNU GPLv3</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="doc-license.html">Documentation license</a>
-                </li>
-    </ul>
-	    </li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
+            <!-- Main title -->
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+            
+              <a class="navbar-brand" href=".">DuFuzzyLogic Documentation</a>
+            
+        </div>
 
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">DuFuzzyLogic Documentation</a>
-      </nav>
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="index.html">1.0.0</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fuzzy Logic <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="Home.html">Introduction</a>
+</li>
 
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-    
-      
+                        
+                            
+<li class="active">
+    <a href="Advantages.html">Advantages</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="Fuzzification.html">Fuzzification</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="Shapes.html">Shapes</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Rules</a>
+    <ul class="dropdown-menu">
         
-          <li>Fuzzy Logic &raquo;</li>
+            
+<li >
+    <a href="Rules.html">Logic operators</a>
+</li>
+
         
-      
-    
-    <li>Advantages</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/Nico-Duduf/DuFuzzyLogic/tree/master/src-docs/docs/Advantages.md"> Edit on Dufuzzylogic-Docs</a>
-      
-    </li>
-  </ul>
-  <hr/>
+            
+<li >
+    <a href="Quantifiers.html">Quantifiers</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="Crispification.html">Crispification</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Examples (JavaScript)</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Redness.html">Color Redness</a>
+</li>
+
+        
+            
+<li >
+    <a href="AirConditioning.html">HVAC Complex example</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="Libraries.html">Existing Libraries</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="https://dufuzzylogic.rxlab.io/js-reference/index.html">JavaScript Reference</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="https://github.com/Rainbox-dev/DuAEF_ExpressionLib">After Effects Expressions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">License</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="gnu-gpl.html">GNU GPLv3</a>
+</li>
+
+        
+            
+<li >
+    <a href="doc-license.html">Documentation license</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="https://rainboxlab.org/about/contact/">Contact</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="https://rainboxlab.org/about/donate/">Donate</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="Home.html">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="Fuzzification.html">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Nico-Duduf/DuFuzzyLogic/edit/master/src-docs/docs/Advantages.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
 </div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="advantages">Advantages</h1>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div id="side-menu">
+    <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
+        <!-- Main navigation -->
+        <ul class="nav bs-sidenav">
+        
+        
+            <li >
+                <a href="index.html">1.0.0</a>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button active-collapse-button">Fuzzy Logic</button>
+                <ul class="collapsible-content collapsible-content-active">
+                    
+                        
+                        <li class="second-level "><a href="Home.html">Introduction</a></li>
+                        
+                    
+                        
+                        <li class="second-level active"><a href="Advantages.html">Advantages</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="Fuzzification.html">Fuzzification</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="Shapes.html">Shapes</a></li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">Rules</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="Rules.html">Logic operators</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="Quantifiers.html">Quantifiers</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="Crispification.html">Crispification</a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">API</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">Examples (JavaScript)</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="Redness.html">Color Redness</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="AirConditioning.html">HVAC Complex example</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="Libraries.html">Existing Libraries</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="https://dufuzzylogic.rxlab.io/js-reference/index.html">JavaScript Reference</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="https://github.com/Rainbox-dev/DuAEF_ExpressionLib">After Effects Expressions</a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">...</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">License</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="gnu-gpl.html">GNU GPLv3</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="doc-license.html">Documentation license</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="https://rainboxlab.org/about/contact/">Contact</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="https://rainboxlab.org/about/donate/">Donate</a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        </ul>
+    </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#advantages">Advantages</a></li>
+                <li class="second-level"><a href="#principle">Principle</a></li>
+                    
+        </ul>
+    </div>
+    <div class="footer-meta"></div>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="advantages">Advantages</h1>
 <p><strong>These rules are very intuitive and very easy to use</strong>, as the implementation of the logic can be very <strong>close to natural language</strong>.</p>
 <p>For that matter, it seems Fuzzy Logic are much closer to how we actually reason, think, and make deductions in every day life than simple Boolean logic with only &ldquo;yes&rdquo; or &ldquo;no&rdquo; answers; life is analogical, not binary, and so are our thoughts.</p>
 <p>You will also notice that there is no need for the <em>Else</em> word anymore, and that combining a lot of rules makes a system both very resilient and precise. Thus, when a lot of rules are used, <strong>Fuzzy Logic is very resistant to mistakes, oversights or imprecision</strong>.</p>
@@ -205,56 +409,115 @@
 <li>Input variables are <em>crisp</em> values, so the first step is to turn them into <em>fuzzy</em> values which can be quantified, and thus used in conditions and rules. Let&rsquo;s call this <strong><em>Fuzzification</em></strong>.</li>
 <li>Rules have to be defined to control output values. This is the actual <strong><em>Logic</em></strong> step.</li>
 <li>Results have to be converted back from <em>fuzzy</em> values, the output of the rules, to actual <em>crisp</em> values. This can be called <em>De-Fuzzification</em> or <strong><em>Crispification</em></strong>.</li>
-</ol>
-              
+</ol></div>
+        
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="Home.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="Fuzzification.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Fuzzification.html" class="btn btn-neutral float-right" title="Fuzzification">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="Home.html" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+        
     </div>
-  
 
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
     
-      <p>Copyright © 2020 Nicolas Dufresne</p>
-    
-  </div>
+      <footer class="col-md-12 text-center">
+          
+<div></div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-      
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "."</script>
+    
+    <script src="js/base.js"></script>
+    <script src="video.js"></script>
+    <script src="meta.js"></script>
+    <script src="collapser.js"></script>
+    <script src="search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="Home.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="Fuzzification.html" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="video.js" defer></script>
-      <script src="search/main.js" defer></script>
+    </body>
 
-</body>
 </html>

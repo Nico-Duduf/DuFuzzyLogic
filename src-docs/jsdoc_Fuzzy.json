@@ -14,16 +14,19 @@
     "templates": {
         "cleverLinks": false,
         "monospaceLinks": true,
-        "copyright"             : "Copyright (c) 2020 Nicolas Dufresne and contributors",
+        "copyright"             : "Copyright (c) 2020-2022 Nicolas Dufresne and contributors",
         "includeDate"           : true,
-        "theme"                 : "slate",
-        "collapseSymbols"       : "false",
-        "syntaxTheme"           : "dark",
         "search"                : "true"
     },
+    "linenums": true,
+	"meta": {
+        "title": "DuFuzzyLogic",
+        "description": "A Fuzzy Logic Implementation",
+        "keyword": "Javascript, Python, Fuzzy Logic, Logic"
+    },
 	"opts": {
-        "template": "node_modules/tui-jsdoc-template",
+        "template": "node_modules/jaguarjs-jsdoc",
 		"recurse": false,
-        "destination": "../docs/js"
+        "destination": "../docs/js-reference"
     }
 }

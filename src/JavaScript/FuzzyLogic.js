@@ -669,8 +669,21 @@ FuzzyValue.prototype.toString = function( set, crispAlgorithm )
  * @class
  * @classdesc FuzzyVeracity is the fuzzy equivalent of a crisp boolean in boolean logic. It represents the result of logical operations (IS, AND, OR...).<br />
  * Its value can vary in the range [0.0, 1.0], 0.0 being the equivalent of "false" and 1.0 of "true".<br />
+ * You can use it without other fuzzy logic components for simple cases, where you just need to combine several input values (ratios) to get a single output ratio.<br />
  * You can acces logic operators through instances of this class, which enable fluent syntax for rules (Except IS and IS_NOT which are members of {@link FuzzyValue}).<br />
  * Operators are methods in upper case.
+ * @example
+ * // A first "veracity", which usually is a specific input variable, converted to a ratio in [0.0, 1.0]
+ * var firstValue = new FuzzyVeracity(0.2)
+ * // A second "veracity"
+ * var secondValue = new FuzzyVeracity(0.7);
+ * // Combine both values to get a new ratio
+ * var result = firstValue.AND( secondValue );
+ * var outputRatio = result.veracity;
+ * // The default algorithm is Zadeh's method, which is linear.
+ * // Using an hyperbolic algorrithm may yield more intuitive and fine results, pass it to all FuzzyVeracity constructor:
+ * var firstValue = new FuzzyVeracity(0.2, FuzzyLogicAlgorithm.HYPERBOLIC );
+ * var secondValue = new FuzzyVeracity(0.7, FuzzyLogicAlgorithm.HYPERBOLIC );
  * @example
  * var logic = new FuzzyLogic();
  * var intense = logic.newSet("Intense", 0, 255);
@@ -682,12 +695,14 @@ FuzzyValue.prototype.toString = function( set, crispAlgorithm )
  * var blueChannel = logic.newValue( color[2] );
  * // isRed will be a FuzzyVeracity, the result of the test.
  * // Note that FuzzyValue.IS returns a FuzzyVeracity, on which the methods AND and NOR are called.
- * // But this is all internal and you don't really need to know that to use this syntax.
+ * // But this is all internal and you don't really need to know that in order to use this syntax.
  * var isRed = redChannel.IS( intense )
  *      .AND(
  *         greenChannel.IS( intense ).
  *         NOR( blueChannel.IS( intense ))
  *      )
+ * @param {Number} veracity The veracity level in the range [0.0, 1.0]s
+ * @param {FuzzyLogicAlgorithm} [algorithm=FuzzyLogicAlgorithm.LINEAR] The veracity level in the range [0.0, 1.0]s
  * @property {Number} veracity The veracity level in the range [0.0, 1.0]
  */
 function FuzzyVeracity( veracity, algorithm )

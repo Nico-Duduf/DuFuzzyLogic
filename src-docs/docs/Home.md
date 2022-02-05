@@ -18,9 +18,9 @@
     - [Newspeak](Quantifiers.md#newlinguistic---orwellian-newspeak)
     - [Symbolic](Quantifiers.md#symbolic)
 - [Crispification](Crispification.md)
-- [Examples](Examples.md)
-  - JavaScript: [Color: Redness](Redness.md)
-  - JavaScript: [Complex example: HVAC](AirConditioning.md)
+- Examples
+    - JavaScript: [Color: Redness](Redness.md)
+    - JavaScript: [Complex example: HVAC](AirConditioning.md)
 - [Existing Libraries](Libraries.md)
 
 ## Introduction to Fuzzy Logic
