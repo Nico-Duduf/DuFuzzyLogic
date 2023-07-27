@@ -13,7 +13,7 @@ With boolean logic, the statement `IF the temperature IS hot THEN SET the fan on
 
 With Fuzzy Logic, both the veracity and the result being fuzzy and more nuanced, the same statement will adjust precisely the power of the fan according to the hotness. With a single simple rule like this, it is like a conversion (interpolation) of the temperature value into a power value.
 
-[To read more details, a very comprehensive description is available on the wiki here.](https://github.com/Nico-Duduf/DuFuzzyLogic/wiki)
+[To read more details, a very comprehensive description is available here.](http://fuzzylogic.rxlab.guide)
 
 ## Implementation
 
