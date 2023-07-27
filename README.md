@@ -19,6 +19,6 @@ With Fuzzy Logic, both the veracity and the result being fuzzy and more nuanced,
 
 For now, this is an implementation of Fuzzy Logic for JavaScript and Python, but I plan to implement it the same way in Qt/C++, and maybe C# for Unity.
 
-- [Read the JavaScript starting guide here](https://github.com/Nico-Duduf/DuFuzzyLogic/blob/master/EXAMPLE-js.md)
+- [Read the JavaScript starting guide here](https://codeberg.org/Duduf/DuFuzzyLogic/src/branch/master/EXAMPLE-js.md)
 
-- [Read the Python starting guide here](https://github.com/Nico-Duduf/DuFuzzyLogic/blob/master/EXAMPLE-py.md)
+- [Read the Python starting guide here](https://codeberg.org/Duduf/DuFuzzyLogic/src/branch/master/EXAMPLE-py.md)
