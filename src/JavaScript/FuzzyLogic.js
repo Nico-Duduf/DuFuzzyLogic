@@ -442,7 +442,7 @@ FuzzySet.prototype.toString = function ()
 // ========= FUZZY VALUES =============
 
 /**
- * Do not use the constructor of this class, use {@link FuzzyLogic.newSet} to create a new set.<br >
+ * Do not use the constructor of this class, use {@link FuzzyLogic.newValue} to create a new value.<br >
  * @class
  * @classdesc FuzzyValue is a value to be used with Fuzzy Logic. It's inclusion in a set can be tested with {@link FuzzyValue.IS} or {@link FuzzyValue.IS_NOT},<br />
  * Use {@link FuzzyValue.SET} or {@link FuzzyLogic.THEN} to change this value using a {@link FuzzySet}
