@@ -1,16 +1,13 @@
-#ifndef CONSTANTSHAPE_H
-#define CONSTANTSHAPE_H
+#ifndef FZCONSTANTSHAPE_H
+#define FZCONSTANTSHAPE_H
 
-#include "abstractshape.h"
+#include "fzabstractshape.h"
 
-namespace FzL
-{
-
-class ConstantShape : public AbstractShape
+class FzConstantShape : public FzAbstractShape
 {
 public:
-    ConstantShape(const QVariant &v):
-        AbstractShape(v, v, Constant) {};
+    FzConstantShape(const QVariant &v):
+        FzAbstractShape(v, v, Constant) {};
 
 protected:
     virtual qreal weight(qreal start, qreal end, qreal value) const
@@ -32,6 +29,4 @@ protected:
     };
 };
 
-}
-
-#endif // CONSTANTSHAPE_H
+#endif // FZCONSTANTSHAPE_H

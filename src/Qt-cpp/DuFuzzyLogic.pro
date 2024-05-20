@@ -11,27 +11,27 @@ INCLUDEPATH += \
         dufuzzylogic/
 
 SOURCES += \
-        dufuzzylogic/engine.cpp \
-        dufuzzylogic/math.cpp \
-        dufuzzylogic/set.cpp \
-        dufuzzylogic/value.cpp \
-        dufuzzylogic/veracity.cpp \
+        dufuzzylogic/fzengine.cpp \
+        dufuzzylogic/fzmath.cpp \
+        dufuzzylogic/fzset.cpp \
+        dufuzzylogic/fzvalue.cpp \
+        dufuzzylogic/fzveracity.cpp \
         main.cpp
 
 HEADERS += \
-    dufuzzylogic/duffuzylogic.h \
-    dufuzzylogic/math.h \
-    dufuzzylogic/shapes/abstractshape.h \
-    dufuzzylogic/engine.h \
-    dufuzzylogic/set.h \
-    dufuzzylogic/shapes/constantshape.h \
-    dufuzzylogic/shapes/gaussianshape.h \
-    dufuzzylogic/shapes/linearshape.h \
-    dufuzzylogic/shapes/reversedgaussianshape.h \
-    dufuzzylogic/shapes/sigmoidshape.h \
-    dufuzzylogic/shapes/squareshape.h \
-    dufuzzylogic/value.h \
-    dufuzzylogic/veracity.h
+    dufuzzylogic/fzengine.h \
+    dufuzzylogic/fzmath.h \
+    dufuzzylogic/fzset.h \
+    dufuzzylogic/fzvalue.h \
+    dufuzzylogic/fzveracity.h \
+    dufuzzylogic/rxfuzzylogic.h \
+    dufuzzylogic/shapes/fzabstractshape.h \
+    dufuzzylogic/shapes/fzconstantshape.h \
+    dufuzzylogic/shapes/fzgaussianshape.h \
+    dufuzzylogic/shapes/fzlinearshape.h \
+    dufuzzylogic/shapes/fzreversedgaussianshape.h \
+    dufuzzylogic/shapes/fzsigmoidshape.h \
+    dufuzzylogic/shapes/fzsquareshape.h
 
 
 # Default rules for deployment.

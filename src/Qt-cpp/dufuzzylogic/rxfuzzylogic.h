@@ -1,15 +1,15 @@
-#ifndef DUFFUZYLOGIC_H
-#define DUFFUZYLOGIC_H
+#ifndef RXFUZZYLOGIC_H
+#define RXFUZZYLOGIC_H
 
-#include "engine.h"
-#include "set.h"
-#include "value.h"
-#include "veracity.h"
-#include "shapes/constantshape.h"
-#include "shapes/gaussianshape.h"
-#include "shapes/reversedgaussianshape.h"
-#include "shapes/linearshape.h"
-#include "shapes/sigmoidshape.h"
-#include "shapes/linearshape.h"
+#include "fzengine.h"
+#include "fzset.h"
+#include "fzvalue.h"
+#include "fzveracity.h"
+#include "shapes/fzconstantshape.h"
+#include "shapes/fzgaussianshape.h"
+#include "shapes/fzreversedgaussianshape.h"
+#include "shapes/fzlinearshape.h"
+#include "shapes/fzsigmoidshape.h"
+#include "shapes/fzlinearshape.h"
 
-#endif // DUFFUZYLOGIC_H
+#endif // RXFUZZYLOGIC_H

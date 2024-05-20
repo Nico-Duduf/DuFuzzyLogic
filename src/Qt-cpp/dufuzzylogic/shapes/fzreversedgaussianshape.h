@@ -1,25 +1,22 @@
-#ifndef REVERSEDGAUSSIANSHAPE_H
-#define REVERSEDGAUSSIANSHAPE_H
+#ifndef FZREVERSEDGAUSSIANSHAPE_H
+#define FZREVERSEDGAUSSIANSHAPE_H
 
-#include "abstractshape.h"
-#include "math.h"
+#include "fzabstractshape.h"
+#include "fzmath.h"
 
-namespace FzL
-{
-
-class ReversedGaussianShape : public AbstractShape
+class FzReversedGaussianShape : public FzAbstractShape
 {
 public:
-    ReversedGaussianShape(const QVariant &start, const QVariant &end):
-        AbstractShape(start, end, ReversedGaussian) {};
+    FzReversedGaussianShape(const QVariant &start, const QVariant &end):
+        FzAbstractShape(start, end, ReversedGaussian) {};
 
 protected:
     virtual qreal weight(qreal start, qreal end, qreal value) const
     {
         qreal width = end - start;
         if (end > start)
-            return Math::reversedGaussian( value, 0, 1, end, width);
-        return Math::reversedGaussian( value, 0, 1, start, width);
+            return FzMath::reversedGaussian( value, 0, 1, end, width);
+        return FzMath::reversedGaussian( value, 0, 1, start, width);
     }
 
     virtual QVector<qreal> values(qreal start, qreal end, qreal weight) const
@@ -28,12 +25,12 @@ protected:
 
         if (end > start) {
             qreal width = end - start;
-            const auto g = Math::inverseReversedGaussian( weight, 0, 1, end, width);
+            const auto g = FzMath::inverseReversedGaussian( weight, 0, 1, end, width);
             vals << g.first();
         }
         else {
             qreal width = start - end;
-            const auto g = Math::inverseReversedGaussian( 1-weight, 0, 1, start, width);
+            const auto g = FzMath::inverseReversedGaussian( 1-weight, 0, 1, start, width);
             vals << g.last();
         }
 
@@ -41,6 +38,4 @@ protected:
     };
 };
 
-}
-
-#endif // REVERSEDGAUSSIANSHAPE_H
+#endif // FZREVERSEDGAUSSIANSHAPE_H

@@ -1,5 +1,5 @@
-#ifndef ABSTRACTSHAPE_H
-#define ABSTRACTSHAPE_H
+#ifndef FZABSTRACTSHAPE_H
+#define FZABSTRACTSHAPE_H
 
 #include <QVariant>
 #include <QLine>
@@ -8,9 +8,7 @@
 #include <QColor>
 #include <cmath>
 
-namespace FzL
-{
-class AbstractShape
+class FzAbstractShape
 {
 public:
 
@@ -23,7 +21,7 @@ public:
         Sigmoid
     };
 
-    AbstractShape(const QVariant &startValue, const QVariant &endValue, Type type):
+    FzAbstractShape(const QVariant &startValue, const QVariant &endValue, Type type):
         _start(startValue), _end(endValue), _type(type) {
 
         // Make sure we can handle the value
@@ -44,7 +42,7 @@ public:
                  t == QMetaType::QRectF ||
                  t == QMetaType::QColor);
           };
-    virtual ~AbstractShape() {};
+    virtual ~FzAbstractShape() {};
 
     QVariant start() const { return _start; };
     QVariant end() const { return _end; };
@@ -331,6 +329,4 @@ private:
     Type _type;
 };
 
-}
-
-#endif // ABSTRACTSHAPE_H
+#endif // FZABSTRACTSHAPE_H

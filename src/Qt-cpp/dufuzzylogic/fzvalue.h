@@ -1,19 +1,16 @@
-#ifndef VALUE_H
-#define VALUE_H
+#ifndef FZVALUE_H
+#define FZVALUE_H
 
 #include <QVariant>
 
-#include "set.h"
-#include "veracity.h"
-
-namespace FzL
-{
+#include "fzset.h"
+#include "fzveracity.h"
 
 /**
  * @brief The DuFuzzyValue class is similar to the QVariant class,
  * except it's designed to be used with fuzzy logics and DuFuzzySet
  */
-class Value
+class FzValue
 {
 public:
     /**
@@ -68,24 +65,24 @@ public:
     };
 
     /**
-     * @brief Value Constructs an empty fuzzy value
+     * @brief FzValue Constructs an empty fuzzy value
      */
-    Value() {};
+    FzValue() {};
 
     /**
-     * @brief Value Constructs a new fuzzy value from a crisp (standard) value
+     * @brief FzValue Constructs a new fuzzy value from a crisp (standard) value
      * @param crispValue
      */
-    Value(const QVariant &crispValue):
+    FzValue(const QVariant &crispValue):
         _v(crispValue) {};
 
     /**
-     * @brief Value Constructs a new fuzzy value from a crisp (standard) value,
+     * @brief FzValue Constructs a new fuzzy value from a crisp (standard) value,
      * and set the crispification algorithm to use to generate crisp values
      * @param crispValue
      * @param cripsAlgorithm
      */
-    Value(const QVariant &crispValue, CrispificationAlgorithm cripsAlgorithm):
+    FzValue(const QVariant &crispValue, CrispificationAlgorithm cripsAlgorithm):
         _v(crispValue), _crispA(cripsAlgorithm) {};
 
     /**
@@ -98,13 +95,13 @@ public:
      * Using the current global veracity (i.e. Engine::globalEngine()->veracity() )
      * @param s
      */
-    void set(const Set &s);
+    void set(const FzSet &s);
     /**
      * @brief set Modifies the fuzzy value according to the inclusion in the given set
      * @param set
      * @param veracity of inclusion in the set
      */
-    void set(const Set &set, const Veracity &veracity = true);
+    void set(const FzSet &set, const FzVeracity &veracity = true);
 
     /**
      * @brief crispificationAlgorithm
@@ -145,25 +142,23 @@ private:
     QHash<CrispificationAlgorithm, QVariant> _crispCache;
     CrispificationAlgorithm _crispA = CENTROID_LOWER;
 
-    QMultiHash<Set, Veracity> rules;
+    QMultiHash<FzSet, FzVeracity> rules;
 };
 
-inline Veracity operator==(Value &value, const Set &set) {
+inline FzVeracity operator==(FzValue &value, const FzSet &set) {
     return set.contains(value);
 }
 
-inline Veracity operator==(QVariant &value, const Set &set) {
+inline FzVeracity operator==(QVariant &value, const FzSet &set) {
     return set.contains(value);
 }
 
-inline Veracity operator!=(Value &value, const Set &set) {
+inline FzVeracity operator!=(FzValue &value, const FzSet &set) {
     return !set.contains(value);
 }
 
-inline Veracity operator!=(QVariant &value, const Set &set) {
+inline FzVeracity operator!=(QVariant &value, const FzSet &set) {
     return !set.contains(value);
 }
 
-}
-
-#endif // VALUE_H
+#endif // FZVALUE_H

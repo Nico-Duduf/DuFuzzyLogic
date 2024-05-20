@@ -1,4 +1,4 @@
-#include "math.h"
+#include "fzmath.h"
 
 #include <QVariantAnimation>
 #include <QLine>
@@ -6,16 +6,12 @@
 #include <QRect>
 #include <QColor>
 
-
-
-
-
-QVariant FzL::Math::mean(const QVariant &a, const QVariant &b)
+QVariant FzMath::mean(const QVariant &a, const QVariant &b)
 {
     return mean({a, b});
 }
 
-QVariant FzL::Math::mean(const QVector<QVariant> values)
+QVariant FzMath::mean(const QVector<QVariant> values)
 {
     auto t = static_cast<QMetaType::Type>(values.constFirst().type());
     QVariant sum;
@@ -144,7 +140,7 @@ QVariant FzL::Math::mean(const QVector<QVariant> values)
     return QVariant();
 }
 
-QVariant FzL::operator*(const QVariant &value, qreal w)
+QVariant operator*(const QVariant &value, qreal w)
 {
     auto t = static_cast<QMetaType::Type>(value.type());
     switch(t) {
@@ -196,7 +192,7 @@ QVariant FzL::operator*(const QVariant &value, qreal w)
     return QVariant();
 }
 
-QVariant FzL::operator+(const QVariant &a, const QVariant &b)
+QVariant operator+(const QVariant &a, const QVariant &b)
 {
     auto t = static_cast<QMetaType::Type>(a.type());
     switch(t) {
@@ -253,6 +249,6 @@ QVariant FzL::operator+(const QVariant &a, const QVariant &b)
     return QVariant();
 }
 
-QVariant FzL::operator/(const QVariant &a, qreal w) {
+QVariant operator/(const QVariant &a, qreal w) {
     return a * (1/w);
 }

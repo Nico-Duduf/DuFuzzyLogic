@@ -1,29 +1,29 @@
-#include "value.h"
+#include "fzvalue.h"
 
-#include "math.h"
-#include "veracity.h"
-#include "engine.h"
+#include "fzmath.h"
+#include "fzveracity.h"
+#include "fzengine.h"
 
-void FzL::Value::set(const Set &s)
+void FzValue::set(const FzSet &s)
 {
-    set(s, currentVeracity());
+    set(s, FzEngine::globalEngine()->veracity());
 
     _crispCache.clear();
 }
 
-void FzL::Value::set(const Set &set, const Veracity &veracity)
+void FzValue::set(const FzSet &set, const FzVeracity &veracity)
 {
     rules.insert(set, veracity);
 
     _crispCache.clear();
 }
 
-QVariant FzL::Value::crisp()
+QVariant FzValue::crisp()
 {
     return crisp(_crispA);
 }
 
-QVariant FzL::Value::crisp(CrispificationAlgorithm algorithm)
+QVariant FzValue::crisp(CrispificationAlgorithm algorithm)
 {
     if (rules.isEmpty())
         return _v;
@@ -37,11 +37,11 @@ QVariant FzL::Value::crisp(CrispificationAlgorithm algorithm)
     // get all average values
     // and veracities from the sets
     qreal sumWeights = 0;
-    QHashIterator<Set,Veracity> i(rules);
+    QHashIterator<FzSet,FzVeracity> i(rules);
     while( i.hasNext()) {
         i.next();
-        Set set = i.key();
-        Veracity v = i.value();
+        FzSet set = i.key();
+        FzVeracity v = i.value();
 
         QVector<QVariant> ruleValues = set.values(v);
         QVariant ruleValue;
@@ -49,7 +49,7 @@ QVariant FzL::Value::crisp(CrispificationAlgorithm algorithm)
         switch(algorithm) {
         case CENTROID:
         case MEAN:
-            ruleValue = Math::mean(ruleValues);
+            ruleValue = FzMath::mean(ruleValues);
             break;
         case CENTROID_LOWER:
         case MEAN_LOWER:

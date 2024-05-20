@@ -1,34 +1,34 @@
-#include "set.h"
+#include "fzset.h"
 
 #include <QVariantAnimation>
 
-#include "math.h"
-#include "veracity.h"
-#include "value.h"
-#include "shapes/abstractshape.h"
+#include "fzmath.h"
+#include "fzveracity.h"
+#include "fzvalue.h"
+#include "shapes/fzabstractshape.h"
 
-FzL::Set::Set():
+FzSet::FzSet():
     _name("Empty"),
     _shapeIn(nullptr),
     _shapeOut(nullptr)
 { }
 
-FzL::Set::Set(const QString &name,
-                       AbstractShape *shapeIn,
-                       AbstractShape *shapeOut
+FzSet::FzSet(const QString &name,
+                       FzAbstractShape *shapeIn,
+                       FzAbstractShape *shapeOut
                        ):
     _name(name),
     _shapeIn(shapeIn),
     _shapeOut(shapeOut)
 { }
 
-FzL::Set::~Set()
+FzSet::~FzSet()
 {
-    delete _shapeIn;
-    delete _shapeOut;
+    // delete _shapeIn;
+    // delete _shapeOut;
 }
 
-FzL::Veracity FzL::Set::contains(Value &value) const
+FzVeracity FzSet::contains(FzValue &value) const
 {
     if (!isValid())
         return false;
@@ -36,7 +36,7 @@ FzL::Veracity FzL::Set::contains(Value &value) const
     return contains(value.crisp());
 }
 
-FzL::Veracity FzL::Set::contains(const QVariant &value) const
+FzVeracity FzSet::contains(const QVariant &value) const
 {
     if (!isValid())
         return false;
@@ -47,7 +47,7 @@ FzL::Veracity FzL::Set::contains(const QVariant &value) const
     return outWeight;
 }
 
-QVector<QVariant> FzL::Set::values(const Veracity &veracity) const
+QVector<QVariant> FzSet::values(const FzVeracity &veracity) const
 {
     if (!isValid())
         return QVector<QVariant>();
@@ -57,9 +57,9 @@ QVector<QVariant> FzL::Set::values(const Veracity &veracity) const
     QVector<QVariant> values = _shapeIn->values(w);
 
     if (w >= 1 ||
-        (_shapeIn->type() == AbstractShape::Constant && _shapeOut->type() == AbstractShape::Constant)
+        (_shapeIn->type() == FzAbstractShape::Constant && _shapeOut->type() == FzAbstractShape::Constant)
        )
-        values <<  Math::mean(_shapeIn->end(), _shapeOut->start());
+        values <<  FzMath::mean(_shapeIn->end(), _shapeOut->start());
 
     values << _shapeOut->values(w);
 

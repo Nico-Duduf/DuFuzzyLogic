@@ -1,7 +1,7 @@
-#include "veracity.h"
+#include "fzveracity.h"
 
-FzL::Engine::Algorithm FzL::Veracity::algorithm() const {
-    if (_a == Engine::Default)
-        return Engine::globalEngine()->algorithm();
+FzEngine::Algorithm FzVeracity::algorithm() const {
+    if (_a == FzEngine::Default)
+        return FzEngine::globalEngine()->algorithm();
     return _a;
 }

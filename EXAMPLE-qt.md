@@ -1,13 +1,17 @@
-#include <QCoreApplication>
+# Qt / C++
 
+## Introduction
+
+## Examples
+
+### Simple Color example
+
+```c++
 #include <QtDebug>
-
-#include "rxfuzzylogic.h"
+#include "duffuzylogic.h"
 
 int main(int argc, char *argv[])
 {
-    //QCoreApplication a(argc, argv);
-
     // Get the default engine
     auto fz = FzEngine::globalEngine();
 
@@ -30,11 +34,10 @@ int main(int argc, char *argv[])
     FzValue blue( color.blue() );
 
     // The logic
-    fz->fif( red == intense && green != intense && blue != intense,
-            [&redness, intense] (const FzVeracity &v) {
-                redness.set(intense, v);
-            });
-    //fz->then(&redness, intense);
+    fz->fif( red == intense &&
+             green != intense &&
+             blue != intense );
+    fz->then(&redness, intense);
 
     // Print the result
     qInfo().noquote() << color.name() << "is" << int(fz->veracity().value()*100) << "% red";
@@ -45,6 +48,12 @@ int main(int argc, char *argv[])
 
     // Quit
     return 0;
-
-    //return a.exec();
 }
+```
+
+Program output:
+
+```
+#ff7d00 is 50 % red
+#820000 is the equivalent pure red color with the red channel at QVariant(double, 130)
+```

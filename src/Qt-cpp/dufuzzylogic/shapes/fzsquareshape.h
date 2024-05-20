@@ -1,16 +1,13 @@
-#ifndef SQUARESHAPE_H
-#define SQUARESHAPE_H
+#ifndef FZSQUARESHAPE_H
+#define FZSQUARESHAPE_H
 
-#include "abstractshape.h"
+#include "fzabstractshape.h"
 
-namespace FzL
-{
-
-class SquareShape : public AbstractShape
+class FzSquareShape : public FzAbstractShape
 {
 public:
-    SquareShape(const QVariant &start, const QVariant &end):
-        AbstractShape(start, end, Square) {};
+    FzSquareShape(const QVariant &start, const QVariant &end):
+        FzAbstractShape(start, end, Square) {};
 
 protected:
     virtual qreal weight(qreal start, qreal end, qreal value) const
@@ -39,6 +36,4 @@ protected:
     };
 };
 
-}
-
-#endif // SQUARESHAPE_H
+#endif // FZSQUARESHAPE_H

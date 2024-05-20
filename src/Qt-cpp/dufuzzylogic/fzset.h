@@ -1,65 +1,62 @@
-#ifndef SET_H
-#define SET_H
+#ifndef FZSET_H
+#define FZSET_H
 
 #include <QVariant>
 #include <QEasingCurve>
 
-namespace FzL
-{
-
-class Veracity;
-class Value;
-class AbstractShape;
+class FzVeracity;
+class FzValue;
+class FzAbstractShape;
 
 /**
  * @brief The DuFuzzySet class represents a set of fuzzy values,
  * i.e. a qualifier for values.
  */
-class Set
+class FzSet
 {
 public:
 
     /**
-     * @brief Set Construcst a default, invalid and always empty set
+     * @brief FzSet Construcst a default, invalid and always empty set
      */
-    Set();
+    FzSet();
 
     /**
-     * @brief Set
+     * @brief FzSet
      * @param name should be unique
      * @param shapeIn The shape on the minimum side of the set
      * @param shapeOut The shape on the maximum side of the set
      */
-    Set(const QString &name,
-        AbstractShape *shapeIn,
-        AbstractShape *shapeOut
+    FzSet(const QString &name,
+        FzAbstractShape *shapeIn,
+        FzAbstractShape *shapeOut
         );
 
     /**
      * Destructor
      */
-    ~Set();
+    ~FzSet();
 
     /**
      * @brief contains Checks if the set contains the given value
      * @param value
      * @return
      */
-    Veracity contains(Value &value) const;
+    FzVeracity contains(FzValue &value) const;
 
     /**
      * @brief contains Checks if the set contains the given value
      * @param value
      * @return
      */
-    Veracity contains(const QVariant &value) const;
+    FzVeracity contains(const QVariant &value) const;
 
     /**
      * @brief values are a list of crisp and valid values for a given veracity.
      * @param veracity
      * @return
      */
-    QVector<QVariant> values(const Veracity &veracity) const;
+    QVector<QVariant> values(const FzVeracity &veracity) const;
 
     /**
      * @brief name is a (unique) name for this set, set with the constructor
@@ -75,18 +72,16 @@ public:
 
 private:
     QString _name;
-    AbstractShape *_shapeIn;
-    AbstractShape *_shapeOut;
+    FzAbstractShape *_shapeIn;
+    FzAbstractShape *_shapeOut;
 };
 
-inline bool operator==(const Set &a, const Set &b) {
+inline bool operator==(const FzSet &a, const FzSet &b) {
     return a.name() == b.name();
 }
 
-inline uint qHash(const Set &set) {
+inline uint qHash(const FzSet &set) {
     return qHash(set.name());
 }
 
-}
-
-#endif // SET_H
+#endif // FZSET_H

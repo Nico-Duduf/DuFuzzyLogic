@@ -1,24 +1,21 @@
-#ifndef SIGMOIDSHAPE_H
-#define SIGMOIDSHAPE_H
+#ifndef FZSIGMOIDSHAPE_H
+#define FZSIGMOIDSHAPE_H
 
-#include "abstractshape.h"
-#include "math.h"
+#include "fzabstractshape.h"
+#include "fzmath.h"
 
-namespace FzL
-{
-
-class SigmoidShape : public AbstractShape
+class FzSigmoidShape : public FzAbstractShape
 {
 public:
-    SigmoidShape(const QVariant &start, const QVariant &end):
-        AbstractShape(start, end, Sigmoid) {};
+    FzSigmoidShape(const QVariant &start, const QVariant &end):
+        FzAbstractShape(start, end, Sigmoid) {};
 
 protected:
     virtual qreal weight(qreal start, qreal end, qreal value) const
     {
         qreal mid = (start+end) / 2;
         qreal rate = 6 / (end - start);
-        return Math::logistic(value, mid, 0, 1, rate);
+        return FzMath::logistic(value, mid, 0, 1, rate);
     }
 
     virtual QVector<qreal> values(qreal start, qreal end, qreal weight) const
@@ -26,11 +23,10 @@ protected:
         QVector<qreal> vals;
 
         qreal mid = (end + start) / 2;
-       vals << Math::inverseLogistic(weight, mid);
+       vals << FzMath::inverseLogistic(weight, mid);
 
         return vals;
     };
 };
 
-}
-#endif // SIGMOIDSHAPE_H
+#endif // FZSIGMOIDSHAPE_H

@@ -1,75 +1,53 @@
-#include "engine.h"
+#include "fzengine.h"
 
-#include "veracity.h"
-#include "value.h"
-#include "set.h"
+#include "fzveracity.h"
+#include "fzvalue.h"
+#include "fzset.h"
 
-FzL::Engine *FzL::Engine::_globalEngine = nullptr;
+FzEngine *FzEngine::_globalEngine = nullptr;
 
-FzL::Veracity FzL::fif(const Veracity &v) {
-    return Engine::globalEngine()->fif(v);
-}
-
-template<typename Then>
-FzL::Veracity FzL::fif(const Veracity &v, Then &&then)
+FzEngine *FzEngine::globalEngine()
 {
-    return Engine::globalEngine()->fif(v, then);
-}
-
-void FzL::then(Value *v, const Set &s)
-{
-    Engine::globalEngine()->then(v, s);
-}
-
-FzL::Engine *FzL::Engine::globalEngine()
-{
-    if (!_globalEngine) _globalEngine = new Engine();
+    if (!_globalEngine) _globalEngine = new FzEngine();
     return _globalEngine;
 }
 
-FzL::Engine::Engine():
-    _v(new Veracity(false))
+FzEngine::FzEngine():
+    _v(new FzVeracity(false))
 {}
 
-FzL::Engine::Engine(Algorithm algorithm):
+FzEngine::FzEngine(Algorithm algorithm):
     _a(algorithm),
-    _v(new Veracity(false))
+    _v(new FzVeracity(false))
 {}
 
-FzL::Engine::~Engine()
+FzEngine::~FzEngine()
 {
     delete _v;
 }
 
-void FzL::Engine::setVeracity(const Veracity &v)
+void FzEngine::setVeracity(const FzVeracity &v)
 {
-    _v = new Veracity(v);
+    _v = new FzVeracity(v);
 }
 
-FzL::Veracity FzL::Engine::veracity() {
+FzVeracity FzEngine::veracity() {
     return *_v;
 }
 
-FzL::Veracity FzL::Engine::fif(const Veracity &v)
+FzVeracity FzEngine::fif(const FzVeracity &v)
 {
     setVeracity(v);
     return v;
 }
 
-void FzL::Engine::then(Value *v, const Set &s)
+void FzEngine::then(FzValue *v, const FzSet &s)
 {
     v->set(s, *_v);
 }
 
-template<typename Then>
-FzL::Veracity FzL::Engine::fif(const Veracity &v, Then &&then)
-{
+FzVeracity FzEngine::fif(const FzVeracity &v, std::function<void (FzVeracity)> then) {
     setVeracity(v);
     then(v);
     return v;
-}
-
-FzL::Veracity FzL::currentVeracity()
-{
-    return Engine::globalEngine()->veracity();
 }

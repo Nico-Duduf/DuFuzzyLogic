@@ -1,51 +1,18 @@
-#ifndef ENGINE_H
-#define ENGINE_H
+#ifndef FZENGINE_H
+#define FZENGINE_H
 
 #include <QPointer>
 
-namespace FzL
-{
-
-class Value;
-class Set;
-class Veracity;
-
-// Quick access to the default engine
-
-/**
- * @brief fif Shortcut for DuFFuzzyLogic::globalEngine()->fif()
- * @param v
- * @return
- */
-Veracity fif(const Veracity &v);
-/**
- * @brief fif Shortcut for FzL::Engine::globalEngine()->fif()
- * @param v
- * @param then is a lambda function to run which takes the veracity as argument
- * @return
- */
-template<typename Then>
-Veracity fif(const Veracity &v, Then&& then);
-/**
- * @brief fif Shortcut for FzL::Engine::globalEngine()->then()
- * @param v
- * @return
- */
-void then(Value *v, const Set &s);
-
-/**
- * @brief veracity shortcut for FzL::Engine::globalEngine()->veracity
- * @return
- */
-Veracity currentVeracity();
-
+class FzValue;
+class FzSet;
+class FzVeracity;
 
 /**
  * @brief The DuFuzzyEngine class configures the engine
  * static methods provide quick access to an instance to be used globally,
  * but the class can also be instanciated to use a custom local engine.
  */
-class Engine
+class FzEngine
 {
 public:
     /**
@@ -66,29 +33,27 @@ public:
         Hyperbolic = 2
     };
 
-    static Engine *globalEngine();
+    static FzEngine *globalEngine();
 
-    Engine();
-    Engine(Algorithm algorithm);
-    ~Engine();
+    FzEngine();
+    FzEngine(Algorithm algorithm);
+    ~FzEngine();
 
     Algorithm algorithm() { return _a; };
     void setAlgorithm(Algorithm algorithm) { _a = algorithm; };
 
-    void setVeracity(const Veracity &v);
-    Veracity veracity();
+    void setVeracity(const FzVeracity &v);
+    FzVeracity veracity();
 
-    Veracity fif(const Veracity &v);
-    template<typename Then>
-    Veracity fif(const Veracity &v, Then &&then);
-    void then(Value *v, const Set &s);
+    FzVeracity fif(const FzVeracity &v);
+    FzVeracity fif(const FzVeracity &v, std::function<void(FzVeracity)> then);
+
+    void then(FzValue *v, const FzSet &s);
 
 private:
-    static Engine *_globalEngine;
+    static FzEngine *_globalEngine;
     Algorithm _a = Default;
-    Veracity *_v;
+    FzVeracity *_v;
 };
 
-}
-
-#endif // ENGINE_H
+#endif // FZENGINE_H
